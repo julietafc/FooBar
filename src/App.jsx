@@ -2,6 +2,7 @@ import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
 import { Tabs } from "antd";
+import Barteneder from "./components/Bartender/Bartender";
 const { TabPane } = Tabs;
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
             Content for Manager
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
-            Content for Bartenders
+            <Barteneder />
           </TabPane>
           <TabPane className="TabPane" tab="Customers" key="3">
             Content for Customers
