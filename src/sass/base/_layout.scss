@@ -1,0 +1,17 @@
+.Layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+h2,
+h3,
+h4 {
+  color: white;
+}
+
+aside {
+  border: 2px solid var(--pink);
+  padding: 2em 1em;
+  border-radius: 6px;
+  margin-right: 2em;
+}
