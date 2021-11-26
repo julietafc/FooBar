@@ -1,0 +1,12 @@
+@use "../../index.scss";
+
+.Form {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+h2,
+h3,
+h4 {
+  color: white;
+}

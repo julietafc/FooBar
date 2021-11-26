@@ -1,6 +1,7 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
+import Form from "./components/Form/Form";
 import { Tabs } from "antd";
 const { TabPane } = Tabs;
 function App() {
@@ -19,7 +20,7 @@ function App() {
             Content for Customers
           </TabPane>
           <TabPane className="TabPane" tab="Order" key="4">
-            Content for Order Form
+            <Form />
           </TabPane>
         </Tabs>
       </main>
