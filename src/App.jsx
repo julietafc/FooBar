@@ -2,6 +2,10 @@ import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
 import { Tabs } from "antd";
+import Manager from "./components/Manager/Manager";
+
+
+
 const { TabPane } = Tabs;
 function App() {
   return (
@@ -11,6 +15,7 @@ function App() {
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
             Content for Manager
+            <Manager/>
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
             Content for Bartenders
