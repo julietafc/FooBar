@@ -1,0 +1,43 @@
+@use "../../../../index.scss";
+
+.Product {
+  background-color: white;
+  border-radius: 10px;
+  width: 70%;
+  padding: 1em;
+  margin: 1em;
+  height: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  margin-left: 4em;
+
+  h3,
+  p {
+    color: black;
+  }
+
+  img {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    left: -50px;
+  }
+
+  .Text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .amountWrapper {
+    display: flex;
+    .amount {
+      margin: 0 1em;
+    }
+    & button {
+      color: black;
+    }
+  }
+}
