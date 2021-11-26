@@ -1,0 +1,14 @@
+@use "../../../../index.scss";
+
+.Product article {
+  background-color: white;
+  border-radius: 10px;
+  width: 80%;
+  padding: 1em;
+  margin: 1em;
+
+  h4,
+  p {
+    color: black;
+  }
+}

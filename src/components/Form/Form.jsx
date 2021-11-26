@@ -2,10 +2,11 @@ import Basket from "../helpers/Basket/Basket";
 import ProductList from "../helpers/ProductList/ProductList";
 
 import "./Form.scss";
-export default function Form() {
+export default function Form(props) {
+  const beers = props.filter((beer) => beer.onTap);
   return (
-    <div className="Form">
-      <ProductList />
+    <div className="Layout">
+      <ProductList beers={beers} />
       <Basket />
     </div>
   );

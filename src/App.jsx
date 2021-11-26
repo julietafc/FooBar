@@ -73,7 +73,7 @@ function App() {
     });
   }
 
-  //console.log(products.filter((beer) => beer.onTap));
+  // console.log(products.filter((beer) => beer.onTap));
 
   return (
     <div className="App">
@@ -90,7 +90,7 @@ function App() {
             Content for Customers
           </TabPane>
           <TabPane className="TabPane" tab="Order" key="4">
-            <Form />
+            {data && <Form {...data} />}
           </TabPane>
         </Tabs>
       </main>

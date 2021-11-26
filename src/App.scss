@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  padding: 6em;
+  padding: 2em;
   background: var(--bg-color);
   font-family: var(--primary-font);
   h1 {
@@ -35,7 +35,7 @@
     background: var(--bg-color);
     border: 1px solid red;
     color: white;
-    padding: 6em;
+    padding: 6em 1em;
   }
 }
 @media (prefers-reduced-motion: no-preference) {

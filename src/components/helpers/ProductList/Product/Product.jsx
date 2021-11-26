@@ -1,30 +1,8 @@
-export default function Product() {
+import "./Product.scss";
+export default function Product(props) {
   return (
-    <>
-      <article>
-        <h4>Name product</h4>
-        <p>price product</p>
-      </article>
-      <article>
-        <h4>Name product</h4>
-        <p>price product</p>
-      </article>
-      <article>
-        <h4>Name product</h4>
-        <p>price product</p>
-      </article>
-      <article>
-        <h4>Name product</h4>
-        <p>price product</p>
-      </article>
-      <article>
-        <h4>Name product</h4>
-        <p>price product</p>
-      </article>
-      <article>
-        <h4>Name product</h4>
-        <p>price product</p>
-      </article>
-    </>
+    <article className="Product">
+      <h4>{props.name}</h4>
+    </article>
   );
 }
