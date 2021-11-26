@@ -1,14 +1,12 @@
 import Product from "./Product/Product";
 import "./ProductList.scss";
 
-// console.log(products.filter((beer) => beer.onTap));
 export default function ProductList(props) {
-  // const beers = props.products.map((product) => <Product {...product} />);
+  const beers = props.beers.map((beer) => <Product {...beer} />);
   return (
     <section className="ProductList">
       <h2>Our selection</h2>
-      {/* <section>{beers}</section> */}
-      <Product />
+      <section>{beers}</section>
     </section>
   );
 }

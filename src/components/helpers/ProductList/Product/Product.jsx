@@ -1,5 +1,6 @@
 import "./Product.scss";
 import { useState } from "react";
+
 export default function Product(props) {
   const [amount, setAmount] = useState(0);
 
@@ -19,10 +20,10 @@ export default function Product(props) {
   }
   return (
     <article className="Product">
-      <img src="./src/assets/elhefe.png" alt="" />
+      <img src={"./src/assets/" + props.label} alt="" />
       <div className="Text">
-        <h3>Product 1</h3>
-        <p>Type of beer</p>
+        <h3>{props.name}</h3>
+        <p>{props.category}</p>
         <div className="amountWrapper">
           <button onClick={decreaseAmount}>-</button>
           <p className="amount">{amount}</p>

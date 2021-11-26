@@ -92,7 +92,7 @@ function App() {
             Content for Customers
           </TabPane>
           <TabPane className="TabPane" tab="Order" key="4">
-            {data && <Form {...data} />}
+            {products && <Form products={products} />}
           </TabPane>
         </Tabs>
       </main>
