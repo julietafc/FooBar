@@ -2,45 +2,11 @@ function Tap(props) {
   let beerImg = props.tap.beer.toLowerCase().split(" ").join("") + ".png";
 
   const styleBeerLabel = {
-    width: "100px",
-    aspectRatio: "1",
-
-    position: "relative",
-    transition: ".8s",
     backgroundImage: `url(./src/assets/${beerImg})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    borderRadius: "50%",
-    color: "white",
-  };
-
-  const styleBeerLevel = {
-    position: "absolute",
-    width: "36%",
-    height: "130%",
-    transformOrigin: "bottom right",
-    bottom: "100%",
-    left: "50%",
-    border: "solid 2px black",
-    borderRadius: "8px 8px 0 0",
-    overflowY: "hidden",
-    background: "linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(207,141,55,0) 50%)",
-    transform: "translateX(-50%)",
   };
 
   const styleLevel = {
-    position: "absolute",
-    width: "30%",
-    height: "125%",
-    transformOrigin: "bottom right",
-    bottom: "100%",
-    left: "50%",
     transform: "scaleY(" + props.tap.level * 0.00041 + ") translateX(-50%)",
-    transition: "transform 1s",
-    backgroundColor: "goldenrod",
-    borderTop: "solid 3px white",
-    borderRadius: "5px 5px 0 0",
   };
 
   const styleP = {
@@ -58,10 +24,10 @@ function Tap(props) {
   };
 
   return (
-    <div className="tap-Container">
+    <div className="Tap">
       <div className="beer-label" style={styleBeerLabel}>
         <div className="beer-level" style={styleLevel}></div>
-        <div className="beer-level-container" style={styleBeerLevel}></div>
+        <div className="beer-level-container"></div>
         <div className="bulb" style={styleBulbUse}></div>
         <div className="bulb" style={styleBulbCH}></div>
       </div>
@@ -74,6 +40,7 @@ function Tap(props) {
 
 export default function Taps(props) {
   const style = {
+    width: "100%",
     display: "flex",
     padding: ".5rem 1rem",
     gap: "1rem",

@@ -10,6 +10,7 @@ const { TabPane } = Tabs;
 function App() {
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
+  const [realTime, setRealTime] = useState(0);
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -20,6 +21,7 @@ function App() {
         const json = await res.json();
         setData(json);
         checkTaps(json);
+        setRealTime(json.timestamp);
       } catch (error) {
         console.log(error);
       }
@@ -83,7 +85,7 @@ function App() {
             Content for Manager
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data && <Barteneder {...data} />}
+            {data && <Barteneder {...data} time={realTime} />}
           </TabPane>
           <TabPane className="TabPane" tab="Customers" key="3">
             Content for Customers
