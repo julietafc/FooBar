@@ -1,35 +1,32 @@
-import { useState } from "react";
-import logo from "./logo.svg";
 import "./App.scss";
-
+import "./index.scss";
+import "antd/dist/antd.css";
+import { Tabs } from "antd";
+const { TabPane } = Tabs;
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-          {" | "}
-          <a className="App-link" href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener noreferrer">
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <main>
+        <h1>Welcome to FooBar</h1>
+        <Tabs defaultActiveKey="1" onChange={callback}>
+          <TabPane className="TabPane" tab="Manager" key="1">
+            Content for Manager
+          </TabPane>
+          <TabPane className="TabPane" tab="Bartenders" key="2">
+            Content for Bartenders
+          </TabPane>
+          <TabPane className="TabPane" tab="Customers" key="3">
+            Content for Customers
+          </TabPane>
+          <TabPane className="TabPane" tab="Order" key="4">
+            Content for Order Form
+          </TabPane>
+        </Tabs>
+      </main>
     </div>
   );
 }
-
+function callback(key) {
+  console.log(key);
+}
 export default App;

@@ -1,18 +1,48 @@
 .App {
   text-align: center;
+  padding: 6em;
+  background: var(--bg-color);
+  font-family: var(--primary-font);
+  h1 {
+    color: white;
+    text-align: right;
+    margin-bottom: 0;
+  }
+  .ant-tabs {
+    height: 100vh;
+    .ant-tabs-nav {
+      margin: 0;
+      &:before {
+        border-bottom: none;
+      }
+    }
+  }
+  .ant-tabs-tab.TabPane {
+    border: 1px solid red;
+    padding: 1em 2em;
+    color: white;
+    &.ant-tabs-tab-active {
+      background-color: red;
+      .ant-tabs-tab-btn {
+        color: white;
+      }
+    }
+  }
+  .ant-tabs-ink-bar {
+    background: yellow;
+  }
+  .ant-tabs-content-holder {
+    background: var(--bg-color);
+    border: 1px solid red;
+    color: white;
+    padding: 6em;
+  }
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,11 +53,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,7 +64,6 @@
     transform: rotate(360deg);
   }
 }
-
 button {
   font-size: calc(10px + 2vmin);
 }
