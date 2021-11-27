@@ -1,13 +1,7 @@
 import "./Bartender.scss";
 import Taps from "../helpers/Taps/Taps";
 import React from "react";
-import counterClose from "../../modules/counterClose";
-
-function TimeToClose(props) {
-  const time = counterClose(props.now);
-  const timeDisplay = `We close in ${time.hours} : ${time.minutes} : ${time.seconds}`;
-  return <p>{time.hours < 0 ? "we are close" : timeDisplay}</p>;
-}
+import TimeToClose from "../helpers/TimeToClose/TimeToClose";
 
 function Keg(props) {
   return (
