@@ -1,5 +1,6 @@
 import "./Product.scss";
 import { useState } from "react";
+import Button from "../../Button/Button";
 
 export default function Product(props) {
   const [amount, setAmount] = useState(0);
@@ -24,10 +25,14 @@ export default function Product(props) {
       <div className="Text">
         <h3>{props.name}</h3>
         <p>{props.category}</p>
-        <div className="amountWrapper">
-          <button onClick={decreaseAmount}>-</button>
-          <p className="amount">{amount}</p>
-          <button onClick={increaseAmount}>+</button>
+        <div className="actions">
+          <div className="amountWrapper">
+            {/* <Button onClick={decreaseAmount} action="-" /> */}
+            <button onClick={decreaseAmount}>-</button>
+            <p className="amount">{amount}</p>
+            <button onClick={increaseAmount}>+</button>
+          </div>
+          <Button />
         </div>
       </div>
     </article>

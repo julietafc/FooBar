@@ -4,13 +4,12 @@
   background-color: white;
   border-radius: 10px;
   width: 70%;
-  padding: 1em;
+  padding: 2em;
   margin: 1em;
   height: 180px;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   text-align: left;
   margin-left: 4em;
 
@@ -24,20 +23,28 @@
     height: 130px;
     position: absolute;
     left: -50px;
+    border-radius: 4px;
   }
 
   .Text {
     display: flex;
     flex-direction: column;
+    margin-left: 6em;
+    width: 100%;
   }
 
-  .amountWrapper {
+  .actions {
     display: flex;
-    .amount {
-      margin: 0 1em;
-    }
-    & button {
-      color: black;
+    justify-content: space-between;
+
+    .amountWrapper {
+      display: flex;
+      .amount {
+        margin: 0 1em;
+      }
+      & button {
+        color: black;
+      }
     }
   }
 }

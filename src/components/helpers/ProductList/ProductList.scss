@@ -1,11 +1,13 @@
 @use "../../../index.scss";
 
 .ProductList {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+  h2 {
+    grid-column: 1/-1;
+    color: var(--yellow);
+  }
 
-.ProductList h2 {
-  grid-column: 1/-1;
-  color: var(--yellow);
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
