@@ -1,0 +1,48 @@
+.Navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
+
+  ul {
+    display: flex;
+  }
+
+  a {
+    font-size: 1rem;
+    padding: 1em;
+    color: white;
+
+    &:hover {
+      color: yellow;
+    }
+
+    &:active {
+      border-bottom: 2px solid red;
+    }
+  }
+
+  .MobileIcon {
+    display: none;
+  }
+
+  @media screen and (max-width: 960px) {
+    transition: 0.8s all ease;
+
+    nav {
+      display: none;
+    }
+
+    .MobileIcon {
+      display: block;
+      position: absolute;
+      top: 1.7em;
+      right: 0;
+      transform: translate(-100%, 60%);
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: white;
+    }
+  }
+}
