@@ -12,6 +12,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
   const [realTime, setRealTime] = useState(0);
+  const [now, setNow] = useState(new Date().getTime());
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -32,6 +33,13 @@ function App() {
       fetchData(); // <-- (3) invoke in interval callback
     }, 5000);
 
+    function upDateNow() {
+      setNow(new Date().getTime());
+    }
+    const id2 = setInterval(() => {
+      upDateNow();
+    }, 1000);
+
     fetch("https://los-amigos.herokuapp.com/beertypes")
       .then((res) => res.json())
       .then((data) => {
@@ -42,7 +50,10 @@ function App() {
         fetchData(); // <-- (2) invoke on mount
       });
 
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      clearInterval(id2);
+    };
   }, []);
 
   function checkTaps(info) {
@@ -86,7 +97,7 @@ function App() {
             Content for Manager
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data && <Barteneder {...data} time={realTime} />}
+            {data && <Barteneder {...data} time={realTime} now={now} />}
           </TabPane>
           <TabPane className="TabPane" tab="Customers" key="3">
             Content for Customers

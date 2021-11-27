@@ -1,4 +1,16 @@
 @use "../../index.scss";
+
+.Bartender {
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  grid-template-rows: auto auto auto;
+  row-gap: 1rem;
+}
+
+.Bartender > * {
+  grid-column-start: 1;
+}
+
 .Bartender h1 {
   color: var(--pink);
 }
