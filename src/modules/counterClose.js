@@ -13,8 +13,8 @@ export default function counterClose(now) {
   const seconds = Math.floor((dif % minute) / sec);
 
   return {
-    hours: hours < 10 ? "0" + hours : hours,
-    minutes: minutes < 10 ? "0" + minutes : minutes,
-    seconds: seconds < 10 ? "0" + seconds : seconds,
+    hours: hours < 10 && hours >= 0 ? "0" + hours : hours,
+    minutes: minutes < 10 && minutes >= 0 ? "0" + minutes : minutes,
+    seconds: seconds < 10 && seconds >= 0 ? "0" + seconds : seconds,
   };
 }
