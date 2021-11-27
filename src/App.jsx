@@ -97,7 +97,7 @@ function App() {
             Content for Manager
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data && <Barteneder {...data} now={now} />}
+            {data.taps && <Barteneder {...data} now={now} />}
           </TabPane>
           <TabPane className="TabPane" tab="Customers" key="3">
             Content for Customers
