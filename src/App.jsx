@@ -6,6 +6,7 @@ import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import Barteneder from "./components/Bartender/Bartender";
 import Navbar from "./components/Navbar/Navbar";
+import Sidebar from "./components/helpers/Sidebar/Sidebar";
 
 const { TabPane } = Tabs;
 
@@ -80,6 +81,7 @@ function App() {
 
   return (
     <div className="App">
+      <Sidebar />
       <Navbar />
       <main>
         <Tabs defaultActiveKey="1" onChange={callback}>
