@@ -1,3 +1,4 @@
+import "./Basket.scss";
 import { useState } from "react";
 export default function Basket() {
   return (

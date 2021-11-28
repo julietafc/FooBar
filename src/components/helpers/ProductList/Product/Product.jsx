@@ -35,7 +35,11 @@ export default function Product(props) {
         <div className="Text">
           <h3>{props.name}</h3>
           <p>{props.category}</p>
-          <p></p>
+
+          <div className="primary">
+            <p>{props.alc}% vol.</p>
+            <p>${props.price}</p>
+          </div>
           <div className="actions">
             <div className="amountWrapper">
               <button onClick={decreaseAmount}>-</button>

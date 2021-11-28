@@ -3,11 +3,18 @@
 .ProductList {
   h2 {
     grid-column: 1/-1;
-    color: var(--yellow);
+    color: white;
+    margin-bottom: 3em;
   }
 
   section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .ProductList section {
+    grid-template-columns: 1fr;
   }
 }
