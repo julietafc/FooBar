@@ -1,6 +1,7 @@
 @use "../../../../index.scss";
 
-.Product {
+.Product,
+.ProductReverse {
   background-color: white;
   border-radius: 10px;
   width: 80%;
@@ -12,6 +13,7 @@
   align-items: center;
   text-align: left;
   margin-left: 4em;
+  transition: 3s ease-in-out;
 
   h3,
   p {
@@ -31,6 +33,16 @@
     flex-direction: column;
     margin-left: 6em;
     width: 100%;
+  }
+
+  .frontCard,
+  .reverseCard {
+    position: absolute;
+    right: -1em;
+    top: -1em;
+    background-color: var(--pink);
+    border: none;
+    padding: 0.5em;
   }
 
   .actions {
@@ -53,4 +65,10 @@
       display: none;
     }
   }
+}
+
+.ProductReverse {
+  flex-direction: column;
+  height: auto;
+  font-family: sans-serif;
 }
