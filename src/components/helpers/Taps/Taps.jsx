@@ -1,5 +1,7 @@
+import TapBox from "../TapBox/TapBox";
 function Tap(props) {
   let beerImg = props.tap.beer.toLowerCase().split(" ").join("") + ".png";
+  const bartender = props.bartenders.filter((person) => person.usingTap === props.tap.id);
 
   const styleBeerLabel = {
     backgroundImage: `url(./src/assets/${beerImg})`,
@@ -33,7 +35,7 @@ function Tap(props) {
       </div>
       <p>{props.tap.beer}</p>
       <p>{props.tap.level}</p>
-      <p style={styleP}>{props.bartenders.filter((person) => person.usingTap === props.tap.id).length > 0 ? props.bartenders.filter((person) => person.usingTap === props.tap.id)[0].name : "nobody"}</p>
+      <p style={styleP}>{bartender.length > 0 ? bartender[0].name : "nobody"}</p>
     </div>
   );
 }
@@ -48,7 +50,7 @@ export default function Taps(props) {
     alignItems: "flex-end",
   };
 
-  const taps = [...props.taps].map((tap, i) => <Tap key={"tap" + (i + 1)} bartenders={props.bartenders} tap={tap} />);
+  const taps = [...props.taps].map((tap, i) => <TapBox key={"tap" + (i + 1)} bartenders={props.bartenders} tap={tap} />);
 
   return <div style={style}>{taps}</div>;
 }
