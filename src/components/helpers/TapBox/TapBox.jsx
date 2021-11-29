@@ -20,14 +20,14 @@ export default function TapBox(props) {
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 151.49 250">
         <defs>
           <linearGradient id="linear-gradient" x1="1.95" y1="122.39" x2="151.04" y2="122.39" gradientUnits="userSpaceOnUse">
-            <stop offset="0.01" stopColor="#9e005d" />
+            <stop offset="0.01" stopColor="#2F001C" />
             <stop offset="0.07" stopColor="#a90461" stopOpacity="0.97" />
             <stop offset="0.13" stopColor="#ca116d" stopOpacity="0.88" />
             <stop offset="0.17" stopColor="#ed1e79" stopOpacity="0.79" />
             <stop offset="0.23" stopColor="#d81671" stopOpacity="0.85" />
             <stop offset="0.36" stopColor="#b70966" stopOpacity="0.93" />
             <stop offset="0.55" stopColor="#a3025f" stopOpacity="0.99" />
-            <stop offset="1" stopColor="#9e005d" />
+            <stop offset="1" stopColor="#2F001C" />
           </linearGradient>
           <clipPath id="clip-path">
             <rect id="mask" className="cls-1" x="121.49" y="43.39" width="17" height="157" rx="8.5" />
