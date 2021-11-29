@@ -1,9 +1,12 @@
 import "./MyBasket.scss";
 import { useState } from "react";
+import Checkout from "../helpers/Checkout/Checkout";
 
 export default function MyBasket(props) {
   const [hidden, setHidden] = useState(false);
   const [amount, setAmount] = useState(0);
+  const [showResults, setShowResults] = useState(false);
+  const onClick = () => setShowResults(true);
   const initialValue = 0;
   let sum = props.basket.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue.price();
@@ -63,7 +66,12 @@ export default function MyBasket(props) {
           Total: <span> ${sum}</span>
         </p>
       </div>
-      <button onClick={handleClick}>Checkout</button>
+      {props.basket.length > 0 && (
+        <div>
+          <button onClick={onClick}>Checkout</button>
+          {showResults ? <Checkout /> : null}
+        </div>
+      )}
     </div>
   );
 }

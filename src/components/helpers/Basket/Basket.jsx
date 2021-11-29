@@ -6,7 +6,6 @@ export default function Basket(props) {
   return (
     <aside className="aside">
       <MyBasket addMoreBeer={props.addMoreBeer} basket={props.basket} />
-      <Checkout basket={props.basket} />
     </aside>
   );
 }
