@@ -1,5 +1,5 @@
 import "./MyBasket.scss";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Checkout from "../helpers/Checkout/Checkout";
 
 export default function MyBasket(props) {
