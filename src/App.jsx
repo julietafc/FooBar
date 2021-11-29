@@ -5,6 +5,7 @@ import Form from "./components/Form/Form";
 import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import Barteneder from "./components/Bartender/Bartender";
+import Manager from "./components/Manager/Manager";
 
 const { TabPane } = Tabs;
 
@@ -94,7 +95,7 @@ function App() {
         <h1>Welcome to FooBar</h1>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
-            Content for Manager
+          {data.taps && <Manager {...data} now={now} />}
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
             {data.taps && <Barteneder {...data} now={now} />}
