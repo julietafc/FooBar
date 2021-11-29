@@ -81,9 +81,9 @@ function App() {
         <h1>Welcome to FooBar</h1>
         <nav className="navigation">
           <Link to="/Invoices">Manager</Link>
-          <Link to="/Expenses">Bartenders</Link>
-          <Link to="/Expenses">Customers</Link>
-          <Link to="/Expenses">Order</Link>
+          {/* <Link to="/Expenses">Bartenders</Link>
+          <Link to="/Expenses">Customers</Link> */}
+          <Link to="/Form">Form</Link>
         </nav>
       </header>
 
