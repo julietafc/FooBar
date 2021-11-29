@@ -73,7 +73,9 @@ function App() {
           return Math.round(this.alc + beerBasePrice);
         },
         amount: 1,
-        totalPrice: () => this.amount * this.price,
+        totalPrice: function () {
+          return this.amount * this.price();
+        },
       };
       return copy;
     });

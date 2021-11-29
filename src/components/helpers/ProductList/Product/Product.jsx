@@ -25,6 +25,16 @@ export default function Product(props) {
   function handleClick() {
     setFlipped((flipped) => !flipped);
   }
+
+  function add() {
+    props.addToBasket({
+      amount: amount,
+      price: function () {
+        return props.price() * this.amount;
+      },
+      name: props.name,
+    });
+  }
   return (
     <ReactCardFlip isFlipped={flipped} flipDirection="vertical">
       <article className="Product">
@@ -47,7 +57,9 @@ export default function Product(props) {
               <button onClick={increaseAmount}>+</button>
             </div>
 
-            <Button />
+            <button onClick={add}>Add</button>
+
+            {/* <Button /> */}
           </div>
         </div>
       </article>

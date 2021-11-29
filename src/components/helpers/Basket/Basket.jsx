@@ -1,31 +1,13 @@
 import "./Basket.scss";
 import { useState } from "react";
-export default function Basket() {
+import MyBasket from "../../MyBasket/MyBasket";
+import Checkout from "../Checkout/Checkout";
+export default function Basket(props) {
   return (
     <aside className="aside">
-      <div>
-        <h3>My Basket</h3>
-      </div>
-      {/* <Counter /> */}
+      <MyBasket basket={props.basket} />
       <Checkout />
     </aside>
-  );
-}
-
-// function Counter(props) {
-//   const [count, setCount] = useState(0);
-//   function update(e) {
-//     setCount(10);
-//   }
-//   return <button onClick={update}>Click {{ count }}</button>;
-// }
-
-function Checkout() {
-  return (
-    <form>
-      <input />
-      <Button />
-    </form>
   );
 }
 

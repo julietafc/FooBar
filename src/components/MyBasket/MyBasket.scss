@@ -1,0 +1,27 @@
+.MyBasket {
+  ul {
+    margin: 6em 0;
+  }
+  .addedItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .totalOrder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid white;
+    padding: 2em;
+
+    p:nth-child(2) {
+      display: flex;
+      align-items: center;
+      & span {
+        font-size: 2em;
+        margin-left: 0.5em;
+      }
+    }
+  }
+}
