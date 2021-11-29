@@ -6,6 +6,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .actions {
+      input {
+        color: black;
+      }
+    }
   }
 
   .totalOrder {

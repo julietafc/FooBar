@@ -5,8 +5,8 @@ import Checkout from "../Checkout/Checkout";
 export default function Basket(props) {
   return (
     <aside className="aside">
-      <MyBasket basket={props.basket} />
-      <Checkout />
+      <MyBasket addMoreBeer={props.addMoreBeer} basket={props.basket} />
+      <Checkout basket={props.basket} />
     </aside>
   );
 }

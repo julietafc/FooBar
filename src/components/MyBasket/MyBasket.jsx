@@ -2,6 +2,7 @@ import "./MyBasket.scss";
 import { useState } from "react";
 
 export default function MyBasket(props) {
+  const [hidden, setHidden] = useState(false);
   const [amount, setAmount] = useState(0);
   const initialValue = 0;
   let sum = props.basket.reduce(function (previousValue, currentValue) {
@@ -12,22 +13,26 @@ export default function MyBasket(props) {
     return previousValue + currentValue.amount;
   }, initialValue);
 
-  const orders = props.basket.map((order, i) => (
+  const basket = [...props.basket].filter((element) => element.amount > 0);
+
+  const orders = basket.map((order, i) => (
     <li className="addedItem" key={i}>
       {order.amount} {order.name} ${order.price()}
       <div className="actions">
-        <input type="number" />
-        {/* <div className="amountWrapper">
-          <input type="number" min="0" />
+        <div className="amountWrapper">
           <button onClick={decreaseAmount}>-</button>
           <p className="amount">{amount}</p>
-          <button onClick={increaseAmount}>+</button>
-        </div> */}
+          <button onClick={oneMore}>+</button>
+        </div>
 
         {/* <Button /> */}
       </div>
     </li>
   ));
+
+  function oneMore() {
+    props.addMoreBeer();
+  }
 
   function increaseAmount() {
     // console.log(props.id);
@@ -44,6 +49,10 @@ export default function MyBasket(props) {
     });
   }
 
+  function handleClick() {
+    setHidden((hidden) => !hidden);
+  }
+
   return (
     <div className="MyBasket">
       <h2>Your order</h2>
@@ -54,6 +63,7 @@ export default function MyBasket(props) {
           Total: <span> ${sum}</span>
         </p>
       </div>
+      <button onClick={handleClick}>Checkout</button>
     </div>
   );
 }

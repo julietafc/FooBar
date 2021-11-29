@@ -15,10 +15,22 @@ export default function Form(props) {
       return nextState;
     });
   }
+
+  function addMoreBeer(product) {
+    setBasket(function (oldBasket) {
+      return oldBasket.map((item) => {
+        const copy = { ...item };
+        if (copy.id === product.id) {
+          copy.amount++;
+        }
+        return copy;
+      });
+    });
+  }
   return (
     <div className="Layout">
-      <ProductList addToBasket={addToBasket} beers={beers} />
-      <Basket basket={basket} />
+      <ProductList addToBasket={addToBasket} addMoreBeer={addMoreBeer} beers={beers} />
+      <Basket addMoreBeer={addMoreBeer} basket={basket} />
     </div>
   );
 }
