@@ -5,7 +5,9 @@ import { Outlet, Link } from "react-router-dom";
 import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import Barteneder from "./components/Bartender/Bartender";
-import Form from "./pages/Form";
+import { Routes, Route } from "react-router-dom";
+import Form from "../src/pages/Form";
+import Invoices from "../src/pages/Invoices";
 
 const { TabPane } = Tabs;
 
@@ -91,11 +93,16 @@ function App() {
           <Link to="/Invoices">Manager</Link>
           {/* <Link to="/Expenses">Bartenders</Link>
           <Link to="/Expenses">Customers</Link> */}
-          <Link to="/Form">Form</Link>
+          <Link to="/Form" products={products}>
+            Form
+          </Link>
         </nav>
       </header>
+      <Routes>
+        <Route path="Form" element={<Form products={products} />} />
+        <Route path="Invoices" element={<Invoices />} />
+      </Routes>
 
-      <Outlet />
       <main>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
