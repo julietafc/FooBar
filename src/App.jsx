@@ -5,7 +5,6 @@ import Form from "./components/Form/Form";
 import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import Barteneder from "./components/Bartender/Bartender";
-import Navbar from "./components/Navbar/Navbar";
 
 const { TabPane } = Tabs;
 
@@ -85,7 +84,6 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
       <main>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
