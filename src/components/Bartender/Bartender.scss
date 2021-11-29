@@ -108,6 +108,12 @@
   border-radius: 1em;
 }
 
+ul {
+  list-style: none;
+  text-align: left;
+  font-size: 80%;
+}
+
 .Depot ul {
   width: min(1600px, 100%);
   margin-left: auto;
@@ -116,7 +122,4 @@
   grid-template-columns: repeat(auto-fill, minmax(min(350px, 90vw), 400px));
   gap: 1rem;
   padding: 1rem 2rem;
-  list-style: none;
-  text-align: left;
-  font-size: 80%;
 }
