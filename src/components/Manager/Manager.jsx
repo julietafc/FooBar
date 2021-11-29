@@ -15,10 +15,9 @@ export default function Manager(props) {
           <div className="manager__header">
             <h2>Managers overview</h2>
           </div>
-      
-          <div className="inventory">
+          
             <Inventory {...props}/>
-          </div>
+          
         </section>
       </>
     )

@@ -23,10 +23,10 @@ export default function Inventory(props) {
       }
 
   return (
-      <div>
+      <section className="inventory">
           <h2>Inventory</h2>
           <Depot {...props}/>
-      </div>
+      </section>
       
   );
 }
