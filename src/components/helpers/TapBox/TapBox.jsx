@@ -16,6 +16,7 @@ export default function TapBox(props) {
 
   return (
     <div className="svg-wrapper">
+      <p style={{ opacity: "1" }}>{"tap: " + (props.tap.id + 1)}</p>
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 151.49 250">
         <defs>
           <linearGradient id="linear-gradient" x1="1.95" y1="122.39" x2="151.04" y2="122.39" gradientUnits="userSpaceOnUse">

@@ -46,7 +46,7 @@ export default function Taps(props) {
     display: "flex",
     padding: ".5rem 1rem",
     gap: "1rem",
-    height: "60vh",
+
     alignItems: "flex-end",
   };
 
