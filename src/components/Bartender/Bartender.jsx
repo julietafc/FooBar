@@ -2,6 +2,7 @@ import "./Bartender.scss";
 import Taps from "../helpers/Taps/Taps";
 import React from "react";
 import TimeToClose from "../helpers/TimeToClose/TimeToClose";
+import OrderList from "../helpers/OrderList/OrderList";
 
 function Keg(props) {
   return (
@@ -26,6 +27,7 @@ export default function Bartender(props) {
       <TimeToClose now={props.now} />
       <Taps bartenders={props.bartenders} taps={props.taps} />
       <Depot {...props} />
+      <OrderList {...props} />
     </div>
   );
 }

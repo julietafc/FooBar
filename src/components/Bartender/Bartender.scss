@@ -11,6 +11,13 @@
   grid-column-start: 1;
 }
 
+.OrderList {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: -1;
+  display: flex;
+}
+
 .Bartender h1 {
   color: var(--pink);
 }
