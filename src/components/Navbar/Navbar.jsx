@@ -12,16 +12,16 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a href="#">Manager</a>
           </li>
           <li>
-            <a href="#">Home</a>
+            <a href="#">Bartenders</a>
           </li>
           <li>
-            <a href="#">Home</a>
+            <a href="#">Customers</a>
           </li>
           <li>
-            <a href="#">Home</a>
+            <a href="#">Order</a>
           </li>
         </ul>
       </nav>
