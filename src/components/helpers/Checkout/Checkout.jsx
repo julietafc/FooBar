@@ -1,57 +1,55 @@
 import { useState, useRef } from "react";
 import "./Checkout.scss";
-import MaskInput from "react-maskinput";
-import { PaymentInputsContainer } from "react-payment-inputs";
+import React from "react";
+import { render } from "react-dom";
+import Styles from "./Styles";
+import { Form, Field } from "react-final-form";
+import Card from "./Card";
+import { formatCreditCardNumber, formatCVC, formatExpirationDate } from "./cardUtils";
 
 export default function Checkout(props) {
-  const form = useRef(null);
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-
-  const nameChanged = (e) => {
-    setName(e.target.value);
+  const onSubmit = async (values) => {
+    await sleep(300);
+    window.alert(JSON.stringify(values, 0, 2));
   };
-  function onSubmit(e) {
-    e.preventDefault();
-    console.log(form.current.checkValidity());
-  }
 
   return (
     <div className="Form">
       <h3>Checkout</h3>
-
-      <form ref={form} onSubmit={onSubmit}>
-        {/* <PaymentInputsContainer>
-          {({ meta, getCardNumberProps, getExpiryDateProps, getCVCProps }) => (
-            <div>
-              <input {...getCardNumberProps({ onChange: handleChangeCardNumber })} value={cardNumber} />
-              <input {...getExpiryDateProps({ onChange: handleChangeExpiryDate })} value={expiryDate} />
-              <input {...getCVCProps({ onChange: handleChangeCVC })} value={cvc} />
-              {meta.isTouched && meta.error && <span>Error: {meta.error}</span>}
-            </div>
-          )}
-        </PaymentInputsContainer> */}
-        <label>
-          Name
-          <input type="text" required onChange={nameChanged} name="name" value={name} />
-        </label>
-
-        <label>
-          Card number
-          <MaskInput type="text" required name="number" inputmode="numeric" value={number} alwaysShowMask maskChar=" " mask="0000 0000 0000 0000" size={20} onChange={(e) => setNumber(e.target.value)} />
-        </label>
-        <label>
-          Exp.
-          <input type="text" required onChange={(e) => setNumber(e.target.value)} name="number" value={number} size={4} />
-        </label>
-        <label>
-          CVV
-          <input type="text" required onChange={(e) => setNumber(e.target.value)} name="number" value={number} />
-        </label>
-
-        <button>Pay</button>
-      </form>
+      <Styles>
+        <Form
+          onSubmit={onSubmit}
+          render={({ handleSubmit, form, submitting, pristine, values, active }) => {
+            return (
+              <form onSubmit={handleSubmit}>
+                <Card number={values.number || ""} name={values.name || ""} expiry={values.expiry || ""} cvc={values.cvc || ""} focused={active} />
+                <div>
+                  <Field className="input" name="number" component="input" type="text" pattern="[\d| ]{16,22}" placeholder="Card Number" format={formatCreditCardNumber} />
+                </div>
+                <div>
+                  <Field className="input" name="name" component="input" type="text" placeholder="Name" />
+                </div>
+                <div>
+                  <Field className="input" name="expiry" component="input" type="text" pattern="\d\d/\d\d" placeholder="Valid Thru" format={formatExpirationDate} />
+                  <Field className="input" name="cvc" component="input" type="text" pattern="\d{3,4}" placeholder="CVC" format={formatCVC} />
+                </div>
+                <div className="buttons">
+                  <button type="submit" disabled={submitting}>
+                    Submit
+                  </button>
+                  <button type="button" onClick={form.reset} disabled={submitting || pristine}>
+                    Reset
+                  </button>
+                </div>
+                <h2>Values</h2>
+                {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+              </form>
+            );
+          }}
+        />
+      </Styles>
     </div>
   );
 }

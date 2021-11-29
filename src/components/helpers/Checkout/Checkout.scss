@@ -1,6 +1,10 @@
 .Form {
   margin-top: 3em;
 
+  .input {
+    color: black;
+  }
+
   label {
     display: flex;
     flex-direction: column;

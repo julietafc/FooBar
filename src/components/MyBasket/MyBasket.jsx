@@ -52,10 +52,6 @@ export default function MyBasket(props) {
     });
   }
 
-  function handleClick() {
-    setHidden((hidden) => !hidden);
-  }
-
   return (
     <div className="MyBasket">
       <h2>Your order</h2>

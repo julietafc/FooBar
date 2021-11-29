@@ -1,7 +1,6 @@
 import "./Basket.scss";
 import { useState } from "react";
 import MyBasket from "../../MyBasket/MyBasket";
-import Checkout from "../Checkout/Checkout";
 export default function Basket(props) {
   return (
     <aside className="aside">
