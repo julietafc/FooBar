@@ -38,7 +38,7 @@ export default function Product(props) {
 
           <div className="primary">
             <p>{props.alc}% vol.</p>
-            <p>${props.price}</p>
+            <p>${props.price()}</p>
           </div>
           <div className="actions">
             <div className="amountWrapper">

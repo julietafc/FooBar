@@ -13,6 +13,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
   const [realTime, setRealTime] = useState(0);
+  const beerBasePrice = 40;
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -65,12 +66,14 @@ function App() {
   function addStuff(data) {
     return data.map((beer, i) => {
       const copy = {
+        ...beer,
         id: (i < 9 ? "b0" : "b") + (i + 1),
         onTap: false,
-        price: () => Math.round(this.alc + beerBasePrice),
+        price: function () {
+          return Math.round(this.alc + beerBasePrice);
+        },
         amount: 1,
         totalPrice: () => this.amount * this.price,
-        ...beer,
       };
       return copy;
     });
