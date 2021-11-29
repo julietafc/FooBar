@@ -1,10 +1,11 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
-import Form from "./components/Form/Form";
+import { Outlet, Link } from "react-router-dom";
 import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import Barteneder from "./components/Bartender/Bartender";
+import Form from "./pages/Form";
 
 const { TabPane } = Tabs;
 
@@ -84,6 +85,17 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        <h1>Welcome to FooBar</h1>
+        <nav className="navigation">
+          <Link to="/Invoices">Manager</Link>
+          {/* <Link to="/Expenses">Bartenders</Link>
+          <Link to="/Expenses">Customers</Link> */}
+          <Link to="/Form">Form</Link>
+        </nav>
+      </header>
+
+      <Outlet />
       <main>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">

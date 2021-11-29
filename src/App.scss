@@ -3,6 +3,12 @@
   padding: 2em;
   background: var(--bg-color);
   font-family: var(--primary-font);
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   h1 {
     color: white;
     text-align: right;
@@ -37,5 +43,10 @@
     color: white;
     padding: 6em 1em;
     overflow: scroll;
+  }
+
+  .navigation a {
+    color: white;
+    margin: 0 1em;
   }
 }
