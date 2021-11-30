@@ -14,17 +14,30 @@ export default function Form(props) {
 
   function addToBasket(product) {
     setBasket(function (oldBasket) {
-      const nextState = oldBasket.concat(product);
-      return nextState;
+      if (basket.filter((element) => element.name === product.name).length > 0) {
+        return oldBasket.map((item) => {
+          const copy = { ...item };
+
+          if (copy.name === product.name) {
+            copy.amount = copy.amount + product.amount;
+          }
+
+          return copy;
+        });
+      } else {
+        const newBasket = oldBasket.concat(product);
+
+        return newBasket;
+      }
     });
   }
 
-  function addMoreBeer(product) {
+  function addMoreBeer(amount, productName) {
     setBasket(function (oldBasket) {
       return oldBasket.map((item) => {
         const copy = { ...item };
-        if (copy.id === product.id) {
-          copy.amount++;
+        if (copy.name === productName) {
+          copy.amount = amount;
         }
         return copy;
       });
@@ -32,7 +45,7 @@ export default function Form(props) {
   }
   return (
     <div className="Layout">
-      <ProductList addToBasket={addToBasket} addMoreBeer={addMoreBeer} beers={beers} />
+      <ProductList addToBasket={addToBasket} beers={beers} />
       <Basket addMoreBeer={addMoreBeer} basket={basket} />
     </div>
   );

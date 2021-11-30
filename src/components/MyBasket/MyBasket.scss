@@ -8,9 +8,13 @@
     align-items: center;
     justify-content: space-between;
 
-    .actions {
-      input {
-        color: black;
+    input {
+      color: black;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
       }
     }
   }

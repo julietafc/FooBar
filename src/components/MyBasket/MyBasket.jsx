@@ -3,9 +3,9 @@ import { useState } from "react";
 import Checkout from "../helpers/Checkout/Checkout";
 
 export default function MyBasket(props) {
-  const [hidden, setHidden] = useState(false);
   const [amount, setAmount] = useState(0);
   const [showResults, setShowResults] = useState(false);
+  const [newAmount, setNewAmount] = useState(0);
   const onClick = () => setShowResults(true);
   const initialValue = 0;
   let sum = props.basket.reduce(function (previousValue, currentValue) {
@@ -21,40 +21,42 @@ export default function MyBasket(props) {
   const orders = basket.map((order, i) => (
     <li className="addedItem" key={i}>
       {order.amount} {order.name} ${order.price()}
-      <div className="actions">
+      <input type="number" min="1" max="100" onInput={oneMore} data-name={order.name} value={order.amount} />
+      {/* <div className="actions">
         <div className="amountWrapper">
           <button onClick={decreaseAmount}>-</button>
           <p className="amount">{amount}</p>
           <button onClick={oneMore}>+</button>
         </div>
 
-        {/* <Button /> */}
-      </div>
+
+      </div> */}
     </li>
   ));
 
-  function oneMore() {
-    props.addMoreBeer();
+  function oneMore(e) {
+    const newAmount = e.currentTarget.value;
+    const productName = e.currentTarget.dataset.name;
+
+    setNewAmount(newAmount);
+    props.addMoreBeer(newAmount, productName);
+    // console.log(newAmount, productName);
   }
 
-  function increaseAmount() {
-    // console.log(props.id);
-    setAmount((prevAmount) => prevAmount + 1);
-  }
-  function decreaseAmount() {
-    // console.log(props.id);
+  // function increaseAmount() {
+  //   // console.log(props.id);
+  //   setAmount((prevAmount) => prevAmount + 1);
+  // }
+  // function decreaseAmount() {
+  //   // console.log(props.id);
 
-    setAmount((prevAmount) => {
-      if (prevAmount > 0) {
-        return prevAmount - 1;
-      }
-      return 0;
-    });
-  }
-
-  function handleClick() {
-    setHidden((hidden) => !hidden);
-  }
+  //   setAmount((prevAmount) => {
+  //     if (prevAmount > 0) {
+  //       return prevAmount - 1;
+  //     }
+  //     return 0;
+  //   });
+  // }
 
   return (
     <div className="MyBasket">
