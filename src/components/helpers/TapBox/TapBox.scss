@@ -1,0 +1,130 @@
+.cls-1,
+.cls-15 {
+  fill: none;
+}
+
+.cls-2 {
+  fill: url(#linear-gradient);
+}
+
+.cls-3 {
+  font-size: 17px;
+  fill: #d1d1d1;
+  font-family: MyriadPro-Regular, Myriad Pro;
+  max-width: 12ch;
+}
+
+.cls-4 {
+  letter-spacing: -0.01em;
+}
+
+.cls-5 {
+  letter-spacing: -0.01em;
+}
+
+.cls-6 {
+  letter-spacing: 0.01em;
+}
+
+.cls-7 {
+  letter-spacing: -0.01em;
+}
+
+.cls-8 {
+  clip-path: url(#clip-path);
+}
+
+.cls-9 {
+  fill: #eaeae8;
+}
+
+.cls-10 {
+  transform-box: fill-box;
+  transform-origin: top;
+  fill: #cea210;
+}
+
+.cls-11 {
+  fill: url(#linear-gradient-2);
+  stroke: #004964;
+  stroke-width: 2px;
+}
+
+.cls-12 {
+  fill: black;
+}
+
+.cls-13 {
+  clip-path: url(#clip-path-2);
+}
+
+.cls-14 {
+  fill: url(#linear-gradient-3);
+}
+
+.cls-15,
+.cls-16,
+.cls-17,
+.cls-18,
+.cls-19,
+.cls-20 {
+  stroke: #000000;
+  stroke-miterlimit: 10;
+}
+
+.cls-16 {
+  fill: #f9f9f9;
+  stroke-width: 0.75px;
+}
+
+.cls-17,
+.cls-18,
+.cls-19,
+.cls-20 {
+  stroke-width: 0.78px;
+}
+
+.cls-17 {
+  fill: url(#linear-gradient-4);
+}
+
+.cls-18 {
+  fill: url(#linear-gradient-5);
+}
+
+.cls-19 {
+  fill: url(#linear-gradient-6);
+}
+
+.cls-20 {
+  fill: url(#linear-gradient-7);
+}
+
+.box-container p {
+  margin: 0;
+  color: rgb(250, 244, 237);
+  font-size: 80%;
+  max-width: 10ch;
+  text-align: left;
+  text-shadow: 5px 0px 5px black;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 100%;
+  img {
+    object-position: center;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+.svg-wrapper {
+  width: 100%;
+  background-color: var(--hola);
+}
+
+.svg-wrapper > p {
+  margin-top: 1rem;
+  opacity: 0.2;
+}

@@ -1,4 +1,23 @@
 @use "../../index.scss";
+
+.Bartender {
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  grid-template-rows: 10px auto auto;
+  row-gap: 1rem;
+}
+
+.Bartender > * {
+  grid-column-start: 1;
+}
+
+.OrderList {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: -1;
+  display: flex;
+}
+
 .Bartender h1 {
   color: var(--pink);
 }
@@ -82,4 +101,22 @@
 
 .bulb:nth-child(4)::after {
   content: "change";
+}
+
+.Depot {
+  border: solid 2px var(--pink);
+  border-radius: 1em;
+}
+
+.Depot ul {
+  width: min(1600px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(350px, 90vw), 400px));
+  gap: 1rem;
+  padding: 1rem 2rem;
+  list-style: none;
+  text-align: left;
+  font-size: 80%;
 }

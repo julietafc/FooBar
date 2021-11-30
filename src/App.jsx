@@ -8,6 +8,7 @@ import Barteneder from "./components/Bartender/Bartender";
 import { Routes, Route } from "react-router-dom";
 import Form from "../src/pages/Form";
 import Invoices from "../src/pages/Invoices";
+import Manager from "./components/Manager/Manager";
 
 const { TabPane } = Tabs;
 
@@ -16,6 +17,8 @@ function App() {
   const [data, setData] = useState([]);
   const [realTime, setRealTime] = useState(0);
   const beerBasePrice = 40;
+  //const [orderTime, setRealTime] = useState(0);
+  const [now, setNow] = useState(new Date().getTime());
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -26,7 +29,7 @@ function App() {
         const json = await res.json();
         setData(json);
         checkTaps(json);
-        setRealTime(json.timestamp);
+        //   setRealTime(json.timestamp);
       } catch (error) {
         console.log(error);
       }
@@ -35,6 +38,13 @@ function App() {
     const id = setInterval(() => {
       fetchData(); // <-- (3) invoke in interval callback
     }, 5000);
+
+    function upDateNow() {
+      setNow(new Date().getTime());
+    }
+    const id2 = setInterval(() => {
+      upDateNow();
+    }, 1000);
 
     fetch("https://los-amigos.herokuapp.com/beertypes")
       .then((res) => res.json())
@@ -46,7 +56,10 @@ function App() {
         fetchData(); // <-- (2) invoke on mount
       });
 
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      clearInterval(id2);
+    };
   }, []);
 
   function checkTaps(info) {
@@ -106,10 +119,10 @@ function App() {
       <main>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
-            Content for Manager
+            {data.taps && <Manager {...data} now={now} />}
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data && <Barteneder {...data} time={realTime} />}
+            {data.taps && <Barteneder {...data} now={now} />}
           </TabPane>
           <TabPane className="TabPane" tab="Customers" key="3">
             Content for Customers
