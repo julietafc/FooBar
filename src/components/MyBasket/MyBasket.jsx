@@ -17,7 +17,14 @@ export default function MyBasket(props) {
   }, initialValue);
 
   const basket = [...props.basket].filter((element) => element.amount > 0);
-
+  const payload = basket.map((item) => {
+    const order = {
+      amount: item.amount,
+      name: item.name,
+    };
+    return order;
+  });
+  console.log(payload);
   const orders = basket.map((order, i) => (
     <li className="addedItem" key={i}>
       {order.amount} {order.name} ${order.price()}

@@ -10,7 +10,6 @@ export default function Form(props) {
   }
   const beers = props.products.filter((beer) => beer.onTap);
   const [basket, setBasket] = useState([]);
-  // const [beer, setBeers] = useState(beers);
 
   function addToBasket(product) {
     setBasket(function (oldBasket) {
