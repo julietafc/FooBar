@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Order(props) {
   let order = [...props.order];
-  const items = props.order.map(function (item) {
+  const items = props.order.map(function (item, i) {
     const amount = order.filter((a) => a === item).length;
     const beer = item;
     order = [...order].filter((a) => a !== item);
@@ -12,8 +12,8 @@ function Order(props) {
     };
   });
   const itemsFilter = items.filter((item) => item.amount !== 0);
-  const itemsMap = itemsFilter.map((item) => (
-    <li>
+  const itemsMap = itemsFilter.map((item, i) => (
+    <li key={"item-" + i}>
       {item.amount} {item.name}
     </li>
   ));
@@ -33,7 +33,18 @@ function OrdersToDo(props) {
 }
 
 export default function OrderList(props) {
-  const ordersServing = props.serving.map((order) => <li key={"s" + order.id}>{order.id}</li>);
+  const ordersServing = props.serving.map(function (order) {
+    if (props.bartenders.filter((bartender) => bartender.servingCustomer === order.id).length > 0) {
+      const bartender = props.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
+      return (
+        <li key={"s" + order.id}>
+          {order.id} {bartender.name} {bartender.statusDetail}
+        </li>
+      );
+    }
+    return <li key={"s" + order.id}>{order.id}</li>;
+  });
+
   return (
     <aside className="OrderList">
       <div>
