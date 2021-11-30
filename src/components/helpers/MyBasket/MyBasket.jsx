@@ -1,6 +1,6 @@
 import "./MyBasket.scss";
 import { useState } from "react";
-import Checkout from "../helpers/Checkout/Checkout";
+import Checkout from "../Checkout/Checkout";
 
 export default function MyBasket(props) {
   const [amount, setAmount] = useState(0);

@@ -1,5 +1,5 @@
-import Basket from "../components/helpers/Basket/Basket";
-import ProductList from "../components/helpers/ProductList/ProductList";
+import Basket from "../helpers/Basket/Basket";
+import ProductList from "../helpers/ProductList/ProductList";
 
 import { useState } from "react";
 

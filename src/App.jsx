@@ -6,7 +6,7 @@ import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import Barteneder from "./components/Bartender/Bartender";
 import { Routes, Route } from "react-router-dom";
-import Form from "../src/pages/Form";
+import Form from "./components/Form/Form";
 import Invoices from "../src/pages/Invoices";
 import Manager from "./components/Manager/Manager";
 
@@ -103,20 +103,19 @@ function App() {
       <header>
         <h1>Welcome to FooBar</h1>
         <nav className="navigation">
-          <Link to="/Invoices">Manager</Link>
-          {/* <Link to="/Expenses">Bartenders</Link>
-          <Link to="/Expenses">Customers</Link> */}
-          <Link to="/Form" products={products}>
-            Form
-          </Link>
+          <Link to="/Manager">Manager</Link>
+          <Link to="/Bartender">Bartenders</Link>
+          <Link to="/Expenses">Customers</Link>
+          <Link to="/Form">Form</Link>
         </nav>
       </header>
-      <Routes>
-        <Route path="Form" element={<Form products={products} />} />
-        <Route path="Invoices" element={<Invoices />} />
-      </Routes>
 
       <main>
+        <Routes>
+          <Route path="Manager" element={<Manager {...data} now={now} />} />
+          <Route path="Bartender" element={<Barteneder {...data} now={now} />} />
+          <Route path="Form" element={<Form products={products} />} />
+        </Routes>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
             {data.taps && <Manager {...data} now={now} />}
