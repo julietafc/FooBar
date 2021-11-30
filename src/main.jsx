@@ -1,19 +1,14 @@
 import React from "react";
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import Form from "./pages/Form";
-import Invoices from "./pages/Invoices";
+//import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-const rootElement = document.getElementById("root");
-render(
+import { render } from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+
+ReactDOM.render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="Form" element={<Form />} />
-        <Route path="Invoices" element={<Invoices />} />
-      </Route>
-    </Routes>
+    <App />
   </BrowserRouter>,
-  rootElement
+  document.getElementById("root")
 );
