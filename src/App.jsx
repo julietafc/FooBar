@@ -15,6 +15,7 @@ function App() {
   const [data, setData] = useState([]);
   //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
+  const [ordersReady, setOrdersReady] = useState([]);
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -88,6 +89,12 @@ function App() {
     });
   }
 
+  function upDateOrdersReady(order) {
+    setOrdersReady(function (oldOrdersReady) {
+      return oldOrdersReady.concat(order);
+    });
+  }
+
   // console.log(products.filter((beer) => beer.onTap));
 
   return (
@@ -101,17 +108,14 @@ function App() {
           <Link to="/Form">Form</Link>
         </nav>
       </header>
-      <Routes>
-        <Route path="/Form" element={<Form products={products} />} />
-        <Route path="/Bartender" element={<Barteneder {...data} now={now} />} />
-      </Routes>
+
       <main>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
             Content for Manager
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data.taps && <Barteneder {...data} now={now} />}
+            {data.taps && <Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />}
           </TabPane>
           <TabPane className="TabPane" tab="Customers" key="3">
             Content for Customers

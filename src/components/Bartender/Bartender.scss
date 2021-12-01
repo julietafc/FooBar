@@ -123,15 +123,30 @@ ul {
   grid-row-start: 1;
   grid-row-end: -1;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr 80% 1fr;
   gap: 1rem;
+  height: 80vh;
+  overflow-y: scroll;
+
+  .to-do {
+    grid-column-start: 2;
+  }
 
   ul li ul {
     border: solid 2px white;
     padding: 3px;
+    transition: 0.5s;
   }
 
   ul li + li {
     margin-top: 0.5rem;
+  }
+
+  li.Order {
+    transition: color 0.2s;
+  }
+
+  li.Order + li.Order {
+    margin-top: 1rem;
   }
 }
