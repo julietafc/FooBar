@@ -18,7 +18,7 @@ export default function Form(props) {
           const copy = { ...item };
 
           if (copy.name === product.name) {
-            copy.amount = copy.amount + product.amount;
+            copy.amount = Number(copy.amount) + Number(product.amount);
           }
 
           return copy;
@@ -42,10 +42,35 @@ export default function Form(props) {
       });
     });
   }
+
+  function increaseAmount(productName) {
+    setBasket(function (oldBasket) {
+      return oldBasket.map((item) => {
+        const copy = { ...item };
+        if (copy.name === productName) {
+          copy.amount++;
+        }
+        return copy;
+      });
+    });
+  }
+
+  function decreaseAmount(productName) {
+    setBasket(function (oldBasket) {
+      return oldBasket.map((item) => {
+        const copy = { ...item };
+        if (copy.name === productName) {
+          copy.amount--;
+        }
+        return copy;
+      });
+    });
+  }
+
   return (
     <div className="Layout">
       <ProductList addToBasket={addToBasket} beers={beers} />
-      <Basket addMoreBeer={addMoreBeer} basket={basket} />
+      <Basket decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
     </div>
   );
 }

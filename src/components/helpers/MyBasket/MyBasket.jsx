@@ -28,42 +28,40 @@ export default function MyBasket(props) {
   const orders = basket.map((order, i) => (
     <li className="addedItem" key={i}>
       {order.amount} {order.name} ${order.price()}
-      <input type="number" min="1" max="100" onInput={oneMore} data-name={order.name} value={order.amount} />
-      {/* <div className="actions">
+      <div className="actions">
         <div className="amountWrapper">
-          <button onClick={decreaseAmount}>-</button>
-          <p className="amount">{amount}</p>
-          <button onClick={oneMore}>+</button>
+          <button data-name={order.name} onClick={handleClickMinus}>
+            -
+          </button>
+          <input type="number" min="1" max="100" onInput={oneMore} data-name={order.name} value={order.amount} />
+          <button data-name={order.name} onClick={handleClickPlus}>
+            +
+          </button>
         </div>
-
-
-      </div> */}
+      </div>
     </li>
   ));
 
   function oneMore(e) {
-    const newAmount = e.currentTarget.value;
+    const beerValue = e.currentTarget.value;
     const productName = e.currentTarget.dataset.name;
 
-    setNewAmount(newAmount);
-    props.addMoreBeer(newAmount, productName);
+    setNewAmount(beerValue);
+    props.addMoreBeer(beerValue, productName);
     // console.log(newAmount, productName);
   }
 
-  // function increaseAmount() {
-  //   // console.log(props.id);
-  //   setAmount((prevAmount) => prevAmount + 1);
-  // }
-  // function decreaseAmount() {
-  //   // console.log(props.id);
+  function handleClickPlus(e) {
+    // console.log(props.id);
+    const productName = e.currentTarget.dataset.name;
+    props.increaseAmount(productName);
+  }
 
-  //   setAmount((prevAmount) => {
-  //     if (prevAmount > 0) {
-  //       return prevAmount - 1;
-  //     }
-  //     return 0;
-  //   });
-  // }
+  function handleClickMinus(e) {
+    // console.log(props.id);
+    const productName = e.currentTarget.dataset.name;
+    props.decreaseAmount(productName);
+  }
 
   return (
     <div className="MyBasket">
