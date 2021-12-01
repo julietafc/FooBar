@@ -11,13 +11,6 @@
   grid-column-start: 1;
 }
 
-.OrderList {
-  grid-column-start: 2;
-  grid-row-start: 1;
-  grid-row-end: -1;
-  display: flex;
-}
-
 .Bartender h1 {
   color: var(--pink);
 }
@@ -108,6 +101,13 @@
   border-radius: 1em;
 }
 
+ul {
+  list-style: none;
+  text-align: left;
+  font-size: 80%;
+  padding: 0;
+}
+
 .Depot ul {
   width: min(1600px, 100%);
   margin-left: auto;
@@ -116,7 +116,37 @@
   grid-template-columns: repeat(auto-fill, minmax(min(350px, 90vw), 400px));
   gap: 1rem;
   padding: 1rem 2rem;
-  list-style: none;
-  text-align: left;
-  font-size: 80%;
+}
+
+.OrderList {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: -1;
+  display: grid;
+  grid-template-columns: 1fr 80% 1fr;
+  gap: 1rem;
+  height: 80vh;
+  overflow-y: scroll;
+
+  .to-do {
+    grid-column-start: 2;
+  }
+
+  ul li ul {
+    border: solid 2px white;
+    padding: 3px;
+    transition: 0.5s;
+  }
+
+  ul li + li {
+    margin-top: 0.5rem;
+  }
+
+  li.Order {
+    transition: color 0.2s;
+  }
+
+  li.Order + li.Order {
+    margin-top: 1rem;
+  }
 }

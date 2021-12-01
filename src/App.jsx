@@ -1,11 +1,14 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
-import Form from "./components/Form/Form";
+//import Form from "./components/Form/Form";
+import { Routes, Route, Link } from "react-router-dom";
 import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import Barteneder from "./components/Bartender/Bartender";
 import Manager from "./components/Manager/Manager";
+import Form from "./components/Form/Form";
+import Customer from "./components/Customer/Customer";
 
 const { TabPane } = Tabs;
 
@@ -14,6 +17,7 @@ function App() {
   const [data, setData] = useState([]);
   //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
+  const [ordersReady, setOrdersReady] = useState([]);
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -87,21 +91,40 @@ function App() {
     });
   }
 
+  function upDateOrdersReady(order) {
+    if (!ordersReady.find((element) => element.id === order.id)) {
+      setOrdersReady(function (oldOrdersReady) {
+        const copy = [order, ...oldOrdersReady];
+        return copy;
+      });
+    }
+    return;
+  }
+
   // console.log(products.filter((beer) => beer.onTap));
 
   return (
     <div className="App">
-      <main>
+      <header>
         <h1>Welcome to FooBar</h1>
+        <nav className="navigation">
+          <Link to="/Bartender">Bartender</Link>
+          {/* <Link to="/Expenses">Bartenders</Link>
+          <Link to="/Expenses">Customers</Link> */}
+          <Link to="/Form">Form</Link>
+        </nav>
+      </header>
+
+      <main>
         <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
-          {data.taps && <Manager {...data} now={now} />}
+            {data.taps && <Manager {...data} now={now} />}
           </TabPane>
           <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data.taps && <Barteneder {...data} now={now} />}
+            {data.taps && <Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />}
           </TabPane>
           <TabPane className="TabPane" tab="Customers" key="3">
-            Content for Customers
+            {data.taps && <Customer {...data} now={now} ordersReady={ordersReady} />}
           </TabPane>
           <TabPane className="TabPane" tab="Order" key="4">
             {products && <Form products={products} />}

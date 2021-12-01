@@ -22,6 +22,10 @@ function Depot(props) {
 }
 
 export default function Bartender(props) {
+  if (!props.taps) {
+    return null;
+  }
+
   return (
     <div className="Bartender">
       <TimeToClose now={props.now} />
