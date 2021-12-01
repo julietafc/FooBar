@@ -47,7 +47,7 @@ export default function MyBasket(props) {
     const productName = e.currentTarget.dataset.name;
 
     setNewAmount(beerValue);
-    props.addMoreBeer(beerValue, productName);
+    props.addMoreBeer(Number(beerValue), productName);
     // console.log(newAmount, productName);
   }
 

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Checkout.scss";
 import MaskInput from "react-maskinput";
 import { PaymentInputsContainer } from "react-payment-inputs";
@@ -8,6 +8,24 @@ export default function Checkout(props) {
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+
+  function postOrder() {
+    fetch("https://los-amigos.herokuapp.com/order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(props.payload),
+    })
+      .then((response) => {
+        const obj = response.json();
+        // window.alert(obj.Object.id);
+        console.log(obj.id);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
   const nameChanged = (e) => {
     setName(e.target.value);
@@ -39,18 +57,10 @@ export default function Checkout(props) {
 
         <label>
           Card number
-          <MaskInput type="text" required name="number" inputmode="numeric" value={number} alwaysShowMask maskChar=" " mask="0000 0000 0000 0000" size={20} onChange={(e) => setNumber(e.target.value)} />
-        </label>
-        <label>
-          Exp.
-          <input type="text" required onChange={(e) => setNumber(e.target.value)} name="number" value={number} size={4} />
-        </label>
-        <label>
-          CVV
-          <input type="text" required onChange={(e) => setNumber(e.target.value)} name="number" value={number} />
+          <MaskInput type="text" required name="number" inputMode="numeric" value={number} alwaysShowMask maskChar=" " mask="0000 0000 0000 0000" size={20} onChange={(e) => setNumber(e.target.value)} />
         </label>
 
-        <button>Pay</button>
+        <button onClick={postOrder}>Pay</button>
       </form>
     </div>
   );
