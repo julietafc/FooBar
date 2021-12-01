@@ -1,23 +1,18 @@
-import { useState, useEffect } from 'react';
-
-
+import "./Time.scss";
+import { useState, useEffect } from "react";
 
 export default function Clock() {
-    const [date, setDate] = useState(new Date());
-  
-    function refreshClock() {
-      setDate(new Date());
-    }
-    useEffect(() => {
-      const timerId = setInterval(refreshClock, 1000);
-      return function cleanup() {
-        clearInterval(timerId);
-      };
-    }, []);
-    
-    return (
-      <span>
-        {date.toLocaleTimeString()}
-      </span>
-    );
+  const [date, setDate] = useState(new Date());
+
+  function refreshClock() {
+    setDate(new Date());
+  }
+  useEffect(() => {
+    const timerId = setInterval(refreshClock, 1000);
+    return function cleanup() {
+      clearInterval(timerId);
+    };
+  }, []);
+
+  return <span className="Clock">{date.toLocaleTimeString()}</span>;
 }

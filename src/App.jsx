@@ -1,16 +1,12 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
-import { Outlet, Link } from "react-router-dom";
 import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
-import Barteneder from "./components/Bartender/Bartender";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Form from "./components/Form/Form";
-import Invoices from "../src/pages/Invoices";
 import Manager from "./components/Manager/Manager";
-
-const { TabPane } = Tabs;
+import Barteneder from "./components/Bartender/Bartender";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -96,27 +92,28 @@ function App() {
     });
   }
 
-  // console.log(products.filter((beer) => beer.onTap));
-
   return (
     <div className="App">
       <header>
         <h1>Welcome to FooBar</h1>
         <nav className="navigation">
+          <Link to="/">Home</Link>
           <Link to="/Manager">Manager</Link>
           <Link to="/Bartender">Bartenders</Link>
-          <Link to="/Expenses">Customers</Link>
+          {/* <Link to="/Customers">Customers</Link> */}
           <Link to="/Form">Form</Link>
         </nav>
       </header>
 
       <main>
         <Routes>
+          <Route path="/" element={<Manager {...data} now={now} />} />
           <Route path="Manager" element={<Manager {...data} now={now} />} />
           <Route path="Bartender" element={<Barteneder {...data} now={now} />} />
+          {/* <Route path="Customers" element={<Customers {...data} now={now} />} /> */}
           <Route path="Form" element={<Form products={products} />} />
         </Routes>
-        <Tabs defaultActiveKey="1" onChange={callback}>
+        {/* <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane className="TabPane" tab="Manager" key="1">
             {data.taps && <Manager {...data} now={now} />}
           </TabPane>
@@ -129,7 +126,7 @@ function App() {
           <TabPane className="TabPane" tab="Order" key="4">
             {products && <Form products={products} />}
           </TabPane>
-        </Tabs>
+        </Tabs> */}
       </main>
     </div>
   );
