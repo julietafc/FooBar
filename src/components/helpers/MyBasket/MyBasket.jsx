@@ -24,9 +24,12 @@ export default function MyBasket(props) {
     };
     return order;
   });
-  console.log(payload);
+  // console.log(payload);
   const orders = basket.map((order, i) => (
     <li className="addedItem" key={i}>
+      <button data-name={order.name} onClick={noBeer}>
+        X
+      </button>
       {order.amount} {order.name} ${order.price()}
       <div className="actions">
         <div className="amountWrapper">
@@ -41,6 +44,11 @@ export default function MyBasket(props) {
       </div>
     </li>
   ));
+
+  function noBeer() {
+    const basket = [...props.basket].filter((element) => (element.amount = 0));
+    props.deleteBeer(basket);
+  }
 
   function oneMore(e) {
     const beerValue = e.currentTarget.value;

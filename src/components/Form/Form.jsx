@@ -43,6 +43,18 @@ export default function Form(props) {
     });
   }
 
+  function deleteBeer(amount, productName) {
+    setBasket(function (oldBasket) {
+      return oldBasket.map((item) => {
+        const copy = { ...item };
+        if (copy.name === productName) {
+          copy.amount = 0;
+        }
+        return copy;
+      });
+    });
+  }
+
   function increaseAmount(productName) {
     setBasket(function (oldBasket) {
       return oldBasket.map((item) => {
@@ -70,7 +82,7 @@ export default function Form(props) {
   return (
     <div className="Layout">
       <ProductList addToBasket={addToBasket} beers={beers} />
-      <Basket decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+      <Basket deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
     </div>
   );
 }

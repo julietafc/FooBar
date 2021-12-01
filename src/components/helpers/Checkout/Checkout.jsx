@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "./Checkout.scss";
 import MaskInput from "react-maskinput";
-import { PaymentInputsContainer } from "react-payment-inputs";
 
 export default function Checkout(props) {
   const form = useRef(null);
@@ -20,7 +19,11 @@ export default function Checkout(props) {
       .then((response) => {
         const obj = response.json();
         // window.alert(obj.Object.id);
-        console.log(obj.id);
+        return obj;
+        console.log(obj);
+      })
+      .then((data) => {
+        window.alert(data.id);
       })
       .catch((err) => {
         console.error(err);
@@ -40,16 +43,6 @@ export default function Checkout(props) {
       <h3>Checkout</h3>
 
       <form ref={form} onSubmit={onSubmit}>
-        {/* <PaymentInputsContainer>
-          {({ meta, getCardNumberProps, getExpiryDateProps, getCVCProps }) => (
-            <div>
-              <input {...getCardNumberProps({ onChange: handleChangeCardNumber })} value={cardNumber} />
-              <input {...getExpiryDateProps({ onChange: handleChangeExpiryDate })} value={expiryDate} />
-              <input {...getCVCProps({ onChange: handleChangeCVC })} value={cvc} />
-              {meta.isTouched && meta.error && <span>Error: {meta.error}</span>}
-            </div>
-          )}
-        </PaymentInputsContainer> */}
         <label>
           Name
           <input type="text" required onChange={nameChanged} name="name" value={name} />
