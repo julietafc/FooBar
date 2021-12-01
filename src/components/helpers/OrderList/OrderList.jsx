@@ -35,23 +35,26 @@ function Order(props) {
     </li>
   ));
 
-  if (props.bartenders.filter((bartender) => bartender.servingCustomer === props.id).length > 0) {
+  if (props.bartenders.find((bartender) => bartender.servingCustomer === props.id)) {
     const bartender = props.bartenders.filter((bartender) => bartender.servingCustomer === props.id)[0];
     manName = bartender.name;
-    if (bartender.statusDetail === "startServing" || "reserveTap") {
-      statusStyle.color = color.startServing;
-    }
-    if (bartender.statusDetail === "pourBeer") {
-      statusStyle.color = color.pourBeer;
-    }
+    // if (bartender.statusDetail === "startServing" || "reserveTap") {
+    //   statusStyle.color = color.startServing;
+    // }
+    // if (bartender.statusDetail === "pourBeer") {
+    //   statusStyle.color = color.pourBeer;
+    // }
+    statusStyle.color = color.startServing;
+
     if (bartender.statusDetail === "receivePayment") {
       statusStyle.color = color.receivePayment;
       tookenTime = timeDiference(props.startTime, props.now);
+      props.upDateOrdersReady({ id: props.id, tookenTime: tookenTime });
     }
   }
   return (
     <li className="Order" data-id={props.id} style={statusStyle}>
-      {props.id} {manName} {tookenTime.minutes} {tookenTime.seconds}
+      {props.id} {manName}
       <ul>{itemsMap}</ul>
     </li>
   );
@@ -59,7 +62,7 @@ function Order(props) {
 
 function OrdersToDo(props) {
   const queue = [...props.serving, ...props.queue];
-  const orders = queue.map((order) => <Order key={order.id} {...order} bartenders={props.bartenders} now={props.now} />);
+  const orders = queue.map((order) => <Order key={order.id} {...order} {...props} />);
 
   // const ordersServing = props.serving.map(function (order) {
   //   if (props.bartenders.filter((bartender) => bartender.servingCustomer === order.id).length > 0) {

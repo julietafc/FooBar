@@ -7,6 +7,7 @@ import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import Barteneder from "./components/Bartender/Bartender";
 import Form from "./components/Form/Form";
+import Customer from "./components/Customer/Customer";
 
 const { TabPane } = Tabs;
 
@@ -90,9 +91,13 @@ function App() {
   }
 
   function upDateOrdersReady(order) {
-    setOrdersReady(function (oldOrdersReady) {
-      return oldOrdersReady.concat(order);
-    });
+    if (!ordersReady.find((element) => element.id === order.id)) {
+      setOrdersReady(function (oldOrdersReady) {
+        const copy = [order, ...oldOrdersReady];
+        return copy;
+      });
+    }
+    return;
   }
 
   // console.log(products.filter((beer) => beer.onTap));
@@ -118,7 +123,7 @@ function App() {
             {data.taps && <Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />}
           </TabPane>
           <TabPane className="TabPane" tab="Customers" key="3">
-            Content for Customers
+            {data.taps && <Customer {...data} now={now} ordersReady={ordersReady} />}
           </TabPane>
           <TabPane className="TabPane" tab="Order" key="4">
             {products && <Form products={products} />}
