@@ -10,6 +10,7 @@ import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
 
 function App() {
+  const [windowDimension, setWindowDimension] = useState(null);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
   const [realTime, setRealTime] = useState(0);
@@ -60,6 +61,21 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    setWindowDimension(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimension(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowDimension <= 640;
+
   function checkTaps(info) {
     setProducts(function (oldProducts) {
       return oldProducts.map((item) => {
@@ -108,16 +124,26 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>Welcome to FooBar</h1>
-        <nav className="navigation">
-          <Link to="/">Home</Link>
-          <Link to="/Manager">Manager</Link>
-          <Link to="/Bartender">Bartenders</Link>
-          <Link to="/Customers">Customers</Link>
-          <Link to="/Form">Form</Link>
-        </nav>
-      </header>
+      {isMobile ? (
+        <header className="mobileHeader">
+          <h1>Welcome to FooBar</h1>
+          <nav className="navigation">
+            <Link to="/Customers">Customers</Link>
+            <Link to="/Form">Form</Link>
+          </nav>
+        </header>
+      ) : (
+        <header>
+          <h1>Welcome to FooBar</h1>
+          <nav className="navigation">
+            <Link to="/">Home</Link>
+            <Link to="/Manager">Manager</Link>
+            <Link to="/Bartender">Bartenders</Link>
+            <Link to="/Customers">Customers</Link>
+            <Link to="/Form">Form</Link>
+          </nav>
+        </header>
+      )}
 
       <main>
         <Routes>
