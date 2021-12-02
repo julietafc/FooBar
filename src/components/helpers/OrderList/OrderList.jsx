@@ -48,8 +48,8 @@ function Order(props) {
 
     if (bartender.statusDetail === "receivePayment") {
       statusStyle.color = color.receivePayment;
-      tookenTime = timeDiference(props.startTime, props.now);
-      props.upDateOrdersReady({ id: props.id, tookenTime: tookenTime });
+      // tookenTime = timeDiference(props.startTime, props.now);
+      // props.upDateOrdersReady({ id: props.id, tookenTime: tookenTime });
     }
   }
 

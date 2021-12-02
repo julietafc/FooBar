@@ -24,6 +24,7 @@ export default function Checkout(props) {
       })
       .then((data) => {
         window.alert(data.id);
+        props.addID(data.id);
       })
       .catch((err) => {
         console.error(err);

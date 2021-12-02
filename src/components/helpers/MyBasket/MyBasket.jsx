@@ -84,7 +84,7 @@ export default function MyBasket(props) {
       {props.basket.length > 0 && (
         <div>
           <button onClick={onClick}>Checkout</button>
-          {showResults ? <Checkout payload={payload} /> : null}
+          {showResults ? <Checkout payload={payload} addID={props.addID} /> : null}
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
+import timeDiference from "./modules/timeDiference";
 //import Form from "./components/Form/Form";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
@@ -57,6 +58,22 @@ function App() {
       clearInterval(id2);
     };
   }, []);
+
+  //-----------------------
+  if (data.queue) {
+    const allOrders = [...data.queue, ...data.serving];
+    allOrders.forEach((order) => {
+      if (data.bartenders.find((bartender) => bartender.servingCustomer === order.id)) {
+        const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
+        if (bartender.statusDetail === "receivePayment") {
+          const tookenTime = timeDiference(order.startTime, now);
+          upDateOrdersReady({ id: order.id, tookenTime: tookenTime });
+        }
+      }
+    });
+  }
+
+  //-----------------------
 
   function checkTaps(info) {
     setProducts(function (oldProducts) {
@@ -123,7 +140,7 @@ function App() {
           <Route path="Manager" element={<Manager {...data} now={now} />} />
           <Route path="Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} />} />
           <Route path="Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} upDateOrdersReady={upDateOrdersReady} />} />
-          <Route path="Form" element={<Form products={products} />} />
+          <Route path="Form" element={<Form products={products} ordersReady={ordersReady} />} />
         </Routes>
       </main>
     </div>
