@@ -26,7 +26,7 @@
     }
   }
 
-  .hidden {
+  .notShown {
     display: none;
   }
 
@@ -52,15 +52,15 @@
       z-index: 999;
       nav a {
         color: black;
-        margin: 3em;
+        margin: 1.5em;
       }
 
       h1 {
         display: none;
       }
 
-      .hidden {
-        display: block;
+      .notShown {
+        display: inline;
       }
     }
   }

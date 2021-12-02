@@ -1,1 +1,7 @@
 @use "../../index.scss";
+
+.Layout {
+  .notShown {
+    display: inline;
+  }
+}

@@ -8,6 +8,8 @@ import Manager from "./components/Manager/Manager";
 import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
+import { display } from "@mui/system";
+import Nav1 from "./components/helpers/Nav1/Nav1";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
@@ -15,6 +17,7 @@ function App() {
   const [data, setData] = useState([]);
   const [realTime, setRealTime] = useState(0);
   const [isCustomer, setIsCustomer] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
   const beerBasePrice = 40;
   //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
@@ -125,21 +128,7 @@ function App() {
       {isCustomer ? (
         <header className="mobileHeader">
           <h1>Welcome to FooBar</h1>
-          <nav className="navigation">
-            <Link
-              to="/"
-              onClick={() => {
-                setIsCustomer(false);
-              }}
-            >
-              Home
-            </Link>
-            <Link to="/Customers">Dashboard</Link>
-            <Link to="/Form">Order</Link>
-            <Link className="hidden" to="/MyBasket">
-              Cart
-            </Link>
-          </nav>
+          <Nav1 />
         </header>
       ) : (
         <header>
