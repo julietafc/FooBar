@@ -1,6 +1,8 @@
+import "./Manager.scss";
 import Clock from "../helpers/Time/Time";
 import Inventory from "../helpers/Inventory/Inventory";
-import "./Manager.scss";
+import Workers from "../helpers/Workers/Workers";
+import TopBeer from "../helpers/Ranking/Ranking";
 
 export default function Manager(props) {
   return (
@@ -14,9 +16,11 @@ export default function Manager(props) {
           <h2>Managers overview</h2>
         </div>
 
-        <div className="inventory">
-          <Inventory {...props} />
-        </div>
+        <Inventory {...props} />
+
+        <Workers {...props} />
+
+        <TopBeer {...props} />
       </section>
     </>
   );

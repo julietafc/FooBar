@@ -12,3 +12,14 @@
   grid-column: 1/-1;
   text-align: left !important ;
 }
+
+.inventory {
+  display: flex;
+  flex-direction: column;
+}
+
+.inventory * h2,
+h3 {
+  text-align: start;
+  padding: 1rem;
+}

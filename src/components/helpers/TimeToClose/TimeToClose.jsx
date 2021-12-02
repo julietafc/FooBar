@@ -1,6 +1,9 @@
-import counterClose from "../../../modules/counterClose";
+import timeDiference from "../../../modules/timeDiference";
 export default function TimeToClose(props) {
-  const time = counterClose(props.now);
+  let todayAtTen = new Date();
+  todayAtTen.setHours(22, 0, 0, 0);
+  todayAtTen = todayAtTen.getTime();
+  const time = timeDiference(props.now, todayAtTen);
   const timeDisplay = `We close in ${time.hours} : ${time.minutes} : ${time.seconds}`;
   return <p>{time.hours < 0 ? "we are close" : timeDisplay}</p>;
 }

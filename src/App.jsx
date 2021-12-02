@@ -1,20 +1,24 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
-import { Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Form from "./components/Form/Form";
 import Manager from "./components/Manager/Manager";
+import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
+import Home from "./components/Home/Home";
 
 function App() {
+  const [windowDimension, setWindowDimension] = useState(null);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
   const [realTime, setRealTime] = useState(0);
+  const [isCustomer, setIsCustomer] = useState(false);
   const beerBasePrice = 40;
   //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
+  const [ordersReady, setOrdersReady] = useState([]);
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -58,6 +62,21 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    setWindowDimension(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimension(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowDimension <= 640;
+
   function checkTaps(info) {
     setProducts(function (oldProducts) {
       return oldProducts.map((item) => {
@@ -65,7 +84,6 @@ function App() {
         if (info.taps.filter((tap) => tap.beer === item.name).length > 0) {
           copy.onTap = true;
         } else {
-          // console.log(copy.name + " is out");
           copy.onTap = false;
         }
 
@@ -92,46 +110,67 @@ function App() {
     });
   }
 
+  function upDateOrdersReady(order) {
+    if (!ordersReady.find((element) => element.id === order.id)) {
+      setOrdersReady(function (oldOrdersReady) {
+        const copy = [order, ...oldOrdersReady];
+        return copy;
+      });
+    }
+    return;
+  }
+
   return (
     <div className="App">
-      <header>
-        <h1>Welcome to FooBar</h1>
-        <nav className="navigation">
-          <Link to="/">Home</Link>
-          <Link to="/Manager">Manager</Link>
-          <Link to="/Bartender">Bartenders</Link>
-          {/* <Link to="/Customers">Customers</Link> */}
-          <Link to="/Form">Form</Link>
-        </nav>
-      </header>
+      {isCustomer ? (
+        <header>
+          <h1>Welcome to FooBar</h1>
+          <nav className="navigation">
+            <Link
+              to="/"
+              onClick={() => {
+                setIsCustomer(false);
+              }}
+            >
+              Home
+            </Link>
+            <Link to="/Customers">Dashboard</Link>
+            <Link to="/Form">Order</Link>
+          </nav>
+        </header>
+      ) : (
+        <header>
+          <h1>Welcome to FooBar</h1>
+          <nav className="navigation">
+            <Link to="/">Home</Link>
+            <Link to="/Manager">Manager</Link>
+            <Link to="/Bartender">Bartenders</Link>
+
+            <Link
+              to="/Customers"
+              onClick={() => {
+                setIsCustomer(true);
+              }}
+            >
+              Customers
+            </Link>
+
+            <Link to="/Form">Form</Link>
+          </nav>
+        </header>
+      )}
 
       <main>
         <Routes>
-          <Route path="/" element={<Manager {...data} now={now} />} />
-          <Route path="Manager" element={<Manager {...data} now={now} />} />
-          <Route path="Bartender" element={<Barteneder {...data} now={now} />} />
-          {/* <Route path="Customers" element={<Customers {...data} now={now} />} /> */}
-          <Route path="Form" element={<Form products={products} />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
+          <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
+          <Route exact path="/Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
+          <Route exact path="/Form" element={<Form products={products} />} />
         </Routes>
-        {/* <Tabs defaultActiveKey="1" onChange={callback}>
-          <TabPane className="TabPane" tab="Manager" key="1">
-            {data.taps && <Manager {...data} now={now} />}
-          </TabPane>
-          <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data.taps && <Barteneder {...data} now={now} />}
-          </TabPane>
-          <TabPane className="TabPane" tab="Customers" key="3">
-            Content for Customers
-          </TabPane>
-          <TabPane className="TabPane" tab="Order" key="4">
-            {products && <Form products={products} />}
-          </TabPane>
-        </Tabs> */}
       </main>
     </div>
   );
 }
-function callback(key) {
-  console.log(key);
-}
+
 export default App;
