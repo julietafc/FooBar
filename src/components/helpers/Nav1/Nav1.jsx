@@ -15,9 +15,9 @@ export default function Nav1() {
       <Link to="/Form">Order</Link>
       <a
         className="notShown"
-        onClick={() => {
-          isMobile(false);
-        }}
+        // onClick={() => {
+        //   isMobile(false);
+        // }}
       >
         Cart
       </a>
