@@ -127,20 +127,6 @@ function App() {
           <Route path="Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
           <Route path="Form" element={<Form products={products} />} />
         </Routes>
-        {/* <Tabs defaultActiveKey="1" onChange={callback}>
-          <TabPane className="TabPane" tab="Manager" key="1">
-            {data.taps && <Manager {...data} now={now} />}
-          </TabPane>
-          <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data.taps && <Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />}
-          </TabPane>
-          <TabPane className="TabPane" tab="Customers" key="3">
-            {data.taps && <Customer {...data} now={now} ordersReady={ordersReady} />}
-          </TabPane>
-          <TabPane className="TabPane" tab="Order" key="4">
-            {products && <Form products={products} />}
-          </TabPane>
-        </Tabs> */}
       </main>
     </div>
   );
