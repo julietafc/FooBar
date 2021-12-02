@@ -117,7 +117,7 @@ export default function TapBox(props) {
               <g className="cls-13">
                 <foreignObject x="13" y="43.9" width="89" height="89">
                   <div className="img-wrapper">
-                    <img src={"./src/assets/" + beerImg} alt="beer label" />
+                    <img src={"./assets/" + beerImg} alt="beer label" />
                   </div>
                 </foreignObject>
               </g>

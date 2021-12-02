@@ -12,7 +12,7 @@ export default function Customer(props) {
       <TimeToClose now={props.now} />
       <section>
         <h2>orders ready</h2>
-        <ul className="orders-ready">{readyMap.length > 10 ? readyMap.slice(0, 10) : readyMap}</ul>
+        <ul className="orders-ready">{readyMap}</ul>s
       </section>
     </div>
   );
