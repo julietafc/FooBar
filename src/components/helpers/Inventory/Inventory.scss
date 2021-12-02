@@ -1,6 +1,7 @@
 .inventory {
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .inventory > h2,
@@ -12,6 +13,7 @@ h3 {
 .Depot {
   border: solid 2px var(--pink);
   border-radius: 1em;
+  color: white;
 }
 
 .Depot ul {

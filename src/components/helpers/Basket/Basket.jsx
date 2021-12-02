@@ -1,9 +1,10 @@
-export default function Basket() {
+import "./Basket.scss";
+
+import MyBasket from "../MyBasket/MyBasket";
+export default function Basket(props) {
   return (
     <aside className="aside">
-      <div>
-        <h3>My Basket</h3>
-      </div>
+      <MyBasket deleteBeer={props.deleteBeer} decreaseAmount={props.decreaseAmount} increaseAmount={props.increaseAmount} addMoreBeer={props.addMoreBeer} basket={props.basket} />
     </aside>
   );
 }

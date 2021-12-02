@@ -5,24 +5,23 @@ import Workers from "../helpers/Workers/Workers";
 import TopBeer from "../helpers/Ranking/Ranking";
 
 export default function Manager(props) {
+  return (
+    <>
+      <div className="clock">
+        <Clock />
+      </div>
 
-
-    return(
-      <>
-        <div className="clock">
-          <Clock/>
+      <section className="manager">
+        <div className="manager__header">
+          <h2>Managers overview</h2>
         </div>
-        
-        <section className="manager">
-          <div className="manager__header">
-            <h2>Managers overview</h2>
-          </div>
 
-            <Inventory {...props}/>
-            <Workers {...props}/>
-            <TopBeer {...props}/>
-          
-        </section>
-      </>
-    )
+        <Inventory {...props} />
+
+        <Workers {...props} />
+
+        <TopBeer {...props} />
+      </section>
+    </>
+  );
 }
