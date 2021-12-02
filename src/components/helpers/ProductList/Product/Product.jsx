@@ -41,7 +41,7 @@ export default function Product(props) {
         <button className="frontCard" onClick={handleClick}>
           Info
         </button>
-        <img src={"./src/assets/" + props.label} alt="" />
+        <img src={"./assets/" + props.label} alt="" />
         <div className="Text">
           <h3>{props.name}</h3>
           <p>{props.category}</p>
