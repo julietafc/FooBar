@@ -123,7 +123,7 @@ function App() {
   return (
     <div className="App">
       {isCustomer ? (
-        <header>
+        <header className="mobileHeader">
           <h1>Welcome to FooBar</h1>
           <nav className="navigation">
             <Link
@@ -136,6 +136,9 @@ function App() {
             </Link>
             <Link to="/Customers">Dashboard</Link>
             <Link to="/Form">Order</Link>
+            <Link className="hidden" to="/MyBasket">
+              Cart
+            </Link>
           </nav>
         </header>
       ) : (
