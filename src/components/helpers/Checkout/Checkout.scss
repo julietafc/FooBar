@@ -1,0 +1,13 @@
+.Form {
+  margin-top: 3em;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 2em;
+    input {
+      color: black;
+    }
+  }
+}

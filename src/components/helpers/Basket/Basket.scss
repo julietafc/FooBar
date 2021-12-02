@@ -1,1 +1,7 @@
-@use "../../index.scss";
+@use "../../../index.scss";
+
+@media screen and (max-width: 1024px) {
+  aside {
+    display: none;
+  }
+}

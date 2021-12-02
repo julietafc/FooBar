@@ -1,18 +1,19 @@
 @use "../../../../index.scss";
 
-.Product {
+.Product,
+.ProductReverse {
   background-color: white;
   border-radius: 10px;
-  width: 70%;
-  padding: 1em;
+  width: 80%;
+  min-height: 280px;
+  padding: 2em 2em 2em 6em;
   margin: 1em;
-  height: 180px;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   text-align: left;
   margin-left: 4em;
+  transition: 3s ease-in-out;
 
   h3,
   p {
@@ -20,24 +21,76 @@
   }
 
   img {
-    width: 130px;
-    height: 130px;
+    width: 180px;
+    height: 180px;
     position: absolute;
     left: -50px;
+    border-radius: 4px;
   }
 
   .Text {
     display: flex;
     flex-direction: column;
+    margin-left: 6em;
+    width: 100%;
+
+    .primary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      :nth-child(2) {
+        font-size: 2em;
+      }
+    }
   }
 
-  .amountWrapper {
+  .frontCard,
+  .reverseCard {
+    position: absolute;
+    right: -1em;
+    top: -1em;
+    background-color: var(--pink);
+    border: none;
+    padding: 0.5em;
+  }
+
+  .actions {
     display: flex;
-    .amount {
-      margin: 0 1em;
+    justify-content: space-between;
+
+    .amountWrapper {
+      display: flex;
+      align-items: center;
+      .amount {
+        margin: 0 1em;
+      }
+      & button {
+        background: black;
+        color: white;
+        border-radius: 50%;
+      }
     }
-    & button {
-      color: black;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .Product section {
+      display: none;
     }
+  }
+}
+
+.ProductReverse {
+  flex-direction: column;
+  height: auto;
+  font-family: sans-serif;
+  //   position: absolute;
+  //   z-index: 999;
+}
+
+@media screen and (max-width: 1400px) {
+  .Product,
+  .ProductReverse {
+    width: 80%;
   }
 }
