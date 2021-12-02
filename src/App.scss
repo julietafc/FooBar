@@ -4,19 +4,24 @@
   background: var(--bg-color);
   font-family: var(--primary-font);
 
+  main {
+    height: 100vh;
+    color: white;
+
+    h1 {
+      font-size: 2em;
+      color: white;
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100px;
     padding: 5em;
-
-    h1 {
-      font-size: 2em;
-      color: white;
-      text-align: left;
-      margin-bottom: 0;
-    }
 
     .navigation a {
       color: white;

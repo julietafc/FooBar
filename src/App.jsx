@@ -1,19 +1,20 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
-//import Form from "./components/Form/Form";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Form from "./components/Form/Form";
 import Manager from "./components/Manager/Manager";
 import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
+import Home from "./components/Home/Home";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
   const [realTime, setRealTime] = useState(0);
+  const [isCustomer, setIsCustomer] = useState(false);
   const beerBasePrice = 40;
   //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
@@ -83,7 +84,6 @@ function App() {
         if (info.taps.filter((tap) => tap.beer === item.name).length > 0) {
           copy.onTap = true;
         } else {
-          // console.log(copy.name + " is out");
           copy.onTap = false;
         }
 
@@ -120,16 +120,22 @@ function App() {
     return;
   }
 
-  // console.log(products.filter((beer) => beer.onTap));
-
   return (
     <div className="App">
-      {isMobile ? (
-        <header className="mobileHeader">
+      {isCustomer ? (
+        <header>
           <h1>Welcome to FooBar</h1>
           <nav className="navigation">
-            <Link to="/Customers">Customers</Link>
-            <Link to="/Form">Form</Link>
+            <Link
+              to="/"
+              onClick={() => {
+                setIsCustomer(false);
+              }}
+            >
+              Home
+            </Link>
+            <Link to="/Customers">Dashboard</Link>
+            <Link to="/Form">Order</Link>
           </nav>
         </header>
       ) : (
@@ -139,7 +145,16 @@ function App() {
             <Link to="/">Home</Link>
             <Link to="/Manager">Manager</Link>
             <Link to="/Bartender">Bartenders</Link>
-            <Link to="/Customers">Customers</Link>
+
+            <Link
+              to="/Customers"
+              onClick={() => {
+                setIsCustomer(true);
+              }}
+            >
+              Customers
+            </Link>
+
             <Link to="/Form">Form</Link>
           </nav>
         </header>
@@ -147,31 +162,15 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<Manager {...data} now={now} />} />
-          <Route path="Manager" element={<Manager {...data} now={now} />} />
-          <Route path="Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
-          <Route path="Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
-          <Route path="Form" element={<Form products={products} />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
+          <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
+          <Route exact path="/Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
+          <Route exact path="/Form" element={<Form products={products} />} />
         </Routes>
-        {/* <Tabs defaultActiveKey="1" onChange={callback}>
-          <TabPane className="TabPane" tab="Manager" key="1">
-            {data.taps && <Manager {...data} now={now} />}
-          </TabPane>
-          <TabPane className="TabPane" tab="Bartenders" key="2">
-            {data.taps && <Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />}
-          </TabPane>
-          <TabPane className="TabPane" tab="Customers" key="3">
-            {data.taps && <Customer {...data} now={now} ordersReady={ordersReady} />}
-          </TabPane>
-          <TabPane className="TabPane" tab="Order" key="4">
-            {products && <Form products={products} />}
-          </TabPane>
-        </Tabs> */}
       </main>
     </div>
   );
 }
-function callback(key) {
-  console.log(key);
-}
+
 export default App;
