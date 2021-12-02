@@ -52,6 +52,7 @@ function Order(props) {
       props.upDateOrdersReady({ id: props.id, tookenTime: tookenTime });
     }
   }
+
   return (
     <li className="Order" data-id={props.id} style={statusStyle}>
       {props.id} {manName}

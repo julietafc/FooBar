@@ -10,11 +10,9 @@ import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
 
 function App() {
+  const beerBasePrice = 40;
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
-  const [realTime, setRealTime] = useState(0);
-  const beerBasePrice = 40;
-  //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
   const [ordersReady, setOrdersReady] = useState([]);
 
@@ -98,7 +96,7 @@ function App() {
     if (!ordersReady.find((element) => element.id === order.id)) {
       setOrdersReady(function (oldOrdersReady) {
         const copy = [order, ...oldOrdersReady];
-        return copy;
+        return copy.slice(0, 10);
       });
     }
     return;
@@ -123,8 +121,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Manager {...data} now={now} />} />
           <Route path="Manager" element={<Manager {...data} now={now} />} />
-          <Route path="Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
-          <Route path="Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
+          <Route path="Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} />} />
+          <Route path="Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} upDateOrdersReady={upDateOrdersReady} />} />
           <Route path="Form" element={<Form products={products} />} />
         </Routes>
       </main>
