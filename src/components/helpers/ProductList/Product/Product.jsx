@@ -34,6 +34,7 @@ export default function Product(props) {
       },
       name: props.name,
     });
+    setAmount(0);
   }
   return (
     <ReactCardFlip isFlipped={flipped} flipDirection="vertical">

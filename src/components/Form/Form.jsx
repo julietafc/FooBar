@@ -31,6 +31,10 @@ export default function Form(props) {
     });
   }
 
+  function resetBasket() {
+    setBasket([]);
+  }
+
   function addMoreBeer(amount, productName) {
     setBasket(function (oldBasket) {
       return oldBasket.map((item) => {
@@ -82,7 +86,7 @@ export default function Form(props) {
   return (
     <div className="Layout">
       <ProductList addToBasket={addToBasket} beers={beers} />
-      <Basket deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+      <Basket resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
     </div>
   );
 }
