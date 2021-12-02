@@ -114,7 +114,7 @@ function App() {
           <Link to="/">Home</Link>
           <Link to="/Manager">Manager</Link>
           <Link to="/Bartender">Bartenders</Link>
-          {/* <Link to="/Customers">Customers</Link> */}
+          <Link to="/Customers">Customers</Link>
           <Link to="/Form">Form</Link>
         </nav>
       </header>
