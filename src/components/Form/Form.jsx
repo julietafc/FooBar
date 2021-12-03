@@ -47,7 +47,7 @@ export default function Form(props) {
     });
   }
 
-  function deleteBeer(amount, productName) {
+  function deleteBeer(productName) {
     setBasket(function (oldBasket) {
       return oldBasket.map((item) => {
         const copy = { ...item };

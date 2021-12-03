@@ -45,9 +45,9 @@ export default function MyBasket(props) {
     </li>
   ));
 
-  function noBeer() {
-    const basket = [...props.basket].filter((element) => (element.amount = 0));
-    props.deleteBeer(basket);
+  function noBeer(e) {
+    const productName = e.currentTarget.dataset.name;
+    props.deleteBeer(productName);
   }
 
   function oneMore(e) {
