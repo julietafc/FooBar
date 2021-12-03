@@ -2,6 +2,7 @@ import "./Product.scss";
 import { useState } from "react";
 import Button from "../../Button/Button";
 import ReactCardFlip from "react-card-flip";
+import ButtonAdd from "../../Button/Button";
 
 export default function Product(props) {
   const [flipped, setFlipped] = useState(false);
@@ -57,8 +58,9 @@ export default function Product(props) {
               <p className="amount">{amount}</p>
               <button onClick={increaseAmount}>+</button>
             </div>
-
-            <button onClick={add}>Add</button>
+            <button className="buttonAdd" onClick={add}>
+              Add
+            </button>
           </div>
         </div>
       </article>

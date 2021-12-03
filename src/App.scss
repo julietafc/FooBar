@@ -1,7 +1,11 @@
 .App {
   text-align: center;
-  padding: 2em;
-  background: var(--bg-color);
+  background-image: url(assets/bg_dark.svg);
+  background-color: #cccccc; /* Used if the image is unavailable */
+  min-height: 100vh; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
   font-family: var(--primary-font);
   position: relative;
 
@@ -10,7 +14,11 @@
     align-items: center;
     justify-content: space-between;
     height: 100px;
-    padding: 5em;
+    width: 100%;
+    padding: 2em 4em;
+    position: fixed;
+    top: 0;
+    background-color: #000;
 
     h1 {
       color: white;
@@ -21,7 +29,7 @@
       margin: 0 1em;
 
       &:hover {
-        color: yellow;
+        color: red;
       }
     }
   }
@@ -32,6 +40,7 @@
 
   main {
     color: white;
+    padding: 12em 5em;
 
     h1 {
       font-size: 2em;

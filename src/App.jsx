@@ -2,7 +2,7 @@ import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
 import timeDiference from "./modules/timeDiference";
-//import Form from "./components/Form/Form";
+
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Form from "./components/Form/Form";
@@ -25,7 +25,6 @@ function App() {
   const [now, setNow] = useState(new Date().getTime());
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
-
   function changeCartState(state) {
     setCart(state);
   }

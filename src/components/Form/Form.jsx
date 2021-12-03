@@ -1,5 +1,8 @@
 import Basket from "../helpers/Basket/Basket";
 import ProductList from "../helpers/ProductList/ProductList";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "../../modules/globalStyles";
+import { lightTheme, darkTheme } from "../../modules/themes";
 
 import { useState, useEffect } from "react";
 
