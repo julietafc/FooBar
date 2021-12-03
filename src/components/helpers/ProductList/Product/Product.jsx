@@ -45,8 +45,8 @@ export default function Product(props) {
         </button>
         <img src={"./assets/" + props.label} alt="" />
         <div className="Text">
-          <h3>{props.name}</h3>
           <p>{props.category}</p>
+          <h3>{props.name}</h3>
 
           <div className="primary">
             <p>{props.alc}% vol.</p>

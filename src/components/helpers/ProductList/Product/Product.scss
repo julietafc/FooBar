@@ -5,15 +5,18 @@
   background-color: white;
   border-radius: 10px;
   width: 80%;
-  min-height: 280px;
-  padding: 2em 2em 2em 6em;
+  min-height: 310px;
+  padding: 2em 2em 2em 5em;
   margin: 1em;
   position: relative;
   display: flex;
   align-items: center;
   text-align: left;
   margin-left: 4em;
-  transition: 3s ease-in-out;
+
+  h3 {
+    padding: 0;
+  }
 
   h3,
   p {
@@ -34,6 +37,10 @@
     flex-direction: column;
     margin-left: 6em;
     width: 100%;
+
+    h3 {
+      text-transform: uppercase;
+    }
 
     .primary {
       display: flex;
