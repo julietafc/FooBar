@@ -12,6 +12,7 @@ import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
 import { display } from "@mui/system";
 import Nav1 from "./components/helpers/Nav1/Nav1";
+import Footer from "./components/helpers/Footer/Footer";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
@@ -153,7 +154,7 @@ function App() {
         </header>
       ) : (
         <header>
-          <h1>Welcome to FooBar</h1>
+          <h1>FooBar</h1>
           <nav className="navigation">
             <Link to="/">Home</Link>
             <Link to="/Manager">Manager</Link>
@@ -180,6 +181,7 @@ function App() {
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }
