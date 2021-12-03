@@ -9,11 +9,16 @@ import Form from "./components/Form/Form";
 import Manager from "./components/Manager/Manager";
 import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
+import Home from "./components/Home/Home";
 
 function App() {
-  const beerBasePrice = 40;
+  const [windowDimension, setWindowDimension] = useState(null);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
+  const [realTime, setRealTime] = useState(0);
+  const [isCustomer, setIsCustomer] = useState(false);
+  const beerBasePrice = 40;
+  //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
   const [ordersReady, setOrdersReady] = useState([]);
 
@@ -74,6 +79,20 @@ function App() {
   }
 
   //-----------------------
+  useEffect(() => {
+    setWindowDimension(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimension(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowDimension <= 640;
 
   function checkTaps(info) {
     setProducts(function (oldProducts) {
@@ -82,7 +101,6 @@ function App() {
         if (info.taps.filter((tap) => tap.beer === item.name).length > 0) {
           copy.onTap = true;
         } else {
-          // console.log(copy.name + " is out");
           copy.onTap = false;
         }
 
@@ -119,34 +137,57 @@ function App() {
     return;
   }
 
-  // console.log(products.filter((beer) => beer.onTap));
-
   return (
     <div className="App">
-      <header>
-        <h1>Welcome to FooBar</h1>
-        <nav className="navigation">
-          <Link to="/">Home</Link>
-          <Link to="/Manager">Manager</Link>
-          <Link to="/Bartender">Bartenders</Link>
-          <Link to="/Customers">Customers</Link>
-          <Link to="/Form">Form</Link>
-        </nav>
-      </header>
+      {isCustomer ? (
+        <header>
+          <h1>Welcome to FooBar</h1>
+          <nav className="navigation">
+            <Link
+              to="/"
+              onClick={() => {
+                setIsCustomer(false);
+              }}
+            >
+              Home
+            </Link>
+            <Link to="/Customers">Dashboard</Link>
+            <Link to="/Form">Order</Link>
+          </nav>
+        </header>
+      ) : (
+        <header>
+          <h1>Welcome to FooBar</h1>
+          <nav className="navigation">
+            <Link to="/">Home</Link>
+            <Link to="/Manager">Manager</Link>
+            <Link to="/Bartender">Bartenders</Link>
+
+            <Link
+              to="/Customers"
+              onClick={() => {
+                setIsCustomer(true);
+              }}
+            >
+              Customers
+            </Link>
+
+            <Link to="/Form">Form</Link>
+          </nav>
+        </header>
+      )}
 
       <main>
         <Routes>
-          <Route path="/" element={<Manager {...data} now={now} />} />
-          <Route path="Manager" element={<Manager {...data} now={now} />} />
-          <Route path="Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} />} />
-          <Route path="Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} upDateOrdersReady={upDateOrdersReady} />} />
-          <Route path="Form" element={<Form products={products} ordersReady={ordersReady} />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
+          <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
+          <Route exact path="/Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
+          <Route exact path="/Form" element={<Form products={products} />} />
         </Routes>
       </main>
     </div>
   );
 }
-function callback(key) {
-  console.log(key);
-}
+
 export default App;
