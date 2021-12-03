@@ -37,7 +37,7 @@ export default function Product(props) {
     setAmount(0);
   }
   return (
-    <ReactCardFlip isFlipped={flipped} flipDirection="vertical">
+    <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
       <article className="Product">
         <button className="frontCard" onClick={handleClick}>
           Info
@@ -59,8 +59,6 @@ export default function Product(props) {
             </div>
 
             <button onClick={add}>Add</button>
-
-            {/* <Button /> */}
           </div>
         </div>
       </article>

@@ -10,6 +10,8 @@ import Manager from "./components/Manager/Manager";
 import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
+import { display } from "@mui/system";
+import Nav1 from "./components/helpers/Nav1/Nav1";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
@@ -17,10 +19,16 @@ function App() {
   const [data, setData] = useState([]);
   const [realTime, setRealTime] = useState(0);
   const [isCustomer, setIsCustomer] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
   const beerBasePrice = 40;
   //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
   const [ordersReady, setOrdersReady] = useState([]);
+  const [cart, setCart] = useState(false);
+
+  function changeCartState(state) {
+    setCart(state);
+  }
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -140,20 +148,9 @@ function App() {
   return (
     <div className="App">
       {isCustomer ? (
-        <header>
+        <header className="mobileHeader">
           <h1>Welcome to FooBar</h1>
-          <nav className="navigation">
-            <Link
-              to="/"
-              onClick={() => {
-                setIsCustomer(false);
-              }}
-            >
-              Home
-            </Link>
-            <Link to="/Customers">Dashboard</Link>
-            <Link to="/Form">Order</Link>
-          </nav>
+          <Nav1 isMobile={isMobile} cart={cart} changeCartState={changeCartState} />
         </header>
       ) : (
         <header>
@@ -171,8 +168,6 @@ function App() {
             >
               Customers
             </Link>
-
-            <Link to="/Form">Form</Link>
           </nav>
         </header>
       )}
@@ -183,7 +178,7 @@ function App() {
           <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
           <Route exact path="/Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
-          <Route exact path="/Form" element={<Form products={products} ordersReady={ordersReady} />} />
+          <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} />} />
         </Routes>
       </main>
     </div>

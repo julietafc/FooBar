@@ -3,18 +3,7 @@
   padding: 2em;
   background: var(--bg-color);
   font-family: var(--primary-font);
-
-  main {
-    height: 100vh;
-    color: white;
-
-    h1 {
-      font-size: 2em;
-      color: white;
-      text-align: center;
-      margin-bottom: 0;
-    }
-  }
+  position: relative;
 
   header {
     display: flex;
@@ -22,6 +11,10 @@
     justify-content: space-between;
     height: 100px;
     padding: 5em;
+
+    h1 {
+      color: white;
+    }
 
     .navigation a {
       color: white;
@@ -33,25 +26,42 @@
     }
   }
 
-  .mobileHeader {
-    position: fixed;
-    width: 100vw;
-    bottom: 0;
-    background-color: white;
-    z-index: 999;
-    height: 80px;
+  .notShown {
+    display: none;
+  }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      a {
-        color: black;
-      }
-    }
+  main {
+    color: white;
 
     h1 {
-      display: none;
+      font-size: 2em;
+      color: white;
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: 680px) {
+    .mobileHeader {
+      position: fixed;
+      background-color: white;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      justify-content: space-around;
+      z-index: 999;
+      nav a {
+        color: black;
+        margin: 1.5em;
+      }
+
+      h1 {
+        display: none;
+      }
+
+      .notShown {
+        display: inline;
+      }
     }
   }
 }
