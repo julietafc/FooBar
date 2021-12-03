@@ -183,7 +183,7 @@ function App() {
           <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
           <Route exact path="/Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
-          <Route exact path="/Form" element={<Form products={products} />} />
+          <Route exact path="/Form" element={<Form products={products} ordersReady={ordersReady} />} />
         </Routes>
       </main>
     </div>
