@@ -1,6 +1,8 @@
 .Layout {
   display: grid;
   grid-template-columns: 3fr 1fr;
+  padding: 9em 4em;
+  margin-top: 5em;
 }
 
 h2,
@@ -15,8 +17,4 @@ aside {
   border-radius: 6px;
   margin-right: 2em;
   height: max-content;
-}
-
-main {
-  padding: 3em 1em;
 }
