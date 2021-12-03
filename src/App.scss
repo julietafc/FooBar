@@ -1,11 +1,11 @@
 .App {
   text-align: center;
   background-image: url(assets/bg_dark.svg);
-  background-color: #cccccc; /* Used if the image is unavailable */
-  min-height: 100vh; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
+  // background-color: #cccccc; /* Used if the image is unavailable */
+  // min-height: 100vh; /* You must set a specified height */
+  // background-position: center; /* Center the image */
+  // background-repeat: no-repeat; /* Do not repeat the image */
+  // background-size: cover;
   font-family: var(--primary-font);
   position: relative;
 
@@ -18,7 +18,8 @@
     padding: 2em 4em;
     position: fixed;
     top: 0;
-    background-color: #000;
+    background-color: #220f2a;
+    z-index: 999;
 
     h1 {
       color: white;
@@ -40,7 +41,7 @@
 
   main {
     color: white;
-    padding: 12em 5em;
+    // padding: 12em 5em;
 
     h1 {
       font-size: 2em;
