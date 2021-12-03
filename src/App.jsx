@@ -22,6 +22,11 @@ function App() {
   //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
   const [ordersReady, setOrdersReady] = useState([]);
+  const [cart, setCart] = useState(false);
+
+  function changeCartState(state) {
+    setCart(state);
+  }
 
   useEffect(() => {
     const URL = "https://los-amigos.herokuapp.com/";
@@ -128,7 +133,7 @@ function App() {
       {isCustomer ? (
         <header className="mobileHeader">
           <h1>Welcome to FooBar</h1>
-          <Nav1 />
+          <Nav1 isMobile={isMobile} cart={cart} changeCartState={changeCartState} />
         </header>
       ) : (
         <header>
@@ -146,8 +151,6 @@ function App() {
             >
               Customers
             </Link>
-
-            <Link to="/Form">Form</Link>
           </nav>
         </header>
       )}
@@ -158,7 +161,7 @@ function App() {
           <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
           <Route exact path="/Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
-          <Route exact path="/Form" element={<Form products={products} />} />
+          <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} />} />
         </Routes>
       </main>
     </div>

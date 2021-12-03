@@ -10,25 +10,23 @@ export default function Form(props) {
   }
   const beers = props.products.filter((beer) => beer.onTap);
   const [basket, setBasket] = useState([]);
-  const [cart, setCart] = useState(true);
-  const onClick = () => setCart(true);
 
-  const [windowDimension, setWindowDimension] = useState(null);
+  // const [windowDimension, setWindowDimension] = useState(null);
 
-  useEffect(() => {
-    setWindowDimension(window.innerWidth);
-  }, []);
+  // useEffect(() => {
+  //   setWindowDimension(window.innerWidth);
+  // }, []);
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimension(window.innerWidth);
-    }
+  // useEffect(() => {
+  //   function handleResize() {
+  //     setWindowDimension(window.innerWidth);
+  //   }
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
-  const isMobile = windowDimension <= 640;
+  // const isMobile = windowDimension <= 640;
 
   function addToBasket(product) {
     setBasket(function (oldBasket) {
@@ -98,18 +96,23 @@ export default function Form(props) {
     });
   }
 
-  return (
-    <div className="Layout">
-      <ProductList addToBasket={addToBasket} beers={beers} />
+  const style = {
+    position: "absolute",
+    top: "0",
+  };
 
-      {/* {isMobile && (
-        <div>
-          <button onClick={onClick}>Checkout</button>
-          {cart ? <Basket deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} /> : null}
-        </div>
-      )} */}
-
-      {cart && <Basket deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />}
-    </div>
-  );
+  if (props.isMobile) {
+    return (
+      <div className="Layout">
+        {!props.cart ? <ProductList addToBasket={addToBasket} beers={beers} /> : <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />}
+      </div>
+    );
+  } else {
+    return (
+      <div className="Layout">
+        <ProductList addToBasket={addToBasket} beers={beers} />
+        <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+      </div>
+    );
+  }
 }
