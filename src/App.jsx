@@ -1,6 +1,8 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
+import timeDiference from "./modules/timeDiference";
+//import Form from "./components/Form/Form";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Form from "./components/Form/Form";
@@ -62,6 +64,21 @@ function App() {
     };
   }, []);
 
+  //-----------------------
+  if (data.queue) {
+    const allOrders = [...data.queue, ...data.serving];
+    allOrders.forEach((order) => {
+      if (data.bartenders.find((bartender) => bartender.servingCustomer === order.id)) {
+        const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
+        if (bartender.statusDetail === "receivePayment") {
+          const tookenTime = timeDiference(order.startTime, now);
+          upDateOrdersReady({ id: order.id, tookenTime: tookenTime });
+        }
+      }
+    });
+  }
+
+  //-----------------------
   useEffect(() => {
     setWindowDimension(window.innerWidth);
   }, []);
@@ -114,7 +131,7 @@ function App() {
     if (!ordersReady.find((element) => element.id === order.id)) {
       setOrdersReady(function (oldOrdersReady) {
         const copy = [order, ...oldOrdersReady];
-        return copy;
+        return copy.slice(0, 10);
       });
     }
     return;
@@ -166,7 +183,7 @@ function App() {
           <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
           <Route exact path="/Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
-          <Route exact path="/Form" element={<Form products={products} />} />
+          <Route exact path="/Form" element={<Form products={products} ordersReady={ordersReady} />} />
         </Routes>
       </main>
     </div>

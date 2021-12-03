@@ -45,9 +45,9 @@ export default function MyBasket(props) {
     </li>
   ));
 
-  function noBeer() {
-    const basket = [...props.basket].filter((element) => (element.amount = 0));
-    props.deleteBeer(basket);
+  function noBeer(e) {
+    const productName = e.currentTarget.dataset.name;
+    props.deleteBeer(productName);
   }
 
   function oneMore(e) {
@@ -84,7 +84,7 @@ export default function MyBasket(props) {
       {props.basket.length > 0 && (
         <div>
           <button onClick={onClick}>Checkout</button>
-          {showResults ? <Checkout payload={payload} /> : null}
+          {showResults ? <Checkout resetBasket={props.resetBasket} payload={payload} addID={props.addID} /> : null}
         </div>
       )}
     </div>

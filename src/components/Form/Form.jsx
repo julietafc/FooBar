@@ -10,6 +10,7 @@ export default function Form(props) {
   }
   const beers = props.products.filter((beer) => beer.onTap);
   const [basket, setBasket] = useState([]);
+  const [ordersID, setOrdersID] = useState([]);
 
   function addToBasket(product) {
     setBasket(function (oldBasket) {
@@ -31,6 +32,10 @@ export default function Form(props) {
     });
   }
 
+  function resetBasket() {
+    setBasket([]);
+  }
+
   function addMoreBeer(amount, productName) {
     setBasket(function (oldBasket) {
       return oldBasket.map((item) => {
@@ -43,7 +48,7 @@ export default function Form(props) {
     });
   }
 
-  function deleteBeer(amount, productName) {
+  function deleteBeer(productName) {
     setBasket(function (oldBasket) {
       return oldBasket.map((item) => {
         const copy = { ...item };
@@ -79,10 +84,27 @@ export default function Form(props) {
     });
   }
 
+  function addID(orderID) {
+    setOrdersID((oldArr) => {
+      const copy = [orderID, ...oldArr];
+      return copy;
+    });
+  }
+
+  ordersID.forEach((ID) => {
+    if (props.ordersReady.find((orderReady) => orderReady.id === ID)) {
+      window.alert("your order " + ID + " is ready");
+      setOrdersID((oldArr) => {
+        const copy = oldArr.filter((id) => id !== ID);
+        return copy;
+      });
+    }
+  });
+
   return (
     <div className="Layout">
       <ProductList addToBasket={addToBasket} beers={beers} />
-      <Basket deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+      <Basket resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} addID={addID} />
     </div>
   );
 }

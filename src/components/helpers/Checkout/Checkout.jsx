@@ -6,7 +6,9 @@ export default function Checkout(props) {
   const form = useRef(null);
 
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [ccnumber, setCCNumber] = useState("");
+  const [expnumber, setExpNumber] = useState("");
+  const [cvvnumber, setCVVNumber] = useState("");
 
   function postOrder() {
     fetch("https://los-amigos.herokuapp.com/order", {
@@ -24,7 +26,10 @@ export default function Checkout(props) {
       })
       .then((data) => {
         window.alert(data.id);
+        props.addID(data.id);
+        props.resetBasket();
       })
+
       .catch((err) => {
         console.error(err);
       });
@@ -50,8 +55,17 @@ export default function Checkout(props) {
 
         <label>
           Card number
-          <MaskInput type="text" required name="number" inputMode="numeric" value={number} alwaysShowMask maskChar=" " mask="0000 0000 0000 0000" size={20} onChange={(e) => setNumber(e.target.value)} />
+          <input type="text" inputMode="numeric" />
+          <MaskInput type="text" required name="number" inputMode="numeric" value={ccnumber} alwaysShowMask maskChar=" " mask="0000 0000 0000 0000" size={20} onChange={(e) => setCCNumber(e.target.value)} />
         </label>
+        {/* <label>
+          Exp number
+          <MaskInput type="text" required name="number" inputMode="numeric" value={expnumber} alwaysShowMask maskChar="" mask="00/00" size={5} onChange={(e) => setExpNumber(e.target.value)} />
+        </label>
+        <label>
+          CVV
+          <MaskInput type="text" required name="number" inputMode="numeric" value={cvvnumber} alwaysShowMask maskChar="" mask="000" size={3} onChange={(e) => setCVVNumber(e.target.value)} />
+        </label> */}
 
         <button onClick={postOrder}>Pay</button>
       </form>
