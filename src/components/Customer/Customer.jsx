@@ -26,7 +26,7 @@ export default function Customer(props) {
       <TimeToClose now={props.now} />
       <section>
         <h2>orders ready</h2>
-        <ul className="orders-ready">{readyMap}</ul>s
+        <ul className="orders-ready">{readyMap}</ul>
       </section>
     </div>
   );
