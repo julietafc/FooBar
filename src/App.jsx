@@ -10,21 +10,23 @@ import Manager from "./components/Manager/Manager";
 import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
-import { display } from "@mui/system";
+//import { display } from "@mui/system";
 import Nav1 from "./components/helpers/Nav1/Nav1";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
-  const [realTime, setRealTime] = useState(0);
+
+  //const [realTime, setRealTime] = useState(0);
   const [isCustomer, setIsCustomer] = useState(false);
   // const [isMobile, setIsMobile] = useState(false);
-  const beerBasePrice = 40;
   //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
+  const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
+  const beerBasePrice = 40;
 
   function changeCartState(state) {
     setCart(state);
@@ -36,9 +38,11 @@ function App() {
     const fetchData = async () => {
       try {
         const res = await fetch(URL);
-        const json = await res.json();
-        setData(json);
-        checkTaps(json);
+        const data = await res.json();
+        setData(data);
+        checkTaps(data);
+        setAllOrders([...data.queue, ...data.serving]);
+
         //   setRealTime(json.timestamp);
       } catch (error) {
         console.log(error);
@@ -47,7 +51,7 @@ function App() {
 
     const id = setInterval(() => {
       fetchData(); // <-- (3) invoke in interval callback
-    }, 5000);
+    }, 2000);
 
     function upDateNow() {
       setNow(new Date().getTime());
@@ -73,18 +77,16 @@ function App() {
   }, []);
 
   //-----------------------
-  if (data.queue) {
-    const allOrders = [...data.queue, ...data.serving];
-    allOrders.forEach((order) => {
-      if (data.bartenders.find((bartender) => bartender.servingCustomer === order.id)) {
-        const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
-        if (bartender.statusDetail === "receivePayment") {
-          const tookenTime = timeDiference(order.startTime, now);
-          upDateOrdersReady({ id: order.id, tookenTime: tookenTime });
-        }
+
+  allOrders.forEach((order) => {
+    if (data.bartenders.find((bartender) => bartender.servingCustomer === order.id)) {
+      const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
+      if (bartender.statusDetail === "receivePayment") {
+        const tookenTime = timeDiference(order.startTime, now);
+        upDateOrdersReady({ id: order.id, tookenTime: tookenTime });
       }
-    });
-  }
+    }
+  });
 
   //-----------------------
   useEffect(() => {

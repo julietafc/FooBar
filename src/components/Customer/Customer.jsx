@@ -19,7 +19,7 @@ export default function Customer(props) {
   //   }
   // });
 
-  const readyMap = props.ordersReady.map((order) => <li key={order.id}>{order.id}</li>);
+  const readyMap = props.ordersReady.map((order) => order.id && <li key={order.id}>{order.id}</li>);
 
   return (
     <div className="Customer">
