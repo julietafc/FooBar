@@ -5,12 +5,12 @@ export default function TapBoxV2(props) {
   const bartender = props.bartenders.filter((person) => person.usingTap === props.tap.id);
 
   const styleUse = {
-    fill: props.tap.inUse ? "#21e876be" : "#134721",
+    fill: props.tap.inUse ? "#21e876be" : "#0e2908",
     filter: props.tap.inUse ? "drop-shadow(0px 0px 15px #21e876)" : "none",
   };
 
   const styleChange = {
-    fill: props.tap.level < 50 ? "#f42a2abe" : "#8b1f25",
+    fill: props.tap.level < 50 ? "#f42a2abe" : "#4f0101",
     filter: props.tap.level < 50 ? "drop-shadow(0px 0px 15px #f42a2a)" : "none",
   };
 
@@ -18,7 +18,7 @@ export default function TapBoxV2(props) {
     <div className="svg-wrapper">
       <p style={{ opacity: "1" }}>{"tap: " + (props.tap.id + 1)}</p>
 
-      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 350 507.08">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 350 527.08">
         <defs>
           <clipPath id="clip-path">
             <rect id="mask" className="cls-1" x="127.61" y="277.8" width="326.49" height="35.65" transform="translate(586.48 4.78) rotate(90)" />
@@ -27,7 +27,8 @@ export default function TapBoxV2(props) {
             <rect id="mask-2" data-name="mask" className="cls-1" x="50.49" y="127.8" width="182.29" height="182.29" rx="32.39" />
           </clipPath>
         </defs>
-        <g id="items-to-use">
+
+        <g id="items-to-use" transform="translate(0 20)">
           <g id="pixel-tap-box">
             <g>
               <polygon id="box-background" className="cls-2" points="6.87 117.71 15.87 99.7 26.3 94.75 39.34 89.6 319.93 90.72 337.18 103.66 342.21 118.89 342.21 476.26 327.99 496.31 312.82 500.21 24.41 498.74 6.87 476.26 6.87 117.71" />
