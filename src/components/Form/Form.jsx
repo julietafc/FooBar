@@ -139,7 +139,7 @@ export default function Form(props) {
     return (
       <div className="Layout">
         <ProductList addToBasket={addToBasket} beers={beers} />
-        <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+        <Basket style={props.cart && style} addID={addID} resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
       </div>
     );
   }
