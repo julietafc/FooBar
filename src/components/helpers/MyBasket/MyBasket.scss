@@ -4,15 +4,26 @@
   flex-direction: column;
   justify-content: space-between;
   ul {
-    margin: 6em 0;
+    margin: 3em 0;
   }
   .addedItem {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: 1px solid white;
+
+    .deleteItem {
+      border: none;
+      background: transparent;
+      font-size: 1.5em;
+      color: red;
+      cursor: pointer;
+    }
 
     input {
       color: black;
+      text-align: center;
+      padding: 0.5em;
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -20,14 +31,34 @@
         margin: 0;
       }
     }
+
+    .actions {
+      .amountWrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 1em;
+
+        button {
+          background-color: black;
+          margin: 1em;
+        }
+      }
+    }
   }
 
   .totalOrder {
     display: flex;
-    justify-content: space-between;
+    color: black;
+    padding-top: 3em;
+    background-image: url(/assets/cloud.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-direction: column;
     align-items: center;
-    border-top: 1px solid white;
-    padding-top: 2em;
+    text-align: center;
+    padding: 3em;
 
     p:nth-child(2) {
       display: flex;
@@ -37,5 +68,10 @@
         margin-left: 0.5em;
       }
     }
+  }
+  button {
+    background-color: var(--blue);
+    padding: 1em;
+    margin: 1em;
   }
 }
