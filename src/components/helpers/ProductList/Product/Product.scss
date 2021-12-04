@@ -1,96 +1,174 @@
 @use "../../../../index.scss";
 
-.Product,
-.ProductReverse {
-  background-color: white;
-  border-radius: 10px;
-  width: 80%;
-  min-height: 280px;
-  padding: 2em 2em 2em 6em;
-  margin: 1em;
+.Product {
+  background-image: url(/assets/square-02.svg);
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  margin-right: 40px;
+  color: black;
   position: relative;
   display: flex;
-  align-items: center;
-  text-align: left;
-  margin-left: 4em;
-  transition: 3s ease-in-out;
-
-  h3,
-  p {
-    color: black;
-  }
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2em;
 
   img {
-    width: 180px;
-    height: 180px;
-    position: absolute;
-    left: -50px;
+    width: 150px;
+    height: 150px;
+    left: -10px;
+    top: 0px;
     border-radius: 4px;
+    box-shadow: 0 0 4px 0px black;
   }
 
-  .Text {
+  .details {
+    font-size: 0.8em;
+  }
+
+  .moreInfo {
+    position: absolute;
+    right: 30px;
+    top: -30px;
+    background-color: var(--pink);
+    border: none;
+    color: white;
+    box-shadow: 0 0 4px 0px #898989;
+    padding: 0.5em 1em 1.2em;
+  }
+
+  .mainInfo {
     display: flex;
-    flex-direction: column;
-    margin-left: 6em;
-    width: 100%;
+    align-items: center;
+    margin: 1em 0 2em;
 
-    .primary {
+    .text {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
+      width: 100%;
 
-      :nth-child(2) {
-        font-size: 2em;
+      p,
+      h3 {
+        color: black;
+      }
+
+      h3 {
+        text-align: center;
+        margin-bottom: -1em;
+      }
+      .money {
+        display: flex;
+        align-items: center;
+        margin-top: 1em;
+
+        img {
+          box-shadow: none;
+          width: 40px;
+          height: auto;
+          margin-right: 1em;
+        }
+
+        .price {
+          font-size: 2em;
+          margin-bottom: 0;
+        }
       }
     }
   }
-
-  .frontCard,
-  .reverseCard {
-    position: absolute;
-    right: -1em;
-    top: -1em;
-    background-color: var(--pink);
-    border: none;
-    padding: 0.5em;
-  }
-
   .actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     .amountWrapper {
       display: flex;
       align-items: center;
+
+      button {
+        background-color: black;
+
+        font-size: 1.3em;
+        padding: 0.5em;
+        color: white;
+        box-shadow: 0px 2px 6px 2px #c3c3c3;
+      }
+
       .amount {
         margin: 0 1em;
       }
-      & button {
-        background: black;
-        color: white;
-        border-radius: 50%;
-      }
+    }
+
+    .buttonAdd {
+      background-color: var(--blue);
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      border-radius: 50%;
+      padding: 1.4em 1em;
+      box-shadow: 0px 2px 6px 2px #c3c3c3;
     }
   }
-
-  @media screen and (max-width: 1024px) {
-    .Product section {
-      display: none;
-    }
-  }
-}
-
-.ProductReverse {
-  flex-direction: column;
-  height: auto;
-  font-family: sans-serif;
-  //   position: absolute;
-  //   z-index: 999;
-}
-
-@media screen and (max-width: 1400px) {
-  .Product,
   .ProductReverse {
-    width: 80%;
+    width: 10%;
   }
 }
+
+//   .frontCard {
+//     position: absolute;
+//     right: 8em;
+//     top: 1em;
+//     background-color: var(--pink);
+//     border: none;
+//     padding: 0.5em;
+//   }
+
+//   .buttonDelete {
+//     cursor: pointer;
+//     background-color: #7ad0c8;
+//     padding: 0.8em;
+//     color: white;
+//     border-radius: 50%;
+//   }
+
+//   .buttonAdd {
+//     background-color: #7ad0c8;
+//     padding: 0.8em;
+//     color: white;
+//     border-radius: 50%;
+//     border: 4px solid #7ad0c8;
+//     box-shadow: inset 0px 0px 0px 2px #4f8580;
+//     box-sizing: border-box;
+//     cursor: pointer;
+//     box-shadow: 0 0 4px 0px #000000b8;
+
+//     &:hover {
+//       background-color: #4f8580;
+//     }
+//   }
+
+//   // @media screen and (max-width: 1024px) {
+//   //   .Product section {
+//   //     display: none;
+//   //   }
+//   // }
+//   @media screen and (max-width: 1024px) {
+//     .Product {
+//       width: 100%;
+//       height: 200px;
+//     }
+//   }
+// }
+
+// .ProductReverse {
+//   flex-direction: column;
+//   height: auto;
+//   font-family: sans-serif;
+//   //   position: absolute;
+//   //   z-index: 999;
+// }
+
+// // @media screen and (max-width: 1400px) {
+// //   .Product,
+// //   .ProductReverse {
+// //     width: 80%;
+// //   }
+// // }

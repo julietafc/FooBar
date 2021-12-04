@@ -2,7 +2,7 @@ import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
 import timeDiference from "./modules/timeDiference";
-//import Form from "./components/Form/Form";
+
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Form from "./components/Form/Form";
@@ -12,6 +12,7 @@ import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
 //import { display } from "@mui/system";
 import Nav1 from "./components/helpers/Nav1/Nav1";
+import Footer from "./components/helpers/Footer/Footer";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
@@ -156,7 +157,7 @@ function App() {
         </header>
       ) : (
         <header>
-          <h1>Welcome to FooBar</h1>
+          <h1>FooBar</h1>
           <nav className="navigation">
             <Link to="/">Home</Link>
             <Link to="/Manager">Manager</Link>
@@ -183,6 +184,7 @@ function App() {
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }
