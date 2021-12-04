@@ -22,7 +22,7 @@ export default function Customer(props) {
   const readyMap = props.ordersReady.map((order) => order.id && <li key={order.id}>{order.id}</li>);
 
   return (
-    <div className="Customer">
+    <div className="Customer Layout">
       <TimeToClose now={props.now} />
       <section>
         <h2>orders ready</h2>

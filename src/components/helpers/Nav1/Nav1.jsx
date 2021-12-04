@@ -1,25 +1,25 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 export default function Nav1(props) {
   // const [orderShown, setOrder] = useState(true);
   return (
     <nav className="navigation">
-      <Link
+      <NavLink
         to="/"
         onClick={() => {
           setIsCustomer(false);
         }}
       >
         Home
-      </Link>
-      <Link to="/Customers">Dashboard</Link>
-      <Link
+      </NavLink>
+      <NavLink to="/Dashboard">Dashboard</NavLink>
+      <NavLink
         to="/Form"
         onClick={() => {
           props.changeCartState(!props.cart);
         }}
       >
         {props.cart ? "Order" : props.isMobile ? "Cart" : "Order"}
-      </Link>
+      </NavLink>
       {/* <a
         className="notShown"
         onClick={() => {

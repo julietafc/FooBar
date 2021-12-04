@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 import timeDiference from "./modules/timeDiference";
 
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, NavLink } from "react-router-dom";
 import Form from "./components/Form/Form";
 import Manager from "./components/Manager/Manager";
 import Customer from "./components/Customer/Customer";
@@ -27,6 +27,8 @@ function App() {
   const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
+  const [activeLink, setActiveLink] = useState("Home");
+
   const beerBasePrice = 40;
 
   function changeCartState(state) {
@@ -158,19 +160,21 @@ function App() {
       ) : (
         <header>
           <h1>FooBar</h1>
-          <nav className="navigation">
-            <Link to="/">Home</Link>
-            <Link to="/Manager">Manager</Link>
-            <Link to="/Bartender">Bartenders</Link>
 
-            <Link
-              to="/Customers"
+          <nav className="navigation">
+            <NavLink to="/">Home</NavLink>
+
+            <NavLink to="/Manager">Manager</NavLink>
+            <NavLink to="/Bartender">Bartenders</NavLink>
+
+            <NavLink
+              to="/Dashboard"
               onClick={() => {
                 setIsCustomer(true);
               }}
             >
               Customers
-            </Link>
+            </NavLink>
           </nav>
         </header>
       )}
@@ -180,7 +184,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
-          <Route exact path="/Customers" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
+          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} />} />
         </Routes>
       </main>
