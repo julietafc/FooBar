@@ -40,28 +40,35 @@ export default function Product(props) {
   return (
     <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
       <article className="Product">
-        <button className="frontCard" onClick={handleClick}>
+        <button className="moreInfo" onClick={handleClick}>
           Info
         </button>
-        <img src={"./assets/" + props.label} alt="" />
-        <div className="Text">
-          <p>{props.category}</p>
-          <h3>{props.name}</h3>
+        <div className="details">
+          <p>
+            {props.category} | {props.alc}%
+          </p>
+        </div>
 
-          <div className="primary">
-            <p>{props.alc}% vol.</p>
-            <p>${props.price()}</p>
-          </div>
-          <div className="actions">
-            <div className="amountWrapper">
-              <button onClick={decreaseAmount}>-</button>
-              <p className="amount">{amount}</p>
-              <button onClick={increaseAmount}>+</button>
+        <div className="mainInfo">
+          <img src={"./assets/" + props.label} alt="" />
+          <div className="text">
+            <h3>{props.name}</h3>
+            <div className="money">
+              <img src="/assets/coin.svg" alt="" />
+              <p className="price">${props.price()}</p>
             </div>
-            <button className="buttonAdd" onClick={add}>
-              Add
-            </button>
           </div>
+        </div>
+        <div className="actions">
+          <div className="amountWrapper">
+            <button onClick={decreaseAmount}>-</button>
+            <p className="amount">{amount}</p>
+            <button onClick={increaseAmount}>+</button>
+          </div>
+
+          <button className="buttonAdd" onClick={add}>
+            Add
+          </button>
         </div>
       </article>
       <div className="ProductReverse">
