@@ -6,12 +6,12 @@ export default function TapBoxV2(props) {
 
   const styleUse = {
     fill: props.tap.inUse ? "#21e876be" : "#0e2908",
-    filter: props.tap.inUse ? "drop-shadow(0px 0px 15px #21e876)" : "none",
+    filter: props.tap.inUse ? "drop-shadow(-2px -8px 15px #21e876be)" : "none",
   };
 
   const styleChange = {
     fill: props.tap.level < 50 ? "#f42a2abe" : "#4f0101",
-    filter: props.tap.level < 50 ? "drop-shadow(0px 0px 15px #f42a2a)" : "none",
+    filter: props.tap.level < 50 ? "drop-shadow(0px 0px 12px #f42a2a)" : "none",
   };
 
   return (
