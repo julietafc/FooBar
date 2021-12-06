@@ -27,6 +27,7 @@ function App() {
   const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
+  const [happyHour, setHappyHour] = useState(1);
 
   const beerBasePrice = 40;
 
@@ -130,7 +131,7 @@ function App() {
         id: (i < 9 ? "b0" : "b") + (i + 1),
         onTap: false,
         price: function () {
-          return Math.round(this.alc + beerBasePrice);
+          return Math.round(this.alc + beerBasePrice) * happyHour;
         },
         amount: 1,
         totalPrice: function () {
