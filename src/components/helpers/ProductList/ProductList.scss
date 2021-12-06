@@ -4,13 +4,35 @@
   h2 {
     grid-column: 1/-1;
     color: white;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
   }
 
   section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 4em;
+  }
+
+  .sortingOptions {
+    margin-bottom: 4em;
+    display: flex;
+    align-items: center;
+
+    h4 {
+      margin-bottom: 0;
+      margin-right: 1em;
+    }
+
+    button {
+      margin-right: 1em;
+      color: white;
+      border: none;
+      background-color: transparent;
+
+      &:hover {
+        color: var(--cyan);
+      }
+    }
   }
 }
 
