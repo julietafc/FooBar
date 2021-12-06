@@ -3,7 +3,7 @@ import Product from "./Product/Product";
 import "./ProductList.scss";
 
 export default function ProductList(props) {
-  const beers = props.beers.map((beer) => <Product addToBasket={props.addToBasket} addMoreBeer={props.addMoreBeer} key={beer.id} {...beer} />);
+  const beers = props.beers.map((beer) => <Product addToBasket={props.addToBasket} addMoreBeer={props.addMoreBeer} key={beer.id} {...beer} isHappyHour={props.isHappyHour} />);
   // const [filter, setFilter] = useState(false);
   const [sort, setSort] = useState("name");
   const [dir, setDir] = useState("asc");

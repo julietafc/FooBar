@@ -23,7 +23,7 @@ export default function Customer(props) {
 
   return (
     <div className="Customer Layout">
-      <TimeToClose now={props.now} />
+      <TimeToClose now={props.now} isHappyHour={props.isHappyHour} setIsHappyHour={props.setIsHappyHour} />
       <section>
         <h2>orders ready</h2>
         <ul className="orders-ready">{readyMap}</ul>

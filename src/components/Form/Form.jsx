@@ -132,13 +132,17 @@ export default function Form(props) {
   if (props.isMobile) {
     return (
       <div className="Layout">
-        {!props.cart ? <ProductList addToBasket={addToBasket} beers={beers} /> : <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />}
+        {!props.cart ? (
+          <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
+        ) : (
+          <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+        )}
       </div>
     );
   } else {
     return (
       <div className="Layout">
-        <ProductList addToBasket={addToBasket} beers={beers} />
+        <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         <Basket style={props.cart && style} addID={addID} resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
       </div>
     );

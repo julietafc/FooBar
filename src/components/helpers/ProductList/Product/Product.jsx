@@ -31,7 +31,7 @@ export default function Product(props) {
     props.addToBasket({
       amount: amount,
       price: function () {
-        return props.price() * this.amount;
+        return props.price() * this.amount * (props.isHappyHour ? 0.5 : 1);
       },
       name: props.name,
     });
@@ -55,7 +55,7 @@ export default function Product(props) {
             <h3>{props.name}</h3>
             <div className="money">
               <img src="/assets/coin.svg" alt="" />
-              <p className="price">${props.price()}</p>
+              <p className="price">${props.price() * (props.isHappyHour ? 0.5 : 1)}</p>
             </div>
           </div>
         </div>
