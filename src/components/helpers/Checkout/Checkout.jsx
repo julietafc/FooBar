@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import "./Checkout.scss";
 import MaskInput from "react-maskinput";
+import ModalYourID from "../ModalYourID/ModalYourID";
 
 export default function Checkout(props) {
   const form = useRef(null);
@@ -22,12 +23,11 @@ export default function Checkout(props) {
         const obj = response.json();
         // window.alert(obj.Object.id);
         return obj;
-        console.log(obj);
       })
       .then((data) => {
-        window.alert(data.id);
         props.addID(data.id);
         props.resetBasket();
+        props.setIsModalYourID(true);
       })
 
       .catch((err) => {

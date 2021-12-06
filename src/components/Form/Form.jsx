@@ -135,7 +135,7 @@ export default function Form(props) {
         {!props.cart ? (
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         ) : (
-          <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+          <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} ordersID={ordersID} />
         )}
       </div>
     );
@@ -143,7 +143,7 @@ export default function Form(props) {
     return (
       <div className="Layout">
         <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
-        <Basket style={props.cart && style} addID={addID} resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+        <Basket style={props.cart && style} addID={addID} resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} ordersID={ordersID} />
       </div>
     );
   }
