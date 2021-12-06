@@ -5,6 +5,11 @@ export default function TimeToClose(props) {
   todayAtTen.setHours(22, 0, 0, 0);
   todayAtTen = todayAtTen.getTime();
   const time = timeDiference(props.now, todayAtTen);
-  const timeDisplay = `We close in ${time.hours} : ${time.minutes} : ${time.seconds}`;
-  return <p className="TimeToClose">{time.hours < 0 ? "we are close" : timeDisplay}</p>;
+  const timeDisplay = `${time.hours}:${time.minutes}:${time.seconds}`;
+  return (
+    <article>
+      <h2>TIME</h2>
+      <p className="TimeToClose">{time.hours < 0 ? "we are close" : timeDisplay}</p>
+    </article>
+  );
 }

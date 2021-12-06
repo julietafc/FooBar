@@ -5,6 +5,9 @@ import Workers from "../helpers/Workers/Workers";
 import TopBeer from "../helpers/Ranking/Ranking";
 
 export default function Manager(props) {
+  if (!props.bartenders) {
+    return null;
+  }
   return (
     <>
       <div className="clock">

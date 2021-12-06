@@ -27,7 +27,6 @@ function App() {
   const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
 
   const beerBasePrice = 40;
 
@@ -81,12 +80,14 @@ function App() {
 
   //-----------------------
 
+  //------------------------------
+
   allOrders.forEach((order) => {
     if (data.bartenders.find((bartender) => bartender.servingCustomer === order.id)) {
       const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
       if (bartender.statusDetail === "receivePayment") {
         const tookenTime = timeDiference(order.startTime, now);
-        upDateOrdersReady({ id: order.id, tookenTime: tookenTime });
+        upDateOrdersReady({ id: order.id, tookenTime: tookenTime, bartender: bartender.name });
       }
     }
   });
