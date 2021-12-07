@@ -5,7 +5,7 @@ import React from "react";
 import Confetti from "react-confetti";
 
 export default function TimeToClose(props) {
-  const happyHourTime = 18;
+  const happyHourTime = 17;
   const closingHour = 22;
   const happyHourStar = settingTime(happyHourTime);
   const happyHourEnd = settingTime(happyHourTime + 1);
@@ -22,14 +22,8 @@ export default function TimeToClose(props) {
   return (
     <>
       <article>
-        {props.isHappyHour ? (
-          <>
-            <Confetti width={window.innerWidth} height={window.innerHeight} />
-            <h2>HAPPY HOUR</h2>
-          </>
-        ) : (
-          <h2>TIME</h2>
-        )}
+        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+        <h2>{props.isHappyHour ? "HAPPY HOUR" : "TIME"}</h2>
         <p className="TimeToClose">{time.hours < 0 ? "we are close" : timeDisplay}</p>
       </article>
     </>
