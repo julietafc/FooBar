@@ -27,7 +27,7 @@ export default function MyBasket(props) {
   // console.log(payload);
   const orders = basket.map((order, i) => (
     <li className="addedItem" key={i}>
-      <button class="deleteItem" data-name={order.name} onClick={noBeer}>
+      <button className="deleteItem" data-name={order.name} onClick={noBeer}>
         X
       </button>
       {order.amount} {order.name} ${order.price()}
