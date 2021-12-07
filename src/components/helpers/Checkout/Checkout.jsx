@@ -1,14 +1,25 @@
 import { useState, useRef, useEffect } from "react";
 import "./Checkout.scss";
-import MaskInput from "react-maskinput";
+import { Form, Input, Button } from "antd";
+import MaskedInput from "antd-mask-input";
 
 export default function Checkout(props) {
   const form = useRef(null);
 
-  const [name, setName] = useState("");
-  const [ccnumber, setCCNumber] = useState("");
-  const [expnumber, setExpNumber] = useState("");
-  const [cvvnumber, setCVVNumber] = useState("");
+  const onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  const onFinish = (values, e) => {
+    e.preventDefault();
+    e.current.checkValidity();
+    console.log("Success:", values);
+    postOrder();
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
 
   function postOrder() {
     fetch("https://los-amigos.herokuapp.com/order", {
@@ -38,16 +49,102 @@ export default function Checkout(props) {
   const nameChanged = (e) => {
     setName(e.target.value);
   };
-  function onSubmit(e) {
-    e.preventDefault();
-    console.log(form.current.checkValidity());
-  }
+
+  // function onSubmit(e) {
+  //   e.preventDefault();
+  //   form.current.checkValidity();
+  // }
 
   return (
-    <div className="Form">
+    <div className="FormWrapper">
       <h3>Checkout</h3>
 
-      <form ref={form} onSubmit={onSubmit}>
+      <Form
+        onSubmit={onSubmit}
+        ref={form}
+        className="Form"
+        name="basic"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      >
+        <Form.Item
+          validateStatus="error"
+          help="Should be combination of numbers & alphabets"
+          hasFeedback
+          className="inputs"
+          label="Name"
+          name="name"
+          rules={[
+            {
+              required: true,
+              message: "Please input your username!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          hasFeedback
+          validateStatus="success"
+          label="Card number"
+          name="cardnumber"
+          className="inputs"
+          rules={[
+            {
+              required: true,
+              message: "We really need you to pay!",
+            },
+          ]}
+        >
+          <MaskedInput mask="1111 1111 1111 1111" name="card" size="20" onChange={onChange} />
+        </Form.Item>
+        <div className="smallInputs">
+          <Form.Item
+            className="inputs"
+            label="Exp"
+            name="exp"
+            rules={[
+              {
+                required: true,
+                message: "Enter Exp!",
+              },
+            ]}
+          >
+            <MaskedInput mask="11/11" name="expiry" placeholder="mm/yy" onChange={onChange} style={{ width: "100px" }} />
+          </Form.Item>
+
+          <Form.Item
+            className="inputs"
+            label="CVV"
+            name="cvv"
+            rules={[
+              {
+                required: true,
+                message: "Enter CVV!",
+              },
+            ]}
+          >
+            <MaskedInput mask="111" name="ccv" style={{ width: "80px" }} onChange={onChange} />
+          </Form.Item>
+        </div>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+
+      {/* <form ref={form} onSubmit={onSubmit}>
         <label>
           Name
           <input type="text" required onChange={nameChanged} name="name" value={name} />
@@ -58,17 +155,9 @@ export default function Checkout(props) {
           <input type="text" inputMode="numeric" />
           <MaskInput type="text" required name="number" inputMode="numeric" value={ccnumber} alwaysShowMask maskChar=" " mask="0000 0000 0000 0000" size={20} onChange={(e) => setCCNumber(e.target.value)} />
         </label>
-        {/* <label>
-          Exp number
-          <MaskInput type="text" required name="number" inputMode="numeric" value={expnumber} alwaysShowMask maskChar="" mask="00/00" size={5} onChange={(e) => setExpNumber(e.target.value)} />
-        </label>
-        <label>
-          CVV
-          <MaskInput type="text" required name="number" inputMode="numeric" value={cvvnumber} alwaysShowMask maskChar="" mask="000" size={3} onChange={(e) => setCVVNumber(e.target.value)} />
-        </label> */}
 
         <button onClick={postOrder}>Pay</button>
-      </form>
+      </form> */}
     </div>
   );
 }

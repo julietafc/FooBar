@@ -1,13 +1,24 @@
 .Form {
-  margin-top: 3em;
-
-  label {
+  .smallInputs {
+    display: flex;
+    justify-content: space-between;
+  }
+  .inputs {
     display: flex;
     flex-direction: column;
-    text-align: left;
-    margin: 2em;
-    input {
-      color: black;
+
+    .ant-form-item-control {
+      flex: inherit;
     }
+    .ant-form-item-explain-error {
+      font-size: 0.7em;
+      text-align: left;
+      margin-bottom: 1em;
+    }
+  }
+
+  .ant-form-item-label {
+    overflow: inherit;
+    text-align: left;
   }
 }
