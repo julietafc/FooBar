@@ -3,6 +3,7 @@ import ProductList from "../helpers/ProductList/ProductList";
 import ModalOrderReady from "../helpers/ModalOrderReady/ModalOrderReady";
 
 import { useState, useEffect } from "react";
+import Confetti from "react-confetti";
 
 import "./Form.scss";
 export default function Form(props) {
@@ -140,6 +141,7 @@ export default function Form(props) {
     return (
       <div className="Layout">
         {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
+        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
         {!props.cart ? (
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         ) : (
@@ -151,6 +153,7 @@ export default function Form(props) {
     return (
       <div className="Layout">
         {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
+        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
         <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         <Basket style={props.cart && style} addID={addID} resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} ordersID={ordersID} />
       </div>
