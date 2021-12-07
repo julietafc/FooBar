@@ -43,15 +43,13 @@ export default function Product(props) {
         <button className="moreInfo" onClick={handleClick}>
           Info
         </button>
-        <div className="details">
-          <p>
-            {props.category} | {props.alc}%
-          </p>
-        </div>
 
         <div className="mainInfo">
           <img src={"./assets/" + props.label} alt="" />
           <div className="text">
+            <p>
+              {props.category} | {props.alc}%
+            </p>
             <h3>{props.name}</h3>
             <div className="money">
               <img src="/assets/coin.svg" alt="" />
