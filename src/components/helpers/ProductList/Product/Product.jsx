@@ -1,18 +1,15 @@
 import "./Product.scss";
 import { useState } from "react";
-import Button from "../../Button/Button";
 import ReactCardFlip from "react-card-flip";
-import ButtonAdd from "../../Button/Button";
 
 export default function Product(props) {
   const [flipped, setFlipped] = useState(false);
   const [amount, setAmount] = useState(0);
-  const [isEnabled, setEnabled] = useState(true);
 
   function increaseAmount() {
     // console.log(props.id);
     setAmount((prevAmount) => prevAmount + 1);
-    setEnabled((isEnabled = amount.length > 0) => !isEnabled);
+    // setEnabled((isEnabled = amount > 0));
   }
 
   function decreaseAmount() {
@@ -38,7 +35,6 @@ export default function Product(props) {
       },
       name: props.name,
     });
-    setEnabled(!isEnabled);
     setAmount(0);
   }
 
@@ -69,7 +65,7 @@ export default function Product(props) {
             <button onClick={increaseAmount}>+</button>
           </div>
 
-          <button className="buttonAdd" disabled={isEnabled} onClick={add} style={isEnabled === true ? { backgroundColor: "grey" } : { backgroundColor: "blue" }}>
+          <button className="buttonAdd" onClick={add} style={amount < 1 ? { backgroundColor: "grey", pointerEvents: "none" } : { backgroundColor: "blue", pointerEvents: "all" }}>
             Add
           </button>
         </div>
