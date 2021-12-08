@@ -1,13 +1,43 @@
 .Form {
-  margin-top: 3em;
-
-  label {
+  .smallInputs {
+    display: flex;
+    justify-content: space-between;
+  }
+  .inputs {
     display: flex;
     flex-direction: column;
-    text-align: left;
-    margin: 2em;
-    input {
-      color: black;
+    margin-bottom: 3em;
+
+    .ant-form-item-explain-error {
+      font-size: 0.7em;
+      text-align: left;
+      margin-bottom: 1em;
     }
+  }
+
+  .ant-form-item-control-input-content {
+    flex: inherit;
+    padding: 0;
+  }
+
+  .ant-form-item-label {
+    overflow: inherit;
+    text-align: left;
+  }
+
+  fieldset {
+    .submitButton {
+      background-color: red;
+      pointer-events: none;
+      flex: inherit;
+      padding: 0;
+      padding: 1em 2em;
+    }
+    // &:valid {
+    //   .submitButton {
+    //     background-color: green;
+    //     pointer-events: all;
+    //   }
+    // }
   }
 }
