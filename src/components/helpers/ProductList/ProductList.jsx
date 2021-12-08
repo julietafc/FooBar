@@ -27,7 +27,7 @@ export default function ProductList(props) {
   }
 
   let displayList = [...props.beers].sort(sortBeers);
-  const beers = displayList.map((beer) => <Product addToBasket={props.addToBasket} addMoreBeer={props.addMoreBeer} key={beer.id} {...beer} />);
+  const beers = displayList.map((beer) => <Product addToBasket={props.addToBasket} addMoreBeer={props.addMoreBeer} key={beer.id} {...beer} isHappyHour={props.isHappyHour} />);
 
   return (
     <section className="ProductList">

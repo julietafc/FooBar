@@ -11,23 +11,20 @@ import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
 //import { display } from "@mui/system";
-import Nav1 from "./components/helpers/Nav1/Nav1";
+// import Nav1 from "./components/helpers/Nav1/Nav1";
 import Footer from "./components/helpers/Footer/Footer";
+import Header from "./components/helpers/Header/Header";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
-
-  //const [realTime, setRealTime] = useState(0);
   const [isCustomer, setIsCustomer] = useState(false);
-  // const [isMobile, setIsMobile] = useState(false);
-  //const [orderTime, setRealTime] = useState(0);
   const [now, setNow] = useState(new Date().getTime());
   const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
-  const [cart, setCart] = useState(false);
-  const [happyHour, setHappyHour] = useState(1);
+  const [cart, setCart] = useState(true);
+  const [isHappyHour, setIsHappyHour] = useState(false);
 
   const beerBasePrice = 40;
 
@@ -131,7 +128,7 @@ function App() {
         id: (i < 9 ? "b0" : "b") + (i + 1),
         onTap: false,
         price: function () {
-          return Math.round(this.alc + beerBasePrice) * happyHour;
+          return Math.round(this.alc + beerBasePrice);
         },
         amount: 1,
         totalPrice: function () {
@@ -154,7 +151,8 @@ function App() {
 
   return (
     <div className="App">
-      {isCustomer ? (
+      <Header changeCartState={changeCartState} cart={cart} />
+      {/* {isCustomer ? (
         <header className="mobileHeader">
           <h1>Welcome to FooBar</h1>
           <Nav1 isMobile={isMobile} cart={cart} changeCartState={changeCartState} />
@@ -179,15 +177,15 @@ function App() {
             </NavLink>
           </nav>
         </header>
-      )}
+      )} */}
 
       <main>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
-          <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} />} />
-          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} />} />
-          <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} />} />
+          <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} />} />
+          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} />} />
+          <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
         </Routes>
       </main>
       <Footer />

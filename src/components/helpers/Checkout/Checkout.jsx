@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "./Checkout.scss";
+import ModalYourID from "../ModalYourID/ModalYourID";
 import { Form, Input, Button } from "antd";
 import MaskedInput from "antd-mask-input";
 
@@ -23,12 +24,11 @@ export default function Checkout(props) {
         const obj = response.json();
         // window.alert(obj.Object.id);
         return obj;
-        console.log(obj);
       })
       .then((data) => {
-        window.alert(data.id);
         props.addID(data.id);
         props.resetBasket();
+        props.setIsModalYourID(true);
       })
 
       .catch((err) => {

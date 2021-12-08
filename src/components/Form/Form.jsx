@@ -1,7 +1,9 @@
 import Basket from "../helpers/Basket/Basket";
 import ProductList from "../helpers/ProductList/ProductList";
+import ModalOrderReady from "../helpers/ModalOrderReady/ModalOrderReady";
 
 import { useState, useEffect } from "react";
+import Confetti from "react-confetti";
 
 import "./Form.scss";
 export default function Form(props) {
@@ -11,6 +13,8 @@ export default function Form(props) {
   const beers = props.products.filter((beer) => beer.onTap);
   const [basket, setBasket] = useState([]);
   const [ordersID, setOrdersID] = useState([]);
+  const [isYourOrderReady, setIsYourOrderReady] = useState(false);
+  const [yourOrderReady, setYourOrderReady] = useState({});
 
   // const [windowDimension, setWindowDimension] = useState(null);
 
@@ -110,7 +114,11 @@ export default function Form(props) {
 
   ordersID.forEach((ID) => {
     if (props.ordersReady.find((orderReady) => orderReady.id === ID)) {
-      window.alert("your order " + ID + " is ready");
+      const orderReady = props.ordersReady.find((orderReady) => orderReady.id === ID);
+      setYourOrderReady({ id: orderReady.id, bartender: orderReady.bartender });
+      setIsYourOrderReady(true);
+      // window.alert("your order " + ID + " is ready");
+
       setOrdersID((oldArr) => {
         const copy = oldArr.filter((id) => id !== ID);
         return copy;
@@ -132,14 +140,22 @@ export default function Form(props) {
   if (props.isMobile) {
     return (
       <div className="Layout">
-        {!props.cart ? <ProductList addToBasket={addToBasket} beers={beers} /> : <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />}
+        {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
+        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+        {!props.cart ? (
+          <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
+        ) : (
+          <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} ordersID={ordersID} />
+        )}
       </div>
     );
   } else {
     return (
       <div className="Layout">
-        <ProductList addToBasket={addToBasket} beers={beers} />
-        <Basket style={props.cart && style} addID={addID} resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} />
+        {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
+        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+        <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
+        <Basket style={props.cart && style} addID={addID} resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} ordersID={ordersID} />
       </div>
     );
   }
