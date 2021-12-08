@@ -6,10 +6,8 @@
   .inputs {
     display: flex;
     flex-direction: column;
+    margin-bottom: 3em;
 
-    .ant-form-item-control {
-      flex: inherit;
-    }
     .ant-form-item-explain-error {
       font-size: 0.7em;
       text-align: left;
@@ -17,8 +15,29 @@
     }
   }
 
+  .ant-form-item-control-input-content {
+    flex: inherit;
+    padding: 0;
+  }
+
   .ant-form-item-label {
     overflow: inherit;
     text-align: left;
+  }
+
+  fieldset {
+    .submitButton {
+      background-color: red;
+      pointer-events: none;
+      flex: inherit;
+      padding: 0;
+      padding: 1em 2em;
+    }
+    // &:valid {
+    //   .submitButton {
+    //     background-color: green;
+    //     pointer-events: all;
+    //   }
+    // }
   }
 }

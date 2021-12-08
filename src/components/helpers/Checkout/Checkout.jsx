@@ -5,21 +5,11 @@ import MaskedInput from "antd-mask-input";
 
 export default function Checkout(props) {
   const form = useRef(null);
-
-  const onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  const onFinish = (values, e) => {
-    e.preventDefault();
-    e.current.checkValidity();
-    console.log("Success:", values);
-    postOrder();
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const [name, setName] = useState("");
+  const [cardnumber, setCardNumber] = useState("");
+  const [exp, setExp] = useState("");
+  const [cvv, setCVV] = useState("");
+  // const [isEnabled, setEnabled] = useState(true);
 
   function postOrder() {
     fetch("https://los-amigos.herokuapp.com/order", {
@@ -46,102 +36,113 @@ export default function Checkout(props) {
       });
   }
 
-  const nameChanged = (e) => {
-    setName(e.target.value);
-  };
-
-  // function onSubmit(e) {
+  // const onSubmit = (values, e) => {
   //   e.preventDefault();
-  //   form.current.checkValidity();
-  // }
+  //   console.log(form.current.checkValidity());
+  //   console.log("Success:", values);
+  //   postOrder();
+  // };
+
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log(form.current.checkValidity());
+  }
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
 
   return (
     <div className="FormWrapper">
       <h3>Checkout</h3>
 
       <Form
-        onSubmit={onSubmit}
         ref={form}
         className="Form"
-        name="basic"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
+        // name="basic"
+        // initialValues={{
+        //   remember: true,
+        // }}
+        onSubmit={onSubmit}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Form.Item
-          validateStatus="error"
-          help="Should be combination of numbers & alphabets"
-          hasFeedback
-          className="inputs"
-          label="Name"
-          name="name"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          hasFeedback
-          validateStatus="success"
-          label="Card number"
-          name="cardnumber"
-          className="inputs"
-          rules={[
-            {
-              required: true,
-              message: "We really need you to pay!",
-            },
-          ]}
-        >
-          <MaskedInput mask="1111 1111 1111 1111" name="card" size="20" onChange={onChange} />
-        </Form.Item>
-        <div className="smallInputs">
+        <fieldset>
           <Form.Item
+            // validateStatus="error"
+            // help="Should be combination of numbers & alphabets"
+            hasFeedback
             className="inputs"
-            label="Exp"
-            name="exp"
+            label="Name"
+            name="name"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
             rules={[
               {
                 required: true,
-                message: "Enter Exp!",
+                message: "How should we call you?",
               },
             ]}
           >
-            <MaskedInput mask="11/11" name="expiry" placeholder="mm/yy" onChange={onChange} style={{ width: "100px" }} />
+            <Input />
           </Form.Item>
 
           <Form.Item
+            hasFeedback
+            // validateStatus="success"
+            label="Card number"
+            name="cardnumber"
             className="inputs"
-            label="CVV"
-            name="cvv"
             rules={[
               {
                 required: true,
-                message: "Enter CVV!",
+                message: "We really need you to pay!",
               },
             ]}
           >
-            <MaskedInput mask="111" name="ccv" style={{ width: "80px" }} onChange={onChange} />
+            <MaskedInput mask="1111 1111 1111 1111" name="card" size="20" onChange={(e) => setCardNumber(e.target.value)} value={cardnumber} />
           </Form.Item>
-        </div>
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
+          <div className="smallInputs">
+            <Form.Item
+              className="inputs"
+              label="Exp"
+              name="exp"
+              rules={[
+                {
+                  required: true,
+                  message: "Enter Exp",
+                },
+              ]}
+            >
+              <MaskedInput mask="11/11" name="expiry" placeholder="mm/yy" style={{ width: "100px" }} onChange={(e) => setExp(e.target.value)} value={exp} />
+            </Form.Item>
+
+            <Form.Item
+              className="inputs"
+              label="CVV"
+              name="cvv"
+              rules={[
+                {
+                  required: true,
+                  message: "Enter CVV",
+                },
+              ]}
+            >
+              <MaskedInput mask="111" name="ccv" style={{ width: "70px" }} onChange={(e) => setCVV(e.target.value)} value={cvv} />
+            </Form.Item>
+          </div>
+
+          <Form.Item
+            wrapperCol={{
+              offset: 8,
+              span: 16,
+            }}
+          >
+            <Button className="submitButton" type="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </fieldset>
       </Form>
 
       {/* <form ref={form} onSubmit={onSubmit}>
