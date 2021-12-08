@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Nav1 from "../../helpers/Nav1/Nav1";
+import { FaHeart } from "react-icons/fa";
 import "./Header.scss";
 
 export default function Header(props) {
@@ -65,7 +66,7 @@ export default function Header(props) {
               </li>
             </ul>
             <div className="mobile-menu" onClick={handleClick}>
-              {click ? "X " : "O "}
+              {click ? <FaHeart /> : "0"}
             </div>
             {/* <NavLink to="/">Home</NavLink>
             <NavLink to="/Manager">Manager</NavLink>
