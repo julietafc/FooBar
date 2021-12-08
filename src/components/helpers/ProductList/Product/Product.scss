@@ -1,8 +1,11 @@
 @use "../../../../index.scss";
 
 .Product {
-  background-image: url(/assets/square-04-03-01.svg);
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background: url(/assets/square-04-03-01.svg) no-repeat center center;
+  /* Do not repeat the image */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   margin-right: 20px;
   height: 390px;
@@ -111,13 +114,5 @@
   }
   .ProductReverse {
     width: 10%;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .Product {
-    // background-image: url(/assets/square-02-02.svg);
-    // background-repeat: no-repeat; /* Do not repeat the image */
-    // background-size: cover;
   }
 }

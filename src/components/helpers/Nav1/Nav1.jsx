@@ -20,14 +20,6 @@ export default function Nav1(props) {
       >
         {props.cart ? "Order" : props.isMobile ? "Cart" : "Order"}
       </NavLink>
-      {/* <a
-        className="notShown"
-        onClick={() => {
-          props.changeCartState(!props.cart);
-        }}
-      >
-        Cart
-      </a> */}
     </nav>
   );
 }

@@ -37,7 +37,13 @@
 }
 
 @media screen and (max-width: 1400px) {
-  .ProductList section {
-    grid-template-columns: 1fr;
+  .ProductList {
+    .sortingOptions {
+      display: flex;
+      flex-direction: column;
+    }
+    section {
+      grid-template-columns: 1fr;
+    }
   }
 }

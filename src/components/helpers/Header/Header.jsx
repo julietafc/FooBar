@@ -35,7 +35,7 @@ export default function Header(props) {
     <>
       {isCustomer ? (
         <header className="mobileHeader">
-          <h1>Welcome to FooBar</h1>
+          <h1>FooBar</h1>
           <Nav1 isMobile={isMobile} cart={props.cart} changeCartState={props.changeCartState} />
         </header>
       ) : (
@@ -66,7 +66,7 @@ export default function Header(props) {
               </li>
             </ul>
             <div className="mobile-menu" onClick={handleClick}>
-              {click ? <FaHeart /> : "0"}
+              {click ? "X" : "☰"}
             </div>
             {/* <NavLink to="/">Home</NavLink>
             <NavLink to="/Manager">Manager</NavLink>
