@@ -7,11 +7,14 @@ import ButtonAdd from "../../Button/Button";
 export default function Product(props) {
   const [flipped, setFlipped] = useState(false);
   const [amount, setAmount] = useState(0);
+  const [isEnabled, setEnabled] = useState(true);
 
   function increaseAmount() {
     // console.log(props.id);
     setAmount((prevAmount) => prevAmount + 1);
+    setEnabled((isEnabled = amount.length > 0) => !isEnabled);
   }
+
   function decreaseAmount() {
     // console.log(props.id);
 
@@ -35,8 +38,10 @@ export default function Product(props) {
       },
       name: props.name,
     });
+    setEnabled(!isEnabled);
     setAmount(0);
   }
+
   return (
     <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
       <article className="Product">
@@ -64,7 +69,7 @@ export default function Product(props) {
             <button onClick={increaseAmount}>+</button>
           </div>
 
-          <button className="buttonAdd" onClick={add}>
+          <button className="buttonAdd" disabled={isEnabled} onClick={add} style={isEnabled === true ? { backgroundColor: "grey" } : { backgroundColor: "blue" }}>
             Add
           </button>
         </div>
