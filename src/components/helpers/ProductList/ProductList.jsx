@@ -33,7 +33,7 @@ export default function ProductList(props) {
     <section className="ProductList">
       <h2>Our selection</h2>
       <div className="sortingOptions">
-        <h4>Sorty by:</h4>
+        <h4>{direction === 1 ? "↓ " : "↑ "}Sorty by:</h4>
         <button data-sort-direction="asc" data-sort="name" onClick={sorting} style={sortBy === "name" ? { color: "red" } : { color: "white" }}>
           Name
         </button>
