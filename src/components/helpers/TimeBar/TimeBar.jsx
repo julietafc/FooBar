@@ -18,7 +18,7 @@ export default function TimeBar(props) {
   };
 
   return (
-    <div className={"TimeBar " + (!props.isBarActive ? "no-active" : undefined)} style={coloringLevel}>
+    <div className={"TimeBar " + (!props.isBarActive ? "no-active" : undefined)} style={props.isBarActive ? coloringLevel : null}>
       <h2>{props.label}</h2>
       <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 463.93 59.03">
         <defs>

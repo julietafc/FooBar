@@ -6,7 +6,7 @@ import React from "react";
 import Confetti from "react-confetti";
 
 export default function TimeToClose(props) {
-  const happyHourTime = 13;
+  const happyHourTime = 14;
   const closingHour = 22;
   const openHour = 10;
   const happyHourStar = settingTime(happyHourTime);

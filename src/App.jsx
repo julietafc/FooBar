@@ -25,6 +25,18 @@ function App() {
   const [isHappyHour, setIsHappyHour] = useState(false);
 
   const beerBasePrice = 40;
+  const [ranking, setRanking] = useState({
+    elhefe: 0,
+    fairytaleale: 0,
+    githop: 0,
+    hollabacklager: 0,
+    hoppilyeverafter: 0,
+    mowintime: 0,
+    row26: 0,
+    ruinedchildhood: 0,
+    sleighride: 0,
+    steampunk: 0,
+  });
 
   function changeCartState(state) {
     setCart(state);
@@ -49,7 +61,7 @@ function App() {
 
     const id = setInterval(() => {
       fetchData(); // <-- (3) invoke in interval callback
-    }, 2000);
+    }, 5000);
 
     function upDateNow() {
       setNow(new Date().getTime());
@@ -83,7 +95,7 @@ function App() {
       const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
       if (bartender.statusDetail === "receivePayment") {
         const tookenTime = timeDiference(order.startTime, now);
-        upDateOrdersReady({ id: order.id, tookenTime: tookenTime, bartender: bartender.name });
+        upDateOrdersReady({ id: order.id, tookenTime: tookenTime, bartender: bartender.name, order: order.order });
       }
     }
   });
@@ -139,6 +151,15 @@ function App() {
 
   function upDateOrdersReady(order) {
     if (!ordersReady.find((element) => element.id === order.id)) {
+      const orderLowerCase = order.order.map((beer) => beer.toLowerCase().split(" ").join(""));
+      orderLowerCase.forEach((beer) => {
+        setRanking((oldRanking) => {
+          const newRanking = { ...oldRanking };
+          newRanking[beer]++;
+          return newRanking;
+        });
+      });
+      // console.log(ranking);
       setOrdersReady(function (oldOrdersReady) {
         const copy = [order, ...oldOrdersReady];
         return copy.slice(0, 10);
