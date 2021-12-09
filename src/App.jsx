@@ -22,7 +22,7 @@ function App() {
   const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
-  const [isHappyHour, setIsHappyHour] = useState(false);
+  const [isHappyHour, setIsHappyHour] = useState(null);
 
   const beerBasePrice = 40;
   const [ranking, setRanking] = useState({
@@ -73,9 +73,9 @@ function App() {
     fetch("https://los-amigos.herokuapp.com/beertypes")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         const beers = addStuff(data);
-        console.log(beers);
+        // console.log(beers);
         setProducts(beers);
         fetchData(); // <-- (2) invoke on mount
       });
