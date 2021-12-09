@@ -2,105 +2,37 @@
 
 .Bartender {
   display: grid;
-  grid-template-columns: 70% 1fr;
-  grid-template-rows: 10px auto auto;
-  row-gap: 1rem;
   color: white;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1rem;
+  padding: 9em 4em;
+  margin-top: 5em;
+  min-height: 100vh;
+
+  .TimeToClose {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 1;
+  }
+  aside {
+    grid-row-start: 2;
+  }
+
+  @media screen and (max-width: 1020px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .Bartender > * {
   grid-column-start: 1;
 }
 
-.Bartender h1 {
-  color: var(--pink);
-}
-
-.Tap {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-}
-
-.Tap p {
-  max-width: 15ch;
-}
-
-.beer-label {
-  width: 100px;
-  aspect-ratio: 1;
-  position: relative;
-  transition: 0.8s;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 50%;
-  color: white;
-}
-
-.beer-level-container {
-  position: absolute;
-  width: 36%;
-  height: 130%;
-  transform-origin: bottom right;
-  bottom: 100%;
-  left: 50%;
-  border: solid 2px var(--cyan);
-  border-radius: 8px 8px 0 0;
-  overflow-y: hidden;
-  background: linear-gradient(90deg, var(--cyan) 0%, rgba(207, 141, 55, 0) 50%);
-  transform: translateX(-50%);
-}
-
-.beer-level {
-  position: absolute;
-  width: 30%;
-  height: 125%;
-  transform-origin: bottom right;
-  bottom: 100%;
-  left: 50%;
-  transition: transform 1s;
-  background-color: var(--yellow);
-  border-top: solid 3px white;
-  border-radius: 5px 5px 0 0;
-}
-
-.bulb {
-  width: 25%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: solid 2px black;
-  background-color: rgb(47, 79, 79);
-  position: absolute;
-  left: 50%;
-  bottom: 300%;
-  transform: translateX(-50%);
-}
-
-.bulb::after {
-  content: "in use";
-  position: absolute;
-  width: 300%;
-  left: 120%;
-  font-size: 70%;
-  color: white;
-}
-
-.bulb:nth-child(4) {
-  width: 25%;
-  bottom: 260%;
-  background-color: rgb(79, 47, 47);
-}
-
-.bulb:nth-child(4)::after {
-  content: "change";
-}
-
 .Depot {
   border: solid 2px var(--pink);
   border-radius: 1em;
-  max-height: 40vh;
+  max-height: 35vh;
 
   .sorting-wrapper {
     display: flex;

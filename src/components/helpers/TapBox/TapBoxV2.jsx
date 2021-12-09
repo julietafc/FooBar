@@ -15,15 +15,15 @@ export default function TapBoxV2(props) {
   };
 
   return (
-    <div className="svg-wrapper">
+    <div className="TapBox svg-wrapper">
       <p style={{ opacity: "1" }}>{"tap: " + (props.tap.id + 1)}</p>
 
       <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 350 527.08">
         <defs>
-          <clipPath id="clip-path">
+          <clipPath id="clip-path-100">
             <rect id="mask" className="cls-1" x="127.61" y="277.8" width="326.49" height="35.65" transform="translate(586.48 4.78) rotate(90)" />
           </clipPath>
-          <clipPath id="clip-path-2">
+          <clipPath id="clip-path-102">
             <rect id="mask-2" data-name="mask" className="cls-1" x="50.49" y="127.8" width="182.29" height="182.29" rx="32.39" />
           </clipPath>
         </defs>
