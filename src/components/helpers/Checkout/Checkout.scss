@@ -25,19 +25,14 @@
     text-align: left;
   }
 
-  fieldset {
-    .submitButton {
-      background-color: red;
-      pointer-events: none;
-      flex: inherit;
-      padding: 0;
-      padding: 1em 2em;
-    }
-    // &:valid {
-    //   .submitButton {
-    //     background-color: green;
-    //     pointer-events: all;
-    //   }
-    // }
+  .isValid {
+    pointer-events: all;
+    flex: inherit;
+    padding: 0;
+    padding: 1em 2em;
+  }
+
+  .ant-form-item-has-error ~ .ant-form-item .isValid {
+    background-color: red;
   }
 }

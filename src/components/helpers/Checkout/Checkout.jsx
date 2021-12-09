@@ -43,10 +43,14 @@ export default function Checkout(props) {
   //   postOrder();
   // };
 
-  function onSubmit(e) {
-    e.preventDefault();
-    console.log(form.current.checkValidity());
-  }
+  // function onSubmit(e) {
+  //   e.preventDefault();
+  //   console.log(form.current.checkValidity());
+  // }
+  const onFinish = (values) => {
+    postOrder();
+    console.log("Success:", values);
+  };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -63,86 +67,84 @@ export default function Checkout(props) {
         // initialValues={{
         //   remember: true,
         // }}
-        onSubmit={onSubmit}
+        onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <fieldset>
+        <Form.Item
+          // validateStatus="error"
+          // help="Should be combination of numbers & alphabets"
+          hasFeedback
+          className="inputs"
+          label="Name"
+          name="name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          rules={[
+            {
+              required: true,
+              message: "How should we call you?",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          hasFeedback
+          // validateStatus="success"
+          label="Card number"
+          name="cardnumber"
+          className="inputs"
+          rules={[
+            {
+              required: true,
+              message: "We really need you to pay!",
+            },
+          ]}
+        >
+          <MaskedInput mask="1111 1111 1111 1111" name="card" size="20" onChange={(e) => setCardNumber(e.target.value)} value={cardnumber} />
+        </Form.Item>
+        <div className="smallInputs">
           <Form.Item
-            // validateStatus="error"
-            // help="Should be combination of numbers & alphabets"
-            hasFeedback
             className="inputs"
-            label="Name"
-            name="name"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            label="Exp"
+            name="exp"
             rules={[
               {
                 required: true,
-                message: "How should we call you?",
+                message: "Enter Exp",
               },
             ]}
           >
-            <Input />
+            <MaskedInput mask="11/11" name="expiry" size="5" placeholder="mm/yy" style={{ width: "100px" }} onChange={(e) => setExp(e.target.value)} value={exp} />
           </Form.Item>
 
           <Form.Item
-            hasFeedback
-            // validateStatus="success"
-            label="Card number"
-            name="cardnumber"
             className="inputs"
+            label="CVV"
+            name="cvv"
             rules={[
               {
                 required: true,
-                message: "We really need you to pay!",
+                message: "Enter CVV",
               },
             ]}
           >
-            <MaskedInput mask="1111 1111 1111 1111" name="card" size="20" onChange={(e) => setCardNumber(e.target.value)} value={cardnumber} />
+            <MaskedInput mask="111" name="ccv" size="3" style={{ width: "70px" }} onChange={(e) => setCVV(e.target.value)} value={cvv} />
           </Form.Item>
-          <div className="smallInputs">
-            <Form.Item
-              className="inputs"
-              label="Exp"
-              name="exp"
-              rules={[
-                {
-                  required: true,
-                  message: "Enter Exp",
-                },
-              ]}
-            >
-              <MaskedInput mask="11/11" name="expiry" placeholder="mm/yy" style={{ width: "100px" }} onChange={(e) => setExp(e.target.value)} value={exp} />
-            </Form.Item>
+        </div>
 
-            <Form.Item
-              className="inputs"
-              label="CVV"
-              name="cvv"
-              rules={[
-                {
-                  required: true,
-                  message: "Enter CVV",
-                },
-              ]}
-            >
-              <MaskedInput mask="111" name="ccv" style={{ width: "70px" }} onChange={(e) => setCVV(e.target.value)} value={cvv} />
-            </Form.Item>
-          </div>
-
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button className="submitButton" type="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </fieldset>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button className="isValid" type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
       </Form>
 
       {/* <form ref={form} onSubmit={onSubmit}>
