@@ -17,8 +17,8 @@ export default function TimeToClose(props) {
   const happyHourEnd = settingTime(happyHourTime + 1);
   const closingTime = settingTime(closingHour);
   const openingTime = settingTime(openHour);
-  const time = timeDiference(props.now, closingTime);
-  const timeDisplay = `${time.hours}:${time.minutes}:${time.seconds}`;
+  const timeLeft = timeDiference(props.now, closingTime);
+  const timeDisplay = `${timeLeft.hours}:${timeLeft.minutes}:${timeLeft.seconds}`;
 
   useEffect(() => {
     if (props.now > happyHourStar && props.now < happyHourEnd) {
@@ -33,11 +33,9 @@ export default function TimeToClose(props) {
   return (
     <>
       <article className="TimeToClose">
-        <p>{!isOpen ? "we are close" : timeDisplay}</p>
-        <div>
-          <TimeBar isBarActive={isOpen} timeInit={openingTime} timeEnd={closingTime} now={props.now} label="TIME LEFT" />
-          <TimeBar isBarActive={props.isHappyHour} timeInit={happyHourStar} timeEnd={happyHourEnd} now={props.now} label="HAPPY HOUR" />
-        </div>
+        <TimeBar isBarActive={isOpen} timeInit={openingTime} timeEnd={closingTime} now={props.now} label="TIME LEFT" />
+        <TimeBar isBarActive={props.isHappyHour} timeInit={happyHourStar} timeEnd={happyHourEnd} now={props.now} label="HAPPY HOUR" />
+
         {props.isHappyHour && props.now < happyHourStar + 30000 && <Confetti width={window.innerWidth} height={window.innerHeight} />}
         {/* <h2>{props.isHappyHour ? "HAPPY HOUR" : "TIME"}</h2> */}
       </article>
