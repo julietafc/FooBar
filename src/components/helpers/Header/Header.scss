@@ -9,12 +9,16 @@
 // }
 @use "../../../index.scss";
 
-.navigation {
-  display: flex;
+.logo {
+  width: 220px;
+  height: auto;
+}
 
+.navigation {
   .nav-options {
     display: flex;
     font-size: 100%;
+    margin-bottom: 0;
   }
 }
 
