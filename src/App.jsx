@@ -10,8 +10,9 @@ import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
 //import { display } from "@mui/system";
-import Nav1 from "./components/helpers/Nav1/Nav1";
+// import Nav1 from "./components/helpers/Nav1/Nav1";
 import Footer from "./components/helpers/Footer/Footer";
+import Header from "./components/helpers/Header/Header";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
@@ -170,7 +171,8 @@ function App() {
 
   return (
     <div className="App">
-      {isCustomer ? (
+      <Header changeCartState={changeCartState} cart={cart} />
+      {/* {isCustomer ? (
         <header className="mobileHeader">
           <h1>Welcome to FooBar</h1>
           <Nav1 isMobile={isMobile} cart={cart} changeCartState={changeCartState} />
@@ -195,7 +197,7 @@ function App() {
             </NavLink>
           </nav>
         </header>
-      )}
+      )} */}
 
       <main>
         <Routes>

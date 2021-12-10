@@ -2,11 +2,12 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
   padding: 9em 4em;
-  margin-top: 5em;
+  margin-top: 4em;
   min-height: 100vh;
 
   @media screen and (max-width: 1020px) {
     grid-template-columns: 1fr;
+    margin-top: 2em;
   }
 }
 
