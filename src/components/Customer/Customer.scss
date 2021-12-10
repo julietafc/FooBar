@@ -4,10 +4,10 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: auto auto auto;
-  gap: 1rem;
-  padding: 9em 4em;
-  margin-top: 5em;
-  min-height: 100vh;
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 98px;
+  height: calc(100vh - 100px);
 
   .TimeToClose {
     grid-column-start: 1;
@@ -17,32 +17,58 @@
 
   aside {
     grid-row-start: 2;
+    grid-column-start: -2;
     width: fit-content;
     padding: 1rem;
     text-align: left;
-    font-size: 1.2rem;
-    border: white solid 2px;
+    font-size: 1rem;
     color: white;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    h2 {
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      // transform: rotate(180deg);
+
+      text-align: center;
+    }
+
+    ul {
+      border: white solid 2px;
+      padding: 0.5rem;
+      height: 100%;
+    }
 
     li {
       font-size: 2rem;
     }
     li:first-child {
-      font-size: 3rem;
+      font-size: 3.2rem;
     }
     li:nth-child(2) {
-      font-size: 2.8rem;
-    }
-    li:nth-child(3) {
       font-size: 2.6rem;
     }
-    li:nth-child(4) {
+    li:nth-child(3) {
       font-size: 2.4rem;
     }
-    li:nth-child(5) {
+    li:nth-child(4) {
       font-size: 2.2rem;
     }
+    li:nth-child(5) {
+      font-size: 2rem;
+    }
   }
+
+  #fullscreen {
+    background-color: rgb(15, 104, 104);
+    padding: 0.1rem;
+    width: fit-content;
+    font-size: 2rem;
+  }
+
   @media screen and (max-width: 1020px) {
     grid-template-columns: 1fr;
   }
@@ -53,7 +79,6 @@
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
-
   gap: 1rem;
   align-items: center;
 }
