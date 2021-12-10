@@ -4,7 +4,7 @@ import timeDiference from "../../modules/timeDiference";
 
 function Beers(props) {
   const allOrders = [...props.serving, ...props.queue];
-  const displayBeers = allOrders.map((order) => <div key={order.id} className="beerPx" style={{ width: `${order.order.length * 10 + 50}px` }}></div>);
+  const displayBeers = allOrders.map((order) => <div key={order.id} className={"beerPx " + order.id} style={{ width: `${order.order.length * 10 + 50}px` }}></div>);
   return <section className="Beers">{displayBeers}</section>;
 }
 

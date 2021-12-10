@@ -1,5 +1,5 @@
 import "./MyBasket.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Checkout from "../Checkout/Checkout";
 import ModalYourID from "../ModalYourID/ModalYourID";
 
@@ -10,6 +10,7 @@ export default function MyBasket(props) {
   const [isModalYourID, setIsModalYourID] = useState(false);
   const onClick = () => setShowResults(true);
   const initialValue = 0;
+
   let sum = props.basket.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue.price();
   }, initialValue);
@@ -83,10 +84,10 @@ export default function MyBasket(props) {
           Total: <span> ${sum}</span>
         </p>
       </div>
-      {props.basket.length > 0 && (
+      {orders.length > 0 && (
         <div>
           <button onClick={onClick}>Checkout</button>
-          {showResults ? <Checkout resetBasket={props.resetBasket} payload={payload} addID={props.addID} setIsModalYourID={setIsModalYourID} /> : null}
+          {showResults ? <Checkout resetBasket={props.resetBasket} payload={payload} addID={props.addID} setIsModalYourID={setIsModalYourID} setShowResults={setShowResults} /> : null}
         </div>
       )}
       {isModalYourID && <ModalYourID ordersID={props.ordersID} setIsModalYourID={setIsModalYourID} />}

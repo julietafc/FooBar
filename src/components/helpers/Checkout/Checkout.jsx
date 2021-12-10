@@ -29,6 +29,7 @@ export default function Checkout(props) {
         props.addID(data.id);
         props.resetBasket();
         props.setIsModalYourID(true);
+        props.setShowResults(false);
       })
 
       .catch((err) => {
