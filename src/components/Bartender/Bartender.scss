@@ -7,9 +7,9 @@
   grid-template-columns: 3fr 1fr;
   grid-template-rows: auto auto auto;
   gap: 1rem;
-  padding: 9em 4em;
-  margin-top: 5em;
-  min-height: 100vh;
+  padding: 2rem;
+  margin-top: 98px;
+  max-height: calc(100vh - 100px);
 
   .TimeToClose {
     grid-column-start: 1;

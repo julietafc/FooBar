@@ -23,7 +23,7 @@ function App() {
   const [allOrders, setAllOrders] = useState([]);
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
-  const [isHappyHour, setIsHappyHour] = useState(null);
+  const [isHappyHour, setIsHappyHour] = useState(false);
 
   const beerBasePrice = 40;
   const [ranking, setRanking] = useState({

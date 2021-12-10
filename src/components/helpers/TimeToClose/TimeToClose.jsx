@@ -17,13 +17,13 @@ export default function TimeToClose(props) {
   const closingTime = settingTime(closingHour);
   const openingTime = settingTime(openHour);
 
-  useEffect(() => {
-    if (props.now > happyHourStar && props.now < happyHourEnd) {
-      props.setIsHappyHour(true);
-    } else {
+  if (props.now > happyHourStar && props.now < happyHourEnd) {
+    props.setIsHappyHour(true);
+  } else {
+    if (props.isHappyHour) {
       props.setIsHappyHour(false);
     }
-  }, []);
+  }
 
   const isOpen = props.now > openingTime && props.now < closingTime;
 
