@@ -35,12 +35,16 @@ export default function Header(props) {
     <>
       {isCustomer ? (
         <header className="mobileHeader">
-          <h1>FooBar</h1>
+          <div className="logo"></div>
           <Nav1 isMobile={isMobile} cart={props.cart} changeCartState={props.changeCartState} />
         </header>
       ) : (
         <header>
-          <h1>FooBar</h1>
+          <div className="logo">
+            <a href="">
+              <img src="/assets/logo-02.svg" alt="" />
+            </a>
+          </div>
 
           <nav className="navigation">
             <ul className={click ? "nav-options active" : "nav-options"}>
