@@ -19,6 +19,7 @@
 
   svg {
     max-width: min(250px, 40vw);
+    transform: scaleX(-1);
 
     .cls-1 {
       fill: none;
