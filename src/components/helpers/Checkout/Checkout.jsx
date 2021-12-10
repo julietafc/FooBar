@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import "./Checkout.scss";
-import ModalYourID from "../ModalYourID/ModalYourID";
 import { Form, Input, Button } from "antd";
 import MaskedInput from "antd-mask-input";
 
