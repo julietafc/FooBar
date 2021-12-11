@@ -204,7 +204,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} />} />
-          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} />} />
+          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} products={products} />} />
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
         </Routes>
       </main>

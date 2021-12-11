@@ -8,6 +8,11 @@
   padding: 2rem;
   margin-top: 98px;
   height: calc(100vh - 100px);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(/assets/bg_dark.svg);
+  background-position: bottom; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 
   .TimeToClose {
     grid-column-start: 1;
@@ -47,6 +52,7 @@
     }
     li:first-child {
       font-size: 3.2rem;
+      color: orange;
     }
     li:nth-child(2) {
       font-size: 2.6rem;
@@ -63,10 +69,20 @@
   }
 
   #fullscreen {
-    background-color: rgb(15, 104, 104);
+    background-color: rgba(15, 104, 104, 0);
     padding: 0.1rem;
     width: fit-content;
+    aspect-ratio: 1;
     font-size: 2rem;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    border: none;
+    filter: drop-shadow(0px 0px 5px black);
+    transition: transform 0.2s;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   @media screen and (max-width: 1020px) {

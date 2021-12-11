@@ -9,7 +9,7 @@ export default function TimeToClose(props) {
     return null;
   }
 
-  const happyHourTime = 18;
+  const happyHourTime = 16;
   const closingHour = 22;
   const openHour = 10;
   const happyHourStar = settingTime(happyHourTime);

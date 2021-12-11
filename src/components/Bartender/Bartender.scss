@@ -16,9 +16,10 @@
     grid-column-end: -1;
     grid-row-start: 1;
   }
-  aside {
-    grid-row-start: 2;
-  }
+  // aside {
+  //   grid-row-start: 2;
+  //   background-color: rgba(255, 255, 255, 0.158);
+  // }
 
   @media screen and (max-width: 1020px) {
     grid-template-columns: 1fr;
@@ -30,9 +31,12 @@
 }
 
 .Depot {
-  border: solid 2px var(--pink);
+  border: solid 2px var(--orange);
   border-radius: 1em;
   max-height: 35vh;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0px 0px 2px black);
 
   .sorting-wrapper {
     display: flex;
@@ -75,13 +79,16 @@ ul {
 
 .OrderList {
   grid-column-start: 2;
-  grid-row-start: 1;
+  grid-row-start: 2;
+  // grid-row-start: 1;
   grid-row-end: -1;
   display: grid;
   grid-template-columns: 1fr 80% 1fr;
   gap: 1rem;
-  height: 80vh;
+  height: 75vh;
   overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0px 0px 2px black);
 
   .to-do {
     grid-column-start: 2;
