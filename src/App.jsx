@@ -24,7 +24,6 @@ function App() {
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
   const [isHappyHour, setIsHappyHour] = useState(false);
-
   const beerBasePrice = 40;
   const [ranking, setRanking] = useState({
     elhefe: 0,
@@ -153,6 +152,7 @@ function App() {
   function upDateOrdersReady(order) {
     if (!ordersReady.find((element) => element.id === order.id)) {
       const orderLowerCase = order.order.map((beer) => beer.toLowerCase().split(" ").join(""));
+
       orderLowerCase.forEach((beer) => {
         setRanking((oldRanking) => {
           const newRanking = { ...oldRanking };
@@ -160,7 +160,7 @@ function App() {
           return newRanking;
         });
       });
-      // console.log(ranking);
+
       setOrdersReady(function (oldOrdersReady) {
         const copy = [order, ...oldOrdersReady];
         return copy.slice(0, 10);

@@ -6,13 +6,22 @@ import BeersMenu from "../helpers/BeersMenu/BeersMenu.jsx";
 
 function Beers(props) {
   const allOrders = [...props.serving, ...props.queue];
-  const displayBeers = allOrders.map(function (order) {
-    // const style = {
-    //   width: `${order.order.length * 10 + 50}px`,
-    // };
-    return <div key={order.id} className={"beerPx " + order.id}></div>;
-  });
-  return <section className="Beers">{displayBeers}</section>;
+  // const displayBeers = allOrders.map(function (order) {
+  //   // const style = {
+  //   //   width: `${order.order.length * 10 + 50}px`,
+  //   // };
+  //   return <div key={order.id} className={"beerPx " + order.id}></div>;
+  // });
+  const width = props.isFullScreen ? 45 : 45 * 0.8;
+  const style = {
+    transform: `translateX(calc(${width * allOrders.length}px - 100%))`,
+  };
+
+  return (
+    <section className="Beers">
+      <div className="beerPx" style={style}></div>
+    </section>
+  );
 }
 
 export default function Customer(props) {
@@ -22,7 +31,7 @@ export default function Customer(props) {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   useEffect(() => {
-    const customerPage = document.querySelector(".Customer");
+    const customerPage = document.querySelector(".customer-wrapper");
     const fullScreenElement = document.fullscreenElement;
 
     if (isFullScreen) {
@@ -34,20 +43,27 @@ export default function Customer(props) {
     }
   }, [isFullScreen]);
 
-  const readyMap = props.ordersReady.map((order) => order.id && <li key={order.id}>{order.id}</li>);
+  const ordersReady = !isFullScreen ? [...props.ordersReady].slice(0, 7) : [...props.ordersReady];
+  const readyMap = ordersReady.map((order) => order.id && <li key={order.id}>{order.id}</li>);
 
   return (
-    <div className="Customer">
-      <TimeToClose now={props.now} isHappyHour={props.isHappyHour} setIsHappyHour={props.setIsHappyHour} />
-      <Beers {...props} />
-      <BeersMenu products={props.products} />
-      <aside>
-        <h2>Orders Ready</h2>
-        <ul className="orders-ready">{readyMap}</ul>
-      </aside>
-      <button id="fullscreen" onClick={() => setIsFullScreen(!isFullScreen)}>
-        ◲
-      </button>
+    <div className="customer-wrapper">
+      <div className="Customer">
+        <TimeToClose now={props.now} isHappyHour={props.isHappyHour} setIsHappyHour={props.setIsHappyHour} />
+        <div className="Beers-wrapper">
+          <h2>Queue</h2> <Beers {...props} isFullScreen={isFullScreen} />
+        </div>
+        <div className="menu-queue-wrapper">
+          <BeersMenu products={props.products} isHappyHour={props.isHappyHour} />
+        </div>
+        <aside>
+          <h2>Orders Ready</h2>
+          <ul className="orders-ready">{readyMap}</ul>
+        </aside>
+        <button id="fullscreen" onClick={() => setIsFullScreen(!isFullScreen)}>
+          ◲
+        </button>
+      </div>
     </div>
   );
 }
