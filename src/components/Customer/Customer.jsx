@@ -6,12 +6,6 @@ import BeersMenu from "../helpers/BeersMenu/BeersMenu.jsx";
 
 function Beers(props) {
   const allOrders = [...props.serving, ...props.queue];
-  // const displayBeers = allOrders.map(function (order) {
-  //   // const style = {
-  //   //   width: `${order.order.length * 10 + 50}px`,
-  //   // };
-  //   return <div key={order.id} className={"beerPx " + order.id}></div>;
-  // });
   const width = props.isFullScreen ? 45 : 45 * 0.8;
   const style = {
     transform: `translateX(calc(${width * allOrders.length}px - 100%))`,
@@ -29,6 +23,10 @@ export default function Customer(props) {
     return null;
   }
   const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const styleBtn = {
+    background: `url(./assets/fullscreen${isFullScreen ? "Off" : "On"}.svg)`,
+  };
 
   useEffect(() => {
     const customerPage = document.querySelector(".customer-wrapper");
@@ -60,9 +58,7 @@ export default function Customer(props) {
           <h2>Orders Ready</h2>
           <ul className="orders-ready">{readyMap}</ul>
         </aside>
-        <button id="fullscreen" onClick={() => setIsFullScreen(!isFullScreen)}>
-          ◲
-        </button>
+        <button id="fullscreen" onClick={() => setIsFullScreen(!isFullScreen)} style={styleBtn}></button>
       </div>
     </div>
   );
