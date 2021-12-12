@@ -36,17 +36,6 @@ export default function Checkout(props) {
       });
   }
 
-  // const onSubmit = (values, e) => {
-  //   e.preventDefault();
-  //   console.log(form.current.checkValidity());
-  //   console.log("Success:", values);
-  //   postOrder();
-  // };
-
-  // function onSubmit(e) {
-  //   e.preventDefault();
-  //   console.log(form.current.checkValidity());
-  // }
   const onFinish = (values) => {
     postOrder();
     console.log("Success:", values);
@@ -60,22 +49,10 @@ export default function Checkout(props) {
     <div className="FormWrapper">
       <h3>Checkout</h3>
 
-      <Form
-        ref={form}
-        className="Form"
-        // name="basic"
-        // initialValues={{
-        //   remember: true,
-        // }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
+      <Form ref={form} className="Form" onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
         <Form.Item
-          // validateStatus="error"
-          // help="Should be combination of numbers & alphabets"
           hasFeedback
-          className="inputs"
+          className="inputs fullBleed"
           label="Name"
           name="name"
           onChange={(e) => setName(e.target.value)}
@@ -92,75 +69,64 @@ export default function Checkout(props) {
 
         <Form.Item
           hasFeedback
-          // validateStatus="success"
           label="Card number"
           name="cardnumber"
-          className="inputs"
+          className="inputs fullBleed"
           rules={[
             {
+              pattern: "[0-9 ]{19}",
               required: true,
               message: "We really need you to pay!",
             },
           ]}
         >
-          <MaskedInput mask="1111 1111 1111 1111" name="card" size="20" onChange={(e) => setCardNumber(e.target.value)} value={cardnumber} />
+          <MaskedInput mask="1111 1111 1111 1111" name="card" size="19" onChange={(e) => setCardNumber(e.target.value)} value={cardnumber} />
         </Form.Item>
-        <div className="smallInputs">
-          <Form.Item
-            className="inputs"
-            label="Exp"
-            name="exp"
-            rules={[
-              {
-                required: true,
-                message: "Enter Exp",
-              },
-            ]}
-          >
-            <MaskedInput mask="11/11" name="expiry" size="5" placeholder="mm/yy" style={{ width: "100px" }} onChange={(e) => setExp(e.target.value)} value={exp} />
-          </Form.Item>
-
-          <Form.Item
-            className="inputs"
-            label="CVV"
-            name="cvv"
-            rules={[
-              {
-                required: true,
-                message: "Enter CVV",
-              },
-            ]}
-          >
-            <MaskedInput mask="111" name="ccv" size="3" style={{ width: "70px" }} onChange={(e) => setCVV(e.target.value)} value={cvv} />
-          </Form.Item>
-        </div>
 
         <Form.Item
+          hasFeedback
+          className="inputs expiry"
+          label="Exp"
+          name="expiry"
+          rules={[
+            {
+              pattern: "[0-9/]{5}",
+              required: true,
+              message: "Enter Exp",
+            },
+          ]}
+        >
+          <MaskedInput mask="11/11" name="expiry" size="5" placeholder="mm/yy" style={{ width: "100px" }} onChange={(e) => setExp(e.target.value)} value={exp} />
+        </Form.Item>
+
+        <Form.Item
+          hasFeedback
+          className="inputs right"
+          label="CVV"
+          name="cvv"
+          rules={[
+            {
+              pattern: "[0-9]{3}",
+              required: true,
+              message: "Enter CVV",
+            },
+          ]}
+        >
+          <MaskedInput mask="111" name="ccv" size="3" style={{ width: "70px" }} onChange={(e) => setCVV(e.target.value)} value={cvv} />
+        </Form.Item>
+
+        <Form.Item
+          className="btn-center"
           wrapperCol={{
             offset: 8,
             span: 16,
           }}
         >
           <Button className="isValid" type="primary" htmlType="submit">
-            Submit
+            Pay
           </Button>
         </Form.Item>
       </Form>
-
-      {/* <form ref={form} onSubmit={onSubmit}>
-        <label>
-          Name
-          <input type="text" required onChange={nameChanged} name="name" value={name} />
-        </label>
-
-        <label>
-          Card number
-          <input type="text" inputMode="numeric" />
-          <MaskInput type="text" required name="number" inputMode="numeric" value={ccnumber} alwaysShowMask maskChar=" " mask="0000 0000 0000 0000" size={20} onChange={(e) => setCCNumber(e.target.value)} />
-        </label>
-
-        <button onClick={postOrder}>Pay</button>
-      </form> */}
     </div>
   );
 }

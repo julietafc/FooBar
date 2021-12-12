@@ -1,7 +1,7 @@
 import "./ModalOrderReady.scss";
 
 export default function ModalOrderReady(props) {
-  const pic = props.bartender.toLowerCase() + ".jpg";
+  const pic = props.bartender.toLowerCase() + ".png";
   return (
     <div className="background-black-order">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 428.58 357.26">

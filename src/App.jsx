@@ -54,7 +54,12 @@ function App() {
         const data = await res.json();
         setData(data);
         checkTaps(data);
-        setNewServing([...data.serving]);
+        setNewServing(
+          data.serving.map(function (order) {
+            const bartender = data.bartenders.find((man) => man.servingCustomer === order.id);
+            return { ...order, bartender: bartender.name };
+          })
+        );
         setAllOrders([...data.queue, ...data.serving]);
 
         //   setRealTime(json.timestamp);
@@ -100,26 +105,26 @@ function App() {
       oldServing.forEach((oldOrder, i, arr) => {
         console.log(oldOrder.id);
         const findIt = [...newServing].find((newOrder) => newOrder.id === oldOrder.id);
-        !findIt && console.log("order ready", oldOrder.id);
+        //!findIt && console.log("order ready", oldOrder);
+        !findIt && upDateOrdersReady(oldOrder);
         i === arr.length - 1 && setOldServing([...newServing]);
       });
     } else {
       console.log("length<0", newServing);
-
       setOldServing([...newServing]);
     }
   }, [newServing]);
   //------------------------------
 
-  allOrders.forEach((order) => {
-    if (data.bartenders.find((bartender) => bartender.servingCustomer === order.id)) {
-      const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
-      if (bartender.statusDetail === "receivePayment") {
-        const tookenTime = timeDiference(order.startTime, now);
-        upDateOrdersReady({ id: order.id, tookenTime: tookenTime, bartender: bartender.name, order: order.order });
-      }
-    }
-  });
+  // allOrders.forEach((order) => {
+  //   if (data.bartenders.find((bartender) => bartender.servingCustomer === order.id)) {
+  //     const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
+  //     if (bartender.statusDetail === "receivePayment") {
+  //       const tookenTime = timeDiference(order.startTime, now);
+  //       upDateOrdersReady({ id: order.id, tookenTime: tookenTime, bartender: bartender.name, order: order.order });
+  //     }
+  //   }
+  // });
 
   //-----------------------
   useEffect(() => {
