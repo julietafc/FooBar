@@ -11,7 +11,11 @@
 
   p {
     color: black;
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .capitalize {
+    text-transform: capitalize;
   }
 
   button {
@@ -24,7 +28,7 @@
 
   svg {
     width: 60%;
-    max-width: 400px;
+    max-width: 500px;
   }
 
   .cls-1 {

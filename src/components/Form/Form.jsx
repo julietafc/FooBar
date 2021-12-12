@@ -13,25 +13,9 @@ export default function Form(props) {
   const beers = props.products.filter((beer) => beer.onTap);
   const [basket, setBasket] = useState([]);
   const [ordersID, setOrdersID] = useState([]);
+  const [customerName, setCustomerName] = useState("");
   const [isYourOrderReady, setIsYourOrderReady] = useState(false);
   const [yourOrderReady, setYourOrderReady] = useState({});
-
-  // const [windowDimension, setWindowDimension] = useState(null);
-
-  // useEffect(() => {
-  //   setWindowDimension(window.innerWidth);
-  // }, []);
-
-  // useEffect(() => {
-  //   function handleResize() {
-  //     setWindowDimension(window.innerWidth);
-  //   }
-
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-
-  // const isMobile = windowDimension <= 640;
 
   function addToBasket(product) {
     setBasket(function (oldBasket) {
@@ -126,12 +110,6 @@ export default function Form(props) {
     }
   });
 
-  // return (
-  //   <div className="Layout">
-  //     <ProductList addToBasket={addToBasket} beers={beers} />
-  //     <Basket resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} addID={addID} />
-  //   </div>
-  // );
   const style = {
     position: "absolute",
     top: "0",
@@ -155,7 +133,19 @@ export default function Form(props) {
         {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
         {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
         <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
-        <Basket style={props.cart && style} addID={addID} resetBasket={resetBasket} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} ordersID={ordersID} />
+        <Basket
+          style={props.cart && style}
+          addID={addID}
+          resetBasket={resetBasket}
+          deleteBeer={deleteBeer}
+          decreaseAmount={decreaseAmount}
+          increaseAmount={increaseAmount}
+          addMoreBeer={addMoreBeer}
+          basket={basket}
+          ordersID={ordersID}
+          customerName={customerName}
+          setCustomerName={setCustomerName}
+        />
       </div>
     );
   }

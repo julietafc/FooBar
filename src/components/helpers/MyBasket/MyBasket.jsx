@@ -87,7 +87,9 @@ export default function MyBasket(props) {
       {orders.length > 0 && (
         <div>
           <button onClick={onClick}>Checkout</button>
-          {showResults ? <Checkout resetBasket={props.resetBasket} payload={payload} addID={props.addID} setIsModalYourID={setIsModalYourID} setShowResults={setShowResults} /> : null}
+          {showResults ? (
+            <Checkout resetBasket={props.resetBasket} payload={payload} addID={props.addID} customerName={props.customerName} setCustomerName={props.setCustomerName} setIsModalYourID={setIsModalYourID} setShowResults={setShowResults} />
+          ) : null}
         </div>
       )}
       {isModalYourID && <ModalYourID ordersID={props.ordersID} setIsModalYourID={setIsModalYourID} />}

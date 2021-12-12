@@ -26,7 +26,9 @@ export default function ModalYourID(props) {
             </foreignObject>
             <rect id="btn-holder" className="cls-3" x="90.94" y="132.86" width="122.86" height="48.88" />
             <foreignObject x="32.15" y="35.1" width="240.44" height="78.25">
-              <p>{"your order is " + props.ordersID[0]}</p>
+              <p>
+                Hi <span className="capitalize">{props.ordersID[0].customer}</span> your order is {props.ordersID[0].id}
+              </p>
             </foreignObject>
             <rect id="text-holder" className="cls-3" x="32.15" y="35.1" width="240.44" height="78.25" />
           </g>

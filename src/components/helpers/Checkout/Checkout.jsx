@@ -25,7 +25,7 @@ export default function Checkout(props) {
         return obj;
       })
       .then((data) => {
-        props.addID(data.id);
+        props.addID({ id: data.id, customer: props.customerName });
         props.resetBasket();
         props.setIsModalYourID(true);
         props.setShowResults(false);
@@ -55,7 +55,12 @@ export default function Checkout(props) {
           className="inputs fullBleed"
           label="Name"
           name="name"
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+            props.setCustomerName(() => {
+              return e.target.value.split(" ")[0];
+            });
+          }}
           value={name}
           rules={[
             {
