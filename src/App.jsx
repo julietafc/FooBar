@@ -24,7 +24,6 @@ function App() {
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
   const [isHappyHour, setIsHappyHour] = useState(false);
-  const beerBasePrice = 40;
   const [ranking, setRanking] = useState({
     elhefe: 0,
     fairytaleale: 0,
@@ -37,6 +36,10 @@ function App() {
     sleighride: 0,
     steampunk: 0,
   });
+  const [oldServing, setOldServing] = useState([]);
+  const [newServing, setNewServing] = useState([]);
+  const [orderReady, setOrderRedady] = useState({});
+  const beerBasePrice = 40;
 
   function changeCartState(state) {
     setCart(state);
@@ -51,6 +54,7 @@ function App() {
         const data = await res.json();
         setData(data);
         checkTaps(data);
+        setNewServing([...data.serving]);
         setAllOrders([...data.queue, ...data.serving]);
 
         //   setRealTime(json.timestamp);
@@ -87,7 +91,24 @@ function App() {
   }, []);
 
   //-----------------------
+  useEffect(() => {
+    console.log("compareOldNew");
+    console.log(oldServing);
+    console.log(newServing);
+    if (oldServing.length > 0) {
+      console.log("length>0");
+      oldServing.forEach((oldOrder, i, arr) => {
+        console.log(oldOrder.id);
+        const findIt = [...newServing].find((newOrder) => newOrder.id === oldOrder.id);
+        !findIt && console.log("order ready", oldOrder.id);
+        i === arr.length - 1 && setOldServing([...newServing]);
+      });
+    } else {
+      console.log("length<0", newServing);
 
+      setOldServing([...newServing]);
+    }
+  }, [newServing]);
   //------------------------------
 
   allOrders.forEach((order) => {
