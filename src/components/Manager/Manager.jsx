@@ -1,8 +1,13 @@
+import React from 'react';
 import "./Manager.scss";
 import Clock from "../helpers/Time/Time";
 import Inventory from "../helpers/Inventory/Inventory";
 import Workers from "../helpers/Workers/Workers";
 import TopBeer from "../helpers/Ranking/Ranking";
+import Sales from "../helpers/Sales/Sales"
+import LoginBtn from '../helpers/Button/loginBtn';
+import LogoutBtn from '../helpers/Button/LogoutBtn';
+
 
 export default function Manager(props) {
   if (!props.bartenders) {
@@ -10,6 +15,9 @@ export default function Manager(props) {
   }
   return (
     <>
+    <LoginBtn/>
+    <LogoutBtn/>
+
       <div className="clock">
         <Clock />
       </div>
@@ -18,12 +26,10 @@ export default function Manager(props) {
         <div className="manager__header">
           <h2>Managers overview</h2>
         </div>
-
+        <Sales {...props} />
         <Inventory {...props} />
-
-        <Workers {...props} />
-
         <TopBeer {...props} />
+        <Workers {...props} />
       </section>
     </>
   );
