@@ -95,20 +95,21 @@ export default function Form(props) {
       return copy;
     });
   }
+  useEffect(() => {
+    ordersID.forEach((order) => {
+      if (props.ordersReady.find((orderReady) => orderReady.id === order.id)) {
+        const orderReady = props.ordersReady.find((orderReady) => orderReady.id === order.id);
+        setYourOrderReady({ id: orderReady.id, bartender: orderReady.bartender, customer: order.customer });
+        setIsYourOrderReady(true);
+        // window.alert("your order " + ID + " is ready");
 
-  ordersID.forEach((order) => {
-    if (props.ordersReady.find((orderReady) => orderReady.id === order.id)) {
-      const orderReady = props.ordersReady.find((orderReady) => orderReady.id === order.id);
-      setYourOrderReady({ id: orderReady.id, bartender: orderReady.bartender, customer: order.customer });
-      setIsYourOrderReady(true);
-      // window.alert("your order " + ID + " is ready");
-
-      setOrdersID((oldArr) => {
-        const copy = oldArr.filter((oldOrder) => oldOrder.id !== order.id);
-        return copy;
-      });
-    }
-  });
+        setOrdersID((oldArr) => {
+          const copy = oldArr.filter((oldOrder) => oldOrder.id !== order.id);
+          return copy;
+        });
+      }
+    });
+  }, [props.ordersReady]);
 
   const style = {
     position: "absolute",
@@ -132,7 +133,9 @@ export default function Form(props) {
       <div className="Layout">
         {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
         {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
-        <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
+        <div className="produclist-wrapper">
+          <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
+        </div>
         <Basket
           style={props.cart && style}
           addID={addID}

@@ -4,7 +4,14 @@
   color: var(--theme-page-text);
 }
 .Layout {
+  height: 100%;
   .notShown {
     display: inline;
   }
+}
+
+.produclist-wrapper {
+  height: 100%;
+  max-height: calc(100vh - 98px - 3em);
+  overflow-y: scroll;
 }

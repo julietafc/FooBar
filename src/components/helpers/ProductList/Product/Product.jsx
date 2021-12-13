@@ -53,7 +53,7 @@ export default function Product(props) {
             </p>
             <h3>{props.name}</h3>
             <div className="money">
-              <img src="/assets/coin.svg" alt="" />
+              <img src={props.isHappyHour ? "/assets/star.svg" : "/assets/coin.svg"} alt="" />
               <p className="price">${props.price() * (props.isHappyHour ? 0.5 : 1)}</p>
             </div>
           </div>
