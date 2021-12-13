@@ -60,6 +60,10 @@
     color: cadetblue;
   }
 
+  .capitalize {
+    text-transform: capitalize;
+  }
+
   @media screen and (max-width: 680px) {
     .mobileHeader {
       position: fixed;

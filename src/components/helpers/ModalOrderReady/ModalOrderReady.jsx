@@ -37,7 +37,9 @@ export default function ModalOrderReady(props) {
             <rect id="btn-holder" className="cls-1" x="223.29" y="132.86" width="122.86" height="48.88" />
 
             <foreignObject x="164.5" y="35.1" width="240.44" height="78.25">
-              <p>{"your order " + props.id + " is ready"}</p>
+              <p>
+                Hi <span className="capitalize">{props.customer}</span> your order {props.id} is ready
+              </p>
             </foreignObject>
             <rect id="text-holder" className="cls-1" x="164.5" y="35.1" width="240.44" height="78.25" />
           </g>

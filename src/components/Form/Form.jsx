@@ -96,15 +96,15 @@ export default function Form(props) {
     });
   }
 
-  ordersID.forEach((ID) => {
-    if (props.ordersReady.find((orderReady) => orderReady.id === ID)) {
-      const orderReady = props.ordersReady.find((orderReady) => orderReady.id === ID);
-      setYourOrderReady({ id: orderReady.id, bartender: orderReady.bartender });
+  ordersID.forEach((order) => {
+    if (props.ordersReady.find((orderReady) => orderReady.id === order.id)) {
+      const orderReady = props.ordersReady.find((orderReady) => orderReady.id === order.id);
+      setYourOrderReady({ id: orderReady.id, bartender: orderReady.bartender, customer: order.customer });
       setIsYourOrderReady(true);
       // window.alert("your order " + ID + " is ready");
 
       setOrdersID((oldArr) => {
-        const copy = oldArr.filter((id) => id !== ID);
+        const copy = oldArr.filter((oldOrder) => oldOrder.id !== order.id);
         return copy;
       });
     }
