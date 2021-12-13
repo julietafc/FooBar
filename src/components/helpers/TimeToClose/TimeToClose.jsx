@@ -3,36 +3,19 @@ import settingTime from "../../../modules/settingTime";
 import TimeBar from "../TimeBar/TimeBar";
 import React, { useEffect } from "react";
 import Confetti from "react-confetti";
+import timeManager from "../../../modules/timeManager";
 
 export default function TimeToClose(props) {
   if (!props.now) {
     return null;
   }
-
-  const happyHourTime = 16;
-  const closingHour = 22;
-  const openHour = 10;
-  const happyHourStar = settingTime(happyHourTime);
-  const happyHourEnd = settingTime(happyHourTime + 1);
-  const closingTime = settingTime(closingHour);
-  const openingTime = settingTime(openHour);
-
-  if (props.now > happyHourStar && props.now < happyHourEnd) {
-    props.setIsHappyHour(true);
-  } else {
-    if (props.isHappyHour) {
-      props.setIsHappyHour(false);
-    }
-  }
-
-  const isOpen = props.now > openingTime && props.now < closingTime;
-
+  const schedule = timeManager();
   return (
     <>
       <article className="TimeToClose">
-        <TimeBar isBarActive={props.isHappyHour} timeInit={happyHourStar} timeEnd={happyHourEnd} now={props.now} label="HAPPY HOUR" />
-        <TimeBar isBarActive={isOpen} timeInit={openingTime} timeEnd={closingTime} now={props.now} label="TIME LEFT" />
-        {props.isHappyHour && props.now < happyHourStar + 30000 && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+        <TimeBar isBarActive={props.isHappyHour} timeInit={schedule.happyHourStar} timeEnd={schedule.happyHourEnd} now={props.now} label="HAPPY HOUR" />
+        <TimeBar isBarActive={props.isOpen} timeInit={schedule.openingTime} timeEnd={schedule.closingTime} now={props.now} label="TIME LEFT" />
+        {props.isHappyHour && props.now < schedule.happyHourStar + 30000 && <Confetti width={window.innerWidth} height={window.innerHeight} />}
       </article>
     </>
   );

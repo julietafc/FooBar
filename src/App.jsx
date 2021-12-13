@@ -1,7 +1,7 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
-import timeDiference from "./modules/timeDiference";
+//import timeDiference from "./modules/timeDiference";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link, NavLink } from "react-router-dom";
 import Form from "./components/Form/Form";
@@ -13,6 +13,7 @@ import Home from "./components/Home/Home";
 // import Nav1 from "./components/helpers/Nav1/Nav1";
 import Footer from "./components/helpers/Footer/Footer";
 import Header from "./components/helpers/Header/Header";
+import timeManager from "./modules/timeManager";
 
 function App() {
   const [windowDimension, setWindowDimension] = useState(null);
@@ -24,6 +25,7 @@ function App() {
   const [ordersReady, setOrdersReady] = useState([]);
   const [cart, setCart] = useState(false);
   const [isHappyHour, setIsHappyHour] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [ranking, setRanking] = useState({
     elhefe: 0,
     fairytaleale: 0,
@@ -39,6 +41,7 @@ function App() {
   const [oldServing, setOldServing] = useState([]);
   const [newServing, setNewServing] = useState([]);
   const [orderReady, setOrderRedady] = useState({});
+
   const beerBasePrice = 40;
 
   function changeCartState(state) {
@@ -97,34 +100,28 @@ function App() {
 
   //-----------------------
   useEffect(() => {
-    console.log("compareOldNew");
-    console.log(oldServing);
-    console.log(newServing);
+    // console.log("compareOldNew");
+    // console.log(oldServing);
+    // console.log(newServing);
     if (oldServing.length > 0) {
       console.log("length>0");
       oldServing.forEach((oldOrder, i, arr) => {
-        console.log(oldOrder.id);
+        // console.log(oldOrder.id);
         const findIt = [...newServing].find((newOrder) => newOrder.id === oldOrder.id);
         //!findIt && console.log("order ready", oldOrder);
         !findIt && upDateOrdersReady(oldOrder);
         i === arr.length - 1 && setOldServing([...newServing]);
       });
     } else {
-      console.log("length<0", newServing);
+      // console.log("length<0", newServing);
       setOldServing([...newServing]);
     }
   }, [newServing]);
   //------------------------------
 
-  // allOrders.forEach((order) => {
-  //   if (data.bartenders.find((bartender) => bartender.servingCustomer === order.id)) {
-  //     const bartender = data.bartenders.filter((bartender) => bartender.servingCustomer === order.id)[0];
-  //     if (bartender.statusDetail === "receivePayment") {
-  //       const tookenTime = timeDiference(order.startTime, now);
-  //       upDateOrdersReady({ id: order.id, tookenTime: tookenTime, bartender: bartender.name, order: order.order });
-  //     }
-  //   }
-  // });
+  useEffect(() => {
+    timeManager(now, isHappyHour, setIsHappyHour, setIsOpen);
+  }, [now]);
 
   //-----------------------
   useEffect(() => {
@@ -228,9 +225,9 @@ function App() {
       <main>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
-          <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} />} />
-          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} products={products} />} />
+          <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} />} />
+          <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
+          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} />} />
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
         </Routes>
       </main>
