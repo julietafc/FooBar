@@ -194,11 +194,30 @@ function App() {
 
   return (
     <div className="App">
-      <Header changeCartState={changeCartState} cart={cart} />
-      {/* {isCustomer ? (
+      {/* <Header changeCartState={changeCartState} cart={cart} /> */}
+      {isCustomer ? (
         <header className="mobileHeader">
           <h1>Welcome to FooBar</h1>
-          <Nav1 isMobile={isMobile} cart={cart} changeCartState={changeCartState} />
+          {/* <Nav1 isMobile={isMobile} cart={cart} changeCartState={changeCartState} /> */}
+          <nav className="navigation">
+            <NavLink
+              to="/"
+              // onClick={() => {
+              //   setIsCustomer(false);
+              // }}
+            >
+              Home
+            </NavLink>
+            <NavLink to="/Dashboard">Dashboard</NavLink>
+            <NavLink
+              to="/Form"
+              onClick={() => {
+                changeCartState(!cart);
+              }}
+            >
+              {cart ? "Order" : isMobile ? "Cart" : "Order"}
+            </NavLink>
+          </nav>
         </header>
       ) : (
         <header>
@@ -220,11 +239,11 @@ function App() {
             </NavLink>
           </nav>
         </header>
-      )} */}
+      )}
 
       <main>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
           <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
           <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} />} />
