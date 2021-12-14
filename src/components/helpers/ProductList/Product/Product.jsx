@@ -1,10 +1,20 @@
 import "./Product.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactCardFlip from "react-card-flip";
+import useSound from "use-sound";
+import sound from "./coin_effect.mp3";
+import sound2 from "./add.mp3";
 
 export default function Product(props) {
   const [flipped, setFlipped] = useState(false);
   const [amount, setAmount] = useState(0);
+  const [playCoin] = useSound(sound, { interrupt: true, volume: 0.1 });
+  const [playAdd] = useSound(sound2, { interrupt: true, volume: 0.1 });
+  useEffect(() => {
+    if (amount > 0) {
+      playCoin();
+    }
+  }, [amount]);
 
   function increaseAmount() {
     // console.log(props.id);
@@ -65,7 +75,7 @@ export default function Product(props) {
             <button onClick={increaseAmount}>+</button>
           </div>
 
-          <button className="buttonAdd" onClick={add} style={amount < 1 ? { backgroundColor: "grey", pointerEvents: "none" } : { backgroundColor: "blue", pointerEvents: "all" }}>
+          <button className="buttonAdd" onClick={add} onMouseDown={() => playAdd()} style={amount < 1 ? { backgroundColor: "grey", pointerEvents: "none" } : { backgroundColor: "blue", pointerEvents: "all" }}>
             Add
           </button>
         </div>

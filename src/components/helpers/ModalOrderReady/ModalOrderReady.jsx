@@ -1,6 +1,14 @@
 import "./ModalOrderReady.scss";
+import useSound from "use-sound";
+import sound from "./pressbee.mp3";
+import { useEffect } from "react";
 
 export default function ModalOrderReady(props) {
+  const [play, { stop }] = useSound(sound, { interrupt: true });
+  useEffect(() => {
+    play();
+  });
+
   const pic = props.bartender.toLowerCase() + ".png";
   return (
     <div className="background-black-order">

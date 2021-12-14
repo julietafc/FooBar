@@ -9,7 +9,8 @@ body {
 }
 
 .App {
-  height: 100%;
+  height: fit-content;
+  min-height: 100vh;
   text-align: center;
   background-image: url("/assets/bg_dark.svg");
   // background-color: #cccccc; /* Used if the image is unavailable */
