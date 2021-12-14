@@ -7,10 +7,11 @@ import Bulb from "../helpers/Bulb/Bulb";
 import { useState } from "react";
 
 function Keg(props) {
+  const beer = props.name.split(" ").slice(0, 2).join(" ");
   return (
-    <li>
+    <li className="Keg">
       <Bulb {...props} />
-      {props.name}: {props.amount} left
+      {beer}: {props.amount} left
     </li>
   );
 }
