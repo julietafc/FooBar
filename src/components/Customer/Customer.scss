@@ -1,6 +1,9 @@
 .customer-wrapper {
   // display: flex;
   // justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 98px;
   background-color: rgba(0, 0, 0, 0);
   background-image: url("/assets/bg_dark.svg");
   background-position: bottom; /* Center the image */
@@ -16,7 +19,7 @@
   grid-template-rows: auto auto auto;
   gap: 1.5rem;
   padding: 2rem;
-  margin-top: 98px;
+
   height: calc(100vh - 100px);
   //max-width: 2500px;
 
@@ -131,9 +134,6 @@ div.beerPx {
   .Customer {
     gap: 2rem;
     margin-top: 2rem;
-    // #fullscreen {
-    //   background: url(./assets/fullscreenOff.svg);
-    // }
   }
   .Beers {
     height: 50px;

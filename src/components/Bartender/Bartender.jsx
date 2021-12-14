@@ -67,7 +67,7 @@ export default function Bartender(props) {
 
   return (
     <div className="Bartender">
-      <TimeToClose now={props.now} isHappyHour={props.isHappyHour} setIsHappyHour={props.setIsHappyHour} />
+      <TimeToClose now={props.now} isHappyHour={props.isHappyHour} isOpen={props.isOpen} />
       <Taps bartenders={props.bartenders} taps={props.taps} />
       <Depot {...props} />
       <OrderList {...props} />
