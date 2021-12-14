@@ -12,7 +12,8 @@ import Home from "./components/Home/Home";
 //import { display } from "@mui/system";
 // import Nav1 from "./components/helpers/Nav1/Nav1";
 import Footer from "./components/helpers/Footer/Footer";
-import Header from "./components/helpers/Header/Header";
+//import Header from "./components/helpers/Header/Header";
+import Header from "./components/helpers/Header/Header-copy";
 import timeManager from "./modules/timeManager";
 
 function App() {
@@ -194,59 +195,14 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Header changeCartState={changeCartState} cart={cart} /> */}
-      {isCustomer ? (
-        <header className="mobileHeader">
-          <h1>Welcome to FooBar</h1>
-          {/* <Nav1 isMobile={isMobile} cart={cart} changeCartState={changeCartState} /> */}
-          <nav className="navigation">
-            <NavLink
-              to="/"
-              // onClick={() => {
-              //   setIsCustomer(false);
-              // }}
-            >
-              Home
-            </NavLink>
-            <NavLink to="/Dashboard">Dashboard</NavLink>
-            <NavLink
-              to="/Form"
-              onClick={() => {
-                changeCartState(!cart);
-              }}
-            >
-              {cart ? "Order" : isMobile ? "Cart" : "Order"}
-            </NavLink>
-          </nav>
-        </header>
-      ) : (
-        <header>
-          <h1>FooBar</h1>
-
-          <nav className="navigation">
-            <NavLink to="/">Home</NavLink>
-
-            <NavLink to="/Manager">Manager</NavLink>
-            <NavLink to="/Bartender">Bartenders</NavLink>
-
-            <NavLink
-              to="/Dashboard"
-              onClick={() => {
-                setIsCustomer(true);
-              }}
-            >
-              Customers
-            </NavLink>
-          </nav>
-        </header>
-      )}
+      <Header changeCartState={changeCartState} cart={cart} isCustomer={isCustomer} />
 
       <main>
         <Routes>
           <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
           <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
-          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} />} />
+          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
         </Routes>
       </main>

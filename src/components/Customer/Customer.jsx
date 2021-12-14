@@ -22,6 +22,11 @@ export default function Customer(props) {
   if (!props.taps) {
     return null;
   }
+
+  if (!props.isCustomer) {
+    props.setIsCustomer(true);
+  }
+
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const styleBtn = {
