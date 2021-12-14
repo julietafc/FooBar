@@ -3,11 +3,27 @@ import Clock from "../helpers/Time/Time";
 import Inventory from "../helpers/Inventory/Inventory";
 import Workers from "../helpers/Workers/Workers";
 import TopBeer from "../helpers/Ranking/Ranking";
+import Sales from "../helpers/Sales/Sales"
 
 export default function Manager(props) {
   if (!props.bartenders) {
     return null;
   }
+  // const namePrice = props.products.map((beer) => {
+  //   const name = beer.name.toLowerCase().split(" ").join("");
+  //   const total = props.ranking[name] * beer.price();
+  //   return total;
+  // });
+
+  // const initialValue = 0;
+  // let sum = namePrice.reduce(function (previousValue, currentValue) {
+  //   return previousValue + currentValue;
+  // }, initialValue);
+
+  // console.log(namePrice);
+  // console.log(sum);
+
+
   return (
     <>
       <div className="clock">
@@ -19,11 +35,11 @@ export default function Manager(props) {
           <h2>Managers overview</h2>
         </div>
 
+        <Sales {...props}/>
         <Inventory {...props} />
-
+        <TopBeer {...props} />
         <Workers {...props} />
 
-        <TopBeer {...props} />
       </section>
     </>
   );

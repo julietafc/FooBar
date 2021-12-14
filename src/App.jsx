@@ -36,6 +36,7 @@ function App() {
     sleighride: 0,
     steampunk: 0,
   });
+  console.log(ranking);
   const [oldServing, setOldServing] = useState([]);
   const [newServing, setNewServing] = useState([]);
   const [orderReady, setOrderRedady] = useState({});
@@ -228,7 +229,7 @@ function App() {
       <main>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/Manager" element={<Manager {...data} now={now} />} />
+          <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} />} />
           <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} setIsHappyHour={setIsHappyHour} products={products} />} />
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
