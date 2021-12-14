@@ -14,7 +14,7 @@ export default function Nav1(props) {
           </li>
         )}
 
-        {!props.isCustomer && (
+        {!props.isCustomer && !props.isMobile && (
           <li className="option" onClick={props.closeMobileMenu}>
             <NavLink to="/Bartender">Bartenders</NavLink>
           </li>

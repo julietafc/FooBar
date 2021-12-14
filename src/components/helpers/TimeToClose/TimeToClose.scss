@@ -13,4 +13,8 @@
   // & > *:last-child {
   //   grid-column-start: -3;
   // }
+  &.mobile {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
 }

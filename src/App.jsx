@@ -43,6 +43,7 @@ function App() {
   const [newServing, setNewServing] = useState([]);
   const [orderReady, setOrderRedady] = useState({});
 
+  const isMobile = windowDimension <= 640;
   const beerBasePrice = 40;
 
   function changeCartState(state) {
@@ -133,8 +134,6 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const isMobile = windowDimension <= 640;
-
   function checkTaps(info) {
     setProducts(function (oldProducts) {
       return oldProducts.map((item) => {
@@ -197,7 +196,7 @@ function App() {
           <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
           <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
-          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
+          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} isCustomer={isCustomer} setIsCustomer={setIsCustomer} isMobile={isMobile} />} />
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
         </Routes>
       </main>

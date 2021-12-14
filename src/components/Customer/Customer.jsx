@@ -52,18 +52,18 @@ export default function Customer(props) {
   return (
     <div className="customer-wrapper">
       <div className="Customer">
-        <TimeToClose now={props.now} isHappyHour={props.isHappyHour} isOpen={props.isOpen} />
+        <TimeToClose now={props.now} isHappyHour={props.isHappyHour} isOpen={props.isOpen} isMobile={props.isMobile} />
         <div className="Beers-wrapper">
           <h2>Queue</h2> <Beers {...props} isFullScreen={isFullScreen} />
         </div>
-        <div className="menu-queue-wrapper">
-          <BeersMenu products={props.products} isHappyHour={props.isHappyHour} />
-        </div>
+
+        {!props.isMobile && <BeersMenu products={props.products} isHappyHour={props.isHappyHour} />}
+
         <aside>
           <h2>Orders Ready</h2>
           <ul className="orders-ready">{readyMap}</ul>
         </aside>
-        <button id="fullscreen" onClick={() => setIsFullScreen(!isFullScreen)} style={styleBtn}></button>
+        {!props.isMobile && <button id="fullscreen" onClick={() => setIsFullScreen(!isFullScreen)} style={styleBtn}></button>}
       </div>
     </div>
   );
