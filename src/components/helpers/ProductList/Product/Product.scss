@@ -122,6 +122,9 @@
       }
     }
 
+    .button-add-wrapper {
+      position: relative;
+    }
     .buttonAdd {
       background-color: var(--blue);
 
@@ -131,6 +134,43 @@
       padding: 0.9em 0.9em;
       // box-shadow: 0px 2px 6px 2px #c3c3c3;
     }
+
+    .feedback-beer {
+      background-image: url("/assets/beer-pixel.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 50%;
+      aspect-ratio: 0.9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0) scale(0);
+      display: none;
+      p {
+        background-color: var(--pink);
+        border-radius: 50%;
+        margin-top: -40%;
+        margin-left: 50%;
+      }
+      &.show {
+        display: block;
+        animation: show 0.5s ease 1;
+      }
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: translate(0, 0) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5);
+  }
+  100% {
+    transform: translate(200%, -200%) scale(2);
   }
 }
 
