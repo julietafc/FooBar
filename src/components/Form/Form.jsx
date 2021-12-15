@@ -95,6 +95,7 @@ export default function Form(props) {
       return copy;
     });
   }
+
   useEffect(() => {
     ordersID.forEach((order) => {
       if (props.ordersReady.find((orderReady) => orderReady.id === order.id)) {
@@ -124,7 +125,19 @@ export default function Form(props) {
         {!props.cart ? (
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         ) : (
-          <Basket style={props.cart && style} deleteBeer={deleteBeer} decreaseAmount={decreaseAmount} increaseAmount={increaseAmount} addMoreBeer={addMoreBeer} basket={basket} ordersID={ordersID} />
+          <Basket
+            style={props.cart && style}
+            addID={addID}
+            resetBasket={resetBasket}
+            deleteBeer={deleteBeer}
+            decreaseAmount={decreaseAmount}
+            increaseAmount={increaseAmount}
+            addMoreBeer={addMoreBeer}
+            basket={basket}
+            ordersID={ordersID}
+            customerName={customerName}
+            setCustomerName={setCustomerName}
+          />
         )}
       </div>
     );
