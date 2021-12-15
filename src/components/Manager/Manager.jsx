@@ -9,20 +9,6 @@ export default function Manager(props) {
   if (!props.bartenders) {
     return null;
   }
-  // const namePrice = props.products.map((beer) => {
-  //   const name = beer.name.toLowerCase().split(" ").join("");
-  //   const total = props.ranking[name] * beer.price();
-  //   return total;
-  // });
-
-  // const initialValue = 0;
-  // let sum = namePrice.reduce(function (previousValue, currentValue) {
-  //   return previousValue + currentValue;
-  // }, initialValue);
-
-  // console.log(namePrice);
-  // console.log(sum);
-
 
   return (
     <>

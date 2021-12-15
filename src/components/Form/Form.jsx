@@ -120,7 +120,7 @@ export default function Form(props) {
     return (
       <div className="Layout">
         {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
-        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} className="confetti" />}
         {!props.cart ? (
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         ) : (
@@ -132,7 +132,7 @@ export default function Form(props) {
     return (
       <div className="Layout">
         {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
-        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+        {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} className="confetti" />}
         <div className="produclist-wrapper">
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         </div>

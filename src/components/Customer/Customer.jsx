@@ -22,6 +22,11 @@ export default function Customer(props) {
   if (!props.taps) {
     return null;
   }
+
+  if (!props.isCustomer) {
+    props.setIsCustomer(true);
+  }
+
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const styleBtn = {
@@ -47,7 +52,7 @@ export default function Customer(props) {
   return (
     <div className="customer-wrapper">
       <div className="Customer">
-        <TimeToClose now={props.now} isHappyHour={props.isHappyHour} setIsHappyHour={props.setIsHappyHour} />
+        <TimeToClose now={props.now} isHappyHour={props.isHappyHour} isOpen={props.isOpen} />
         <div className="Beers-wrapper">
           <h2>Queue</h2> <Beers {...props} isFullScreen={isFullScreen} />
         </div>

@@ -89,3 +89,26 @@ export default function Header(props) {
     </>
   );
 }
+
+{
+  /* <header>
+<h1>FooBar</h1>
+
+<nav className="navigation">
+  <NavLink to="/">Home</NavLink>
+  {!isCustomer && <NavLink to="/Manager">Manager</NavLink>}
+  {!isCustomer && <NavLink to="/Bartender">Bartenders</NavLink>}
+  <NavLink to="/Dashboard">{!isCustomer ? "Customers" : "Dashboard"}</NavLink>
+  {isCustomer && (
+    <NavLink
+      to="/Form"
+      onClick={() => {
+        changeCartState(!cart);
+      }}
+    >
+      {cart ? "Order" : isMobile ? "Cart" : "Order"}
+    </NavLink>
+  )}
+</nav>
+</header> */
+}
