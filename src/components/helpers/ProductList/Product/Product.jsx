@@ -17,10 +17,11 @@ export default function Product(props) {
     if (adding) {
       fedbackBeer.classList.add("show");
       fedbackBeer.addEventListener("animationend", function unshow() {
-        fedbackBeer.removeEventListener("animationend", unshow);
-        fedbackBeer.classList.remove("show");
         setAmount(0);
         setAdding(false);
+        fedbackBeer.classList.remove("show");
+
+        fedbackBeer.removeEventListener("animationend", unshow);
       });
     }
   }, [adding]);
@@ -88,8 +89,8 @@ export default function Product(props) {
           <div className="button-add-wrapper">
             <button
               className="buttonAdd"
-              onClick={add}
-              onMouseDown={() => {
+              onClick={() => {
+                add();
                 playAdd();
                 setAdding(true);
               }}
