@@ -42,6 +42,7 @@ function App() {
   const [oldServing, setOldServing] = useState([]);
   const [newServing, setNewServing] = useState([]);
   const [orderReady, setOrderRedady] = useState({});
+  const [dayOrders, setDayOrders] = useState(0);
 
   const isMobile = windowDimension <= 640;
   const beerBasePrice = 40;
@@ -107,6 +108,7 @@ function App() {
         const findIt = [...newServing].find((newOrder) => newOrder.id === oldOrder.id);
         //!findIt && console.log("order ready", oldOrder);
         !findIt && upDateOrdersReady(oldOrder);
+        !findIt && setDayOrders(dayOrders + 1);
         i === arr.length - 1 && setOldServing([...newServing]);
       });
     } else {
