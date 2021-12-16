@@ -18,6 +18,12 @@ export default function Sales(props) {
       console.log(namePrice);
       console.log(sum);
 
+
+      //from here
+function Orders(props) {
+
+}
+
     return (
         <div className="sales">
             <h3>Todays sales numbers</h3>
@@ -27,9 +33,7 @@ export default function Sales(props) {
             </div>
             <div>
                 <h4>Total Orders</h4>
-            </div>
-            <div>
-                <h4>Average Order Earnings</h4>
+                <p>{props.allOrders[0].id}</p>
             </div>
         </div>
     )

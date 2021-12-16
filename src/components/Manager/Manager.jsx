@@ -20,12 +20,10 @@ export default function Manager(props) {
         <div className="manager__header">
           <h2>Managers overview</h2>
         </div>
-
-        <Sales {...props}/>
-        <Inventory {...props} />
-        <TopBeer {...props} />
-        <Workers {...props} />
-
+        <Sales className="Sales" {...props}/>
+        <Inventory className="Inventory" {...props} />
+        <Workers className="Workers" {...props} />
+        <TopBeer className="TopBeer" {...props} />
       </section>
     </>
   );
