@@ -23,7 +23,7 @@ export default function Sales(props) {
     return (
         <div className="sales">
             <div className="salesHeader">
-              <h3>Todays sales numbers</h3>
+              <h3>Todays sales</h3>
           </div>
             <div className="figures">
             <div>

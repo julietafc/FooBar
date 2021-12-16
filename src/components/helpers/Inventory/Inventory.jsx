@@ -21,7 +21,7 @@ export default function Inventory(props) {
   }
 
   return (
-    <div>
+    <div className="inventoryList">
       <h3>Inventory</h3>
       <Depot {...props} />
     </div>
