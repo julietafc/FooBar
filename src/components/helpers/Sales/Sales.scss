@@ -13,3 +13,14 @@
     }
   }
 }
+
+@media screen and (max-width: 1020px) {
+  .manager {
+    .sales {
+      .figures {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  }
+}

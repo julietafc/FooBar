@@ -1,16 +1,16 @@
-.inventory {
-  display: flex;
-  flex-direction: column;
-  color: white;
-}
-
-.inventory > h2,
-h3 {
-  text-align: start;
-  padding: 1rem;
-}
-
 .manager {
+  .inventory {
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+
+  .inventory > h2,
+  h3 {
+    text-align: start;
+    padding: 1rem;
+  }
+
   .Depot {
     border: solid 2px var(--orange);
     border-radius: 1em;
@@ -22,11 +22,21 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(350px, 90vw), 400px));
+    grid-template-columns: repeat(auto-fill, minmax(min(450px, 90vw), 400px));
     gap: 1rem;
     padding: 1rem 2rem;
     list-style: none;
     text-align: left;
     font-size: 80%;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .manager {
+    .depot ul {
+      display: flex;
+      flex-wrap: wrap;
+      width: 90vw;
+    }
   }
 }

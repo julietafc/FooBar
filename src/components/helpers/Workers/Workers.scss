@@ -15,10 +15,20 @@
 
       .emp {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column-reverse;
         align-items: center;
         gap: 0.5rem;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .manager {
+    .workers {
+      flex-wrap: nowrap;
+      flex-direction: column;
     }
   }
 }
