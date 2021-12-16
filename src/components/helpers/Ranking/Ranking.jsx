@@ -1,3 +1,6 @@
+import "./Ranking.scss"
+
+
 export default function TopBeer(props) {
     const ranking = [...props.storage];
     let rankingSort = ranking.sort((a, b)=>a.amount-b.amount);
