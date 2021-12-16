@@ -45,7 +45,7 @@ export default function Checkout(props) {
 
   return (
     <div className="FormWrapper">
-      <h3>Checkout</h3>
+      <h3>Payment details</h3>
 
       <Form ref={form} className="Form" onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
         <Form.Item

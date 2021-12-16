@@ -47,7 +47,7 @@ function Depot(props) {
     <section className="Depot">
       <h2>Inventory</h2>
       <div className="sorting-wrapper">
-        <h4>{direction === 1 ? "↓ " : "↑ "} Sorty by:</h4>
+        <h4>{direction === 1 ? "↓ " : "↑ "} Sort by:</h4>
         <button data-sort-direction="asc" data-sort="amount" onClick={sorting} style={sortBy === "amount" ? { color: "red" } : { color: "white" }}>
           Amount
         </button>
