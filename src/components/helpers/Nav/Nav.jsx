@@ -26,7 +26,7 @@ export default function Nav(props) {
         {props.isCustomer && (
           <li className="option" onClick={props.closeMobileMenu}>
             <NavLink
-              to="/Form"
+              to="/Menu"
               onClick={() => {
                 props.changeCartState(!props.cart);
               }}
