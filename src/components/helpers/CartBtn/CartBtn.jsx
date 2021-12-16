@@ -9,7 +9,7 @@ export default function CartBtn(props) {
 
   return total > 0 ? (
     <NavLink
-      to="/Form"
+      to="/Menu"
       className="CartBtn"
       onClick={() => {
         console.log("hola");
