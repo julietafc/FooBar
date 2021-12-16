@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 //import timeDiference from "./modules/timeDiference";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link, NavLink } from "react-router-dom";
-import Form from "./components/Form/Form";
+import Menu from "./components/Menu/Menu";
 import Manager from "./components/Manager/Manager";
 import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
@@ -13,7 +13,7 @@ import Home from "./components/Home/Home";
 // import Nav1 from "./components/helpers/Nav1/Nav1";
 import Footer from "./components/helpers/Footer/Footer";
 //import Header from "./components/helpers/Header/Header";
-import Header from "./components/helpers/Header/Header-copy";
+import Header from "./components/helpers/Header/Header";
 import timeManager from "./modules/timeManager";
 
 function App() {
@@ -42,7 +42,6 @@ function App() {
   const [oldServing, setOldServing] = useState([]);
   const [newServing, setNewServing] = useState([]);
   const [orderReady, setOrderRedady] = useState({});
-  const [dayOrders, setDayOrders] = useState(0);
 
   const isMobile = windowDimension <= 640;
   const beerBasePrice = 40;
@@ -108,7 +107,6 @@ function App() {
         const findIt = [...newServing].find((newOrder) => newOrder.id === oldOrder.id);
         //!findIt && console.log("order ready", oldOrder);
         !findIt && upDateOrdersReady(oldOrder);
-        !findIt && setDayOrders(dayOrders + 1);
         i === arr.length - 1 && setOldServing([...newServing]);
       });
     } else {
@@ -199,7 +197,7 @@ function App() {
           <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
           <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} isCustomer={isCustomer} setIsCustomer={setIsCustomer} isMobile={isMobile} />} />
-          <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
+          <Route exact path="/Form" element={<Menu products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
         </Routes>
       </main>
       <Footer />
