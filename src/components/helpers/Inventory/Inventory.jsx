@@ -22,7 +22,7 @@ export default function Inventory(props) {
 
   return (
     <div>
-      <h2>Inventory</h2>
+      <h3>Inventory</h3>
       <Depot {...props} />
     </div>
   );

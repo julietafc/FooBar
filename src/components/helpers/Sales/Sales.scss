@@ -1,0 +1,15 @@
+.manager {
+  .sales {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+
+    .figures {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      gap: 5rem;
+      padding: 0.5rem 5rem;
+    }
+  }
+}

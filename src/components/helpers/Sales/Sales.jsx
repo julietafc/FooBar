@@ -1,4 +1,5 @@
 import React from "react";
+import "./Sales.scss";
 
 export default function Sales(props) {
     if (!props.products) {
@@ -19,22 +20,25 @@ export default function Sales(props) {
       console.log(sum);
 
 
-      //from here
-function Orders(props) {
-
-}
-
     return (
         <div className="sales">
-            <h3>Todays sales numbers</h3>
+            <div className="salesHeader">
+              <h3>Todays sales numbers</h3>
+          </div>
+            <div className="figures">
             <div>
                 <h4>Total income</h4>
-                <p>{sum}kr</p>
+                <p>{sum} kr</p>
             </div>
             <div>
                 <h4>Total Orders</h4>
-                <p>{props.allOrders[0].id}</p>
+                <p>{props.dayOrders}</p>
             </div>
+            <div>
+                <h4>Average order income</h4>
+                <p>{Math.round(sum/props.dayOrders).toFixed(0)} kr</p>
+            </div>
+          </div>
         </div>
     )
 }

@@ -3,13 +3,13 @@ import "./Workers.scss"
 export default function Workers(props){
     const employees = props.bartenders;
     //React can "forEach" on it's own with map
-    const employeesMap = employees.map((person, i ) => <li key={i}>{person.name}</li> );
+    const employeesMap = employees.map((person, i ) => <div className="emp" key={i}>{person.name} <img src={"/assets/" + person.name.toLowerCase() + ".png"} /></div> );
 
     return(
-        <section className="workers">
+        <div className="workers">
             <h3>Employees on duty</h3>
             <ul>{employeesMap}</ul>
-        </section>
+        </div>
     )
 }
 

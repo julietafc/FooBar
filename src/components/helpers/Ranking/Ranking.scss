@@ -1,0 +1,17 @@
+.manager {
+  .topBeer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 2rem;
+
+      li {
+        margin: 1rem 0;
+      }
+    }
+  }
+}

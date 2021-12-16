@@ -6,8 +6,8 @@ export default function TopBeer(props) {
     const rankingMap = rankingSort.map((keg, i ) => <li key={i}>{keg.name}</li> );
 
     return (
-        <div>
-            <h3>Top Selling Beers</h3>
+        <div className="topBeer">
+            <h3>Top Sellers</h3>
             <ul>{rankingMap}</ul>
         </div>
     )

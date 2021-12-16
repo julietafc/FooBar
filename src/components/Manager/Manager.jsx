@@ -12,18 +12,21 @@ export default function Manager(props) {
 
   return (
     <>
-      <div className="clock">
-        <Clock />
-      </div>
+        
 
       <section className="manager">
-        <div className="manager__header">
+        <div className="header">
           <h2>Managers overview</h2>
+          {/* <div className="clock">
+            <Clock />
+          </div> */}
         </div>
-        <Sales className="Sales" {...props}/>
-        <Inventory className="Inventory" {...props} />
-        <Workers className="Workers" {...props} />
-        <TopBeer className="TopBeer" {...props} />
+        <div>
+        <Sales className="sales" {...props}/>
+        <Workers className="workers" {...props} />
+        <Inventory className="inventory" {...props} />
+        </div>
+        <TopBeer className="topBeer" {...props} />
       </section>
     </>
   );
