@@ -98,21 +98,15 @@ function App() {
 
   //-----------------------
   useEffect(() => {
-    // console.log("compareOldNew");
-    // console.log(oldServing);
-    // console.log(newServing);
     if (oldServing.length > 0) {
-      console.log("length>0");
       oldServing.forEach((oldOrder, i, arr) => {
-        // console.log(oldOrder.id);
         const findIt = [...newServing].find((newOrder) => newOrder.id === oldOrder.id);
-        //!findIt && console.log("order ready", oldOrder);
+
         !findIt && upDateOrdersReady(oldOrder);
-        !findIt && setDayOrders(dayOrders+1);
+        !findIt && setDayOrders(dayOrders + 1);
         i === arr.length - 1 && setOldServing([...newServing]);
       });
     } else {
-      // console.log("length<0", newServing);
       setOldServing([...newServing]);
     }
   }, [newServing]);
@@ -135,7 +129,6 @@ function App() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
 
   function checkTaps(info) {
     setProducts(function (oldProducts) {
@@ -197,7 +190,7 @@ function App() {
       <main>
         <Routes>
           <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
-          <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} dayOrders={dayOrders}/>} />
+          <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} dayOrders={dayOrders} />} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
           <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} isCustomer={isCustomer} setIsCustomer={setIsCustomer} isMobile={isMobile} />} />
           <Route exact path="/Menu" element={<Menu products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} setCart={setCart} />} />
