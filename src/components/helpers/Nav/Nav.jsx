@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-export default function Nav1(props) {
+export default function Nav(props) {
   // const [orderShown, setOrder] = useState(true);
   return (
     <nav className="navigation">
