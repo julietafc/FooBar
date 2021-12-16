@@ -7,7 +7,7 @@ export default function CartBtn(props) {
     return previousValue + currentValue.amount;
   }, initialValue);
 
-  return (
+  return total > 0 ? (
     <NavLink
       to="/Form"
       className="CartBtn"
@@ -18,5 +18,5 @@ export default function CartBtn(props) {
     >
       <span>{props.cart ? total : "X"}</span>
     </NavLink>
-  );
+  ) : null;
 }
