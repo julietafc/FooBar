@@ -1,10 +1,6 @@
 //import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import * as ReactDOM from "react-dom";
-<<<<<<< HEAD
-=======
-import { render } from "react-dom";
->>>>>>> salesStyle
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
