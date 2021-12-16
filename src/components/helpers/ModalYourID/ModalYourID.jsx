@@ -17,6 +17,7 @@ export default function ModalYourID(props) {
             </g>
             <foreignObject x="90.94" y="132.86" width="122.86" height="48.88">
               <button
+                className="ok-btn-modal"
                 onClick={() => {
                   props.setIsModalYourID(false);
                 }}
