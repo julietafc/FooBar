@@ -13,10 +13,8 @@ body {
   min-height: 100vh;
   text-align: center;
   background-image: url("/assets/bg_dark.svg");
-  // background-color: #cccccc; /* Used if the image is unavailable */
-  // min-height: 100vh; /* You must set a specified height */
-  background-position: bottom; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background-position: bottom;
+  background-repeat: no-repeat;
   background-size: cover;
   font-family: var(--primary-font);
   position: relative;

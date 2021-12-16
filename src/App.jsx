@@ -1,18 +1,14 @@
 import "./App.scss";
 import "./index.scss";
 import "antd/dist/antd.css";
-//import timeDiference from "./modules/timeDiference";
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Link, NavLink } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Menu from "./components/Menu/Menu";
 import Manager from "./components/Manager/Manager";
 import Customer from "./components/Customer/Customer";
 import Barteneder from "./components/Bartender/Bartender";
 import Home from "./components/Home/Home";
-//import { display } from "@mui/system";
-// import Nav1 from "./components/helpers/Nav1/Nav1";
 import Footer from "./components/helpers/Footer/Footer";
-//import Header from "./components/helpers/Header/Header";
 import Header from "./components/helpers/Header/Header";
 import timeManager from "./modules/timeManager";
 
@@ -66,8 +62,6 @@ function App() {
           })
         );
         setAllOrders([...data.queue, ...data.serving]);
-
-        //   setRealTime(json.timestamp);
       } catch (error) {
         console.log(error);
       }

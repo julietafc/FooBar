@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 export default function Nav(props) {
-  // const [orderShown, setOrder] = useState(true);
   return (
     <nav className="navigation">
       <ul className={props.click ? "nav-options active" : "nav-options"}>

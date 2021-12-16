@@ -24,20 +24,5 @@ export default function BeerProduct(props) {
         <p className="price">${props.price() * (props.isHappyHour ? 0.5 : 1)}</p>
       </article>
     </li>
-    // <article className="BeerProduct">
-    //   <div className="mainInfo">
-    //     <img src={"./assets/" + props.label} alt="" />
-    //     <div className="text">
-    //       <p>
-    //         {props.category} | {props.alc}%
-    //       </p>
-    //       <h3>{props.name}</h3>
-    //       <div className="money">
-    //         <img src="/assets/coin.svg" alt="" />
-    //         <p className="price">${props.price() * (props.isHappyHour ? 0.5 : 1)}</p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </article>
   );
 }

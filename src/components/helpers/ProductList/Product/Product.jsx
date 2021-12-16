@@ -28,7 +28,6 @@ export default function Product(props) {
   function increaseAmount() {
     // console.log(props.id);
     setAmount((prevAmount) => prevAmount + 1);
-    // setEnabled((isEnabled = amount > 0));
   }
 
   function decreaseAmount() {
@@ -54,7 +53,6 @@ export default function Product(props) {
       },
       name: props.name,
     });
-    // setAmount(0);
   }
 
   return (

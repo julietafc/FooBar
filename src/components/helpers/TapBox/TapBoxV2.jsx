@@ -88,7 +88,6 @@ export default function TapBoxV2(props) {
                     <img src={"./assets/" + beerImg} alt="beer label" />
                   </div>
                 </foreignObject>
-                {/* <image width="300" height="300" transform="translate(53.39 132.19) scale(0.58)" xlinkHref="./assets/mowintime.png" /> */}
               </g>
             </g>
             <path

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import "./Checkout.scss";
 import { Form, Input, Button } from "antd";
 import MaskedInput from "antd-mask-input";
@@ -9,7 +9,6 @@ export default function Checkout(props) {
   const [cardnumber, setCardNumber] = useState("");
   const [exp, setExp] = useState("");
   const [cvv, setCVV] = useState("");
-  // const [isEnabled, setEnabled] = useState(true);
 
   function postOrder() {
     fetch("https://los-amigos.herokuapp.com/order", {
@@ -21,7 +20,6 @@ export default function Checkout(props) {
     })
       .then((response) => {
         const obj = response.json();
-        // window.alert(obj.Object.id);
         return obj;
       })
       .then((data) => {
