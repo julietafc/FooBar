@@ -35,15 +35,15 @@ export default function ProductList(props) {
       <div className="sortingOptions">
         <h4>{direction === 1 ? "↓ " : "↑ "}Sort by:</h4>
         <div>
-          <button data-sort-direction="asc" data-sort="name" onClick={sorting} style={sortBy === "name" ? { color: "red" } : { color: "white" }}>
+          <button data-sort-direction="asc" data-sort="name" onClick={sorting} style={sortBy === "name" ? { color: "#FFE33B" } : { color: "white" }}>
             Name
           </button>
           |
-          <button data-sort-direction="asc" data-sort="category" onClick={sorting} style={sortBy === "category" ? { color: "red" } : { color: "white" }}>
+          <button data-sort-direction="asc" data-sort="category" onClick={sorting} style={sortBy === "category" ? { color: "#FFE33B" } : { color: "white" }}>
             Type
           </button>
           |
-          <button data-sort-direction="asc" data-sort="alc" onClick={sorting} style={sortBy === "alc" ? { color: "red" } : { color: "white" }}>
+          <button data-sort-direction="asc" data-sort="alc" onClick={sorting} style={sortBy === "alc" ? { color: "#FFE33B" } : { color: "white" }}>
             % alcohol
           </button>
         </div>

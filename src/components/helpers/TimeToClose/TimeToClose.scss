@@ -4,15 +4,6 @@
   display: flex;
   justify-content: space-between;
 
-  // display: grid;
-  // grid-template-columns: 2vw auto auto auto 2vw;
-
-  // & > *:first-child {
-  //   grid-column-start: 2;
-  // }
-  // & > *:last-child {
-  //   grid-column-start: -3;
-  // }
   &.mobile {
     flex-direction: column-reverse;
     gap: 0.5rem;

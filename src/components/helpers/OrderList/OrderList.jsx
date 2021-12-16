@@ -1,6 +1,3 @@
-import { useState } from "react";
-import timeDiference from "../../../modules/timeDiference";
-
 function Order(props) {
   const color = {
     queue: "white",
@@ -17,26 +14,6 @@ function Order(props) {
     minutes: "",
     seconds: "",
   };
-
-  // const items = props.order.map(function (item, i) {
-  //   const amount = order.filter((a) => a === item).length;
-  //   const beer = item;
-  //   order = [...order].filter((a) => a !== item);
-  //   const beerName = beer.toLowerCase().split(" ").join("");
-  //   ranking[beerName] = ranking[beerName] + amount;
-  //   return {
-  //     amount: amount,
-  //     name: beer,
-  //   };
-  // });
-
-  //const itemsFilter = items.filter((item) => item.amount !== 0);
-
-  // const itemsMap = itemsFilter.map((item, i) => (
-  //   <li key={"item-" + i}>
-  //     {item.amount} {item.name}
-  //   </li>
-  // ));}
 
   const orderClean = {};
   props.order.forEach((beer) => {

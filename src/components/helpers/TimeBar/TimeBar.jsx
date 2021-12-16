@@ -7,7 +7,6 @@ export default function TimeBar(props) {
   const diference = Number(props.now) - Number(props.timeInit);
   const timeLeft = timeDiference(props.now, props.timeEnd);
   const timeDisplay = `${timeLeft.hours}:${timeLeft.minutes}:${timeLeft.seconds}`;
-  //   console.log(goal, diference);
   if (props.now < props.timeEnd && props.now > props.timeInit) {
     level = (diference * 415) / goal;
   } else {

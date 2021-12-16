@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import "./Checkout.scss";
 import { Form, Input, Button } from "antd";
 import MaskedInput from "antd-mask-input";
@@ -9,7 +9,6 @@ export default function Checkout(props) {
   const [cardnumber, setCardNumber] = useState("");
   const [exp, setExp] = useState("");
   const [cvv, setCVV] = useState("");
-  // const [isEnabled, setEnabled] = useState(true);
 
   function postOrder() {
     fetch("https://los-amigos.herokuapp.com/order", {
@@ -21,7 +20,6 @@ export default function Checkout(props) {
     })
       .then((response) => {
         const obj = response.json();
-        // window.alert(obj.Object.id);
         return obj;
       })
       .then((data) => {
@@ -47,7 +45,7 @@ export default function Checkout(props) {
 
   return (
     <div className="FormWrapper">
-      <h3>Checkout</h3>
+      <h3>Payment details</h3>
 
       <Form ref={form} className="Form" onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
         <Form.Item
@@ -85,7 +83,7 @@ export default function Checkout(props) {
             },
           ]}
         >
-          <MaskedInput mask="1111 1111 1111 1111" name="card" size="19" onChange={(e) => setCardNumber(e.target.value)} value={cardnumber} />
+          <MaskedInput inputMode="numeric" mask="1111 1111 1111 1111" name="card" size="19" onChange={(e) => setCardNumber(e.target.value)} value={cardnumber} />
         </Form.Item>
 
         <Form.Item
@@ -101,7 +99,7 @@ export default function Checkout(props) {
             },
           ]}
         >
-          <MaskedInput mask="11/11" name="expiry" size="5" placeholder="mm/yy" style={{ width: "100px" }} onChange={(e) => setExp(e.target.value)} value={exp} />
+          <MaskedInput inputMode="numeric" mask="11/11" name="expiry" size="5" placeholder="mm/yy" style={{ width: "100px" }} onChange={(e) => setExp(e.target.value)} value={exp} />
         </Form.Item>
 
         <Form.Item
@@ -117,7 +115,7 @@ export default function Checkout(props) {
             },
           ]}
         >
-          <MaskedInput mask="111" name="ccv" size="3" style={{ width: "70px" }} onChange={(e) => setCVV(e.target.value)} value={cvv} />
+          <MaskedInput inputMode="numeric" mask="111" name="ccv" size="3" style={{ width: "70px" }} onChange={(e) => setCVV(e.target.value)} value={cvv} />
         </Form.Item>
 
         <Form.Item

@@ -1,9 +1,7 @@
 import settingTime from "./settingTime";
 
 export default function timeManager(now, isHappyHour, setIsHappyHour, setIsOpen) {
-  //   console.log("timeManager");
-
-  const happyHourTime = 18;
+  const happyHourTime = 20;
   const closingHour = 22;
   const openHour = 10;
   const happyHourStar = settingTime(happyHourTime);
@@ -12,8 +10,6 @@ export default function timeManager(now, isHappyHour, setIsHappyHour, setIsOpen)
   const openingTime = settingTime(openHour);
 
   if (now) {
-    // console.log(now, happyHourStar);
-    // console.log(isHappyHour);
     if (now > happyHourStar && now < happyHourEnd) {
       setIsHappyHour(true);
     } else {

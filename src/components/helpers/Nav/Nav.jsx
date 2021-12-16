@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
-export default function Nav1(props) {
-  // const [orderShown, setOrder] = useState(true);
+export default function Nav(props) {
   return (
     <nav className="navigation">
       <ul className={props.click ? "nav-options active" : "nav-options"}>
@@ -27,7 +26,7 @@ export default function Nav1(props) {
         {props.isCustomer && (
           <li className="option" onClick={props.closeMobileMenu}>
             <NavLink
-              to="/Form"
+              to="/Menu"
               onClick={() => {
                 props.changeCartState(!props.cart);
               }}

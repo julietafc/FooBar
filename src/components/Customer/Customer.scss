@@ -1,13 +1,11 @@
 .customer-wrapper {
-  // display: flex;
-  // justify-content: center;
   height: 100%;
   width: 100%;
   margin-top: 98px;
   background-color: rgba(0, 0, 0, 0);
   background-image: url("/assets/bg_dark.svg");
-  background-position: bottom; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background-position: bottom;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -21,7 +19,6 @@
   padding: 2rem;
   height: fit-content;
   min-height: 100vh;
-  //max-width: 2500px;
 
   .TimeToClose {
     grid-column-start: 1;
@@ -84,9 +81,7 @@
   }
 
   #fullscreen {
-    //button
     background-color: rgba(15, 104, 104, 0);
-    // background: url(/assets/fullscreenOn.svg);
     padding: 0.1rem;
     width: 30px;
     aspect-ratio: 1;
@@ -134,15 +129,12 @@ div.beerPx {
   background-repeat: repeat;
   background-position: right;
   transition: transform 0.3s;
-
-  // background-image: url(/assets/beer-pixel.svg);
 }
 
 .customer-wrapper:fullscreen {
   padding: 2rem;
   .Customer {
     gap: 3rem;
-    // margin-top: 2rem;
     min-height: auto;
   }
   .Beers {

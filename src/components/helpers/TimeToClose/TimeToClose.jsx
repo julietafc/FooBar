@@ -1,7 +1,6 @@
 import "./TimeToClose.scss";
-import settingTime from "../../../modules/settingTime";
 import TimeBar from "../TimeBar/TimeBar";
-import React, { useEffect } from "react";
+import React from "react";
 import Confetti from "react-confetti";
 import timeManager from "../../../modules/timeManager";
 

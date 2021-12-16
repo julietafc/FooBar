@@ -3,10 +3,10 @@ import ProductList from "../helpers/ProductList/ProductList";
 import ModalOrderReady from "../helpers/ModalOrderReady/ModalOrderReady";
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
-import "./Form.scss";
 import CartBtn from "../helpers/CartBtn/CartBtn";
 
-export default function Form(props) {
+import "./Menu.scss";
+export default function Menu(props) {
   if (!props.products) {
     return null;
   }

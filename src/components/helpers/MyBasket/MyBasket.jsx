@@ -4,7 +4,6 @@ import Checkout from "../Checkout/Checkout";
 import ModalYourID from "../ModalYourID/ModalYourID";
 
 export default function MyBasket(props) {
-  const [amount, setAmount] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [newAmount, setNewAmount] = useState(0);
   const [isModalYourID, setIsModalYourID] = useState(false);
@@ -76,7 +75,7 @@ export default function MyBasket(props) {
 
   return (
     <div className="MyBasket">
-      <h2>Your order</h2>
+      <h2>Your beers</h2>
       <ul>{orders}</ul>
       <div className="totalOrder">
         <p>{total} items</p>
