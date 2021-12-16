@@ -1,6 +1,7 @@
 body {
   height: fit-content;
   min-height: 100vh;
+  background: #220f2a;
 }
 
 #root {
@@ -79,12 +80,12 @@ body {
   }
 
   @media screen and (max-width: 680px) {
-    body,
-    #root,
-    .App,
-    main {
-      all: unset;
-    }
+    // body,
+    // #root,
+    // .App,
+    // main {
+    //   all: unset;
+    // }
 
     .mobileHeader {
       position: fixed;

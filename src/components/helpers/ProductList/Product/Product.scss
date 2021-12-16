@@ -178,7 +178,7 @@
   background-color: #033141;
   font-family: sans-serif;
   padding: 3em;
-  position: absolute;
+  // position: absolute;
 }
 
 .reverseCard {
@@ -190,4 +190,12 @@
   color: white;
   box-shadow: 0 0 4px 0px #898989;
   padding: 0.5em;
+}
+
+@media screen and (max-width: 450px) {
+  .Product {
+    margin: auto;
+    padding: 0;
+    width: 90%;
+  }
 }

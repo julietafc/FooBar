@@ -48,7 +48,7 @@ export default function ProductList(props) {
           </button>
         </div>
       </div>
-      <section>{beers}</section>
+      <section className="menu-beers">{beers}</section>
     </section>
   );
 }
