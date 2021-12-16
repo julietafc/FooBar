@@ -1,7 +1,14 @@
 @use "../../../index.scss";
 
-@media screen and (max-width: 1024px) {
-  aside {
-    display: block;
+.aside {
+  ul {
+    list-style: none;
+    text-align: left;
+    font-size: 80%;
+    padding: 0;
+
+    @media screen and (max-width: 1024px) {
+      display: block;
+    }
   }
 }
