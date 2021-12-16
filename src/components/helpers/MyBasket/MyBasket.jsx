@@ -75,7 +75,7 @@ export default function MyBasket(props) {
 
   return (
     <div className="MyBasket">
-      <h2>Your order</h2>
+      <h2>Your beers</h2>
       <ul>{orders}</ul>
       <div className="totalOrder">
         <p>{total} items</p>
