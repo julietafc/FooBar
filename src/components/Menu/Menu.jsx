@@ -122,7 +122,7 @@ export default function Menu(props) {
       <div className="Layout">
         {isYourOrderReady && <ModalOrderReady {...yourOrderReady} setIsYourOrderReady={setIsYourOrderReady} />}
         {props.isHappyHour && <Confetti width={window.innerWidth} height={window.innerHeight} className="confetti" />}
-        {!props.cart ? (
+        {props.cart ? (
           <ProductList addToBasket={addToBasket} beers={beers} isHappyHour={props.isHappyHour} />
         ) : (
           <Basket
