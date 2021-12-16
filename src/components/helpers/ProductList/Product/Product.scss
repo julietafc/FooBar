@@ -1,5 +1,9 @@
 @use "../../../../index.scss";
 
+.react-card-flip {
+  z-index: 999 !important;
+}
+
 .Product {
   background: url(/assets/square-04-03-01.svg) no-repeat center center;
   -webkit-background-size: cover;
@@ -14,10 +18,6 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 2em;
-
-  .react-card-flip {
-    z-index: 999;
-  }
 
   img {
     width: 150px;
@@ -175,7 +175,6 @@
   background-color: #033141;
   font-family: sans-serif;
   padding: 3em;
-  position: absolute;
 }
 
 .reverseCard {
