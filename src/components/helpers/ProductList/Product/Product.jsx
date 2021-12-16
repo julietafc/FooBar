@@ -1,10 +1,29 @@
 import "./Product.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactCardFlip from "react-card-flip";
+import useSound from "use-sound";
+import sound from "./coin_effect.mp3";
+import sound2 from "./add.mp3";
 
 export default function Product(props) {
   const [flipped, setFlipped] = useState(false);
   const [amount, setAmount] = useState(0);
+  const [adding, setAdding] = useState(false);
+  const [playCoin] = useSound(sound, { interrupt: true, volume: 0.1 });
+  const [playAdd] = useSound(sound2, { interrupt: true, volume: 0.1 });
+
+  useEffect(() => {
+    const fedbackBeer = document.querySelector(`.${props.id}`);
+    if (adding) {
+      fedbackBeer.classList.add("show");
+      fedbackBeer.addEventListener("animationend", function unshow() {
+        fedbackBeer.removeEventListener("animationend", unshow);
+        fedbackBeer.classList.remove("show");
+        setAmount(0);
+        setAdding(false);
+      });
+    }
+  }, [adding]);
 
   function increaseAmount() {
     // console.log(props.id);
@@ -35,7 +54,7 @@ export default function Product(props) {
       },
       name: props.name,
     });
-    setAmount(0);
+    // setAmount(0);
   }
 
   return (
@@ -62,12 +81,26 @@ export default function Product(props) {
           <div className="amountWrapper">
             <button onClick={decreaseAmount}>-</button>
             <p className="amount">{amount}</p>
-            <button onClick={increaseAmount}>+</button>
+            <button onClick={increaseAmount} onMouseDown={() => playCoin()}>
+              +
+            </button>
           </div>
-
-          <button className="buttonAdd" onClick={add} style={amount < 1 ? { backgroundColor: "grey", pointerEvents: "none" } : { backgroundColor: "blue", pointerEvents: "all" }}>
-            Add
-          </button>
+          <div className="button-add-wrapper">
+            <button
+              className="buttonAdd"
+              onClick={add}
+              onMouseDown={() => {
+                playAdd();
+                setAdding(true);
+              }}
+              style={amount < 1 ? { backgroundColor: "grey", pointerEvents: "none" } : { backgroundColor: "blue", pointerEvents: "all" }}
+            >
+              Add
+            </button>
+            <div className={"feedback-beer " + props.id}>
+              <p>{amount}</p>
+            </div>
+          </div>
         </div>
       </article>
       <div className="ProductReverse">

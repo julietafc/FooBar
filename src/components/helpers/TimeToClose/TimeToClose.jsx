@@ -12,7 +12,7 @@ export default function TimeToClose(props) {
   const schedule = timeManager();
   return (
     <>
-      <article className="TimeToClose">
+      <article className={props.isMobile ? "TimeToClose mobile" : "TimeToClose"}>
         <TimeBar isBarActive={props.isHappyHour} timeInit={schedule.happyHourStar} timeEnd={schedule.happyHourEnd} now={props.now} label="HAPPY HOUR" />
         <TimeBar isBarActive={props.isOpen} timeInit={schedule.openingTime} timeEnd={schedule.closingTime} now={props.now} label="TIME LEFT" />
         {props.isHappyHour && props.now < schedule.happyHourStar + 30000 && <Confetti width={window.innerWidth} height={window.innerHeight} />}

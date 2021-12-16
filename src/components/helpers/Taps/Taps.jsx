@@ -1,5 +1,6 @@
 import TapBox from "../TapBox/TapBox";
 import TapBoxV2 from "../TapBox/TapBoxV2";
+import "./Taps.scss";
 function Tap(props) {
   let beerImg = props.tap.beer.toLowerCase().split(" ").join("") + ".png";
   const bartender = props.bartenders.filter((person) => person.usingTap === props.tap.id);
@@ -42,16 +43,16 @@ function Tap(props) {
 }
 
 export default function Taps(props) {
-  const style = {
-    width: "100%",
-    display: "flex",
-    padding: ".5rem 1rem",
-    gap: "1rem",
+  // const style = {
+  //   width: "100%",
+  //   display: "flex",
+  //   padding: ".5rem 1rem",
+  //   gap: "1rem",
 
-    alignItems: "flex-end",
-  };
+  //   alignItems: "flex-end",
+  // };
 
   const taps = [...props.taps].map((tap, i) => <TapBoxV2 key={"tap" + (i + 1)} bartenders={props.bartenders} tap={tap} />);
 
-  return <div style={style}>{taps}</div>;
+  return <div className="Taps">{taps}</div>;
 }

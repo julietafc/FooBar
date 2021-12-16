@@ -42,7 +42,9 @@ function App() {
   const [oldServing, setOldServing] = useState([]);
   const [newServing, setNewServing] = useState([]);
   const [orderReady, setOrderRedady] = useState({});
+  const [dayOrders, setDayOrders] = useState(0);
 
+  const isMobile = windowDimension <= 640;
   const beerBasePrice = 40;
 
   function changeCartState(state) {
@@ -101,16 +103,12 @@ function App() {
 
   //-----------------------
   useEffect(() => {
-    // console.log("compareOldNew");
-    // console.log(oldServing);
-    // console.log(newServing);
     if (oldServing.length > 0) {
-      console.log("length>0");
       oldServing.forEach((oldOrder, i, arr) => {
-        // console.log(oldOrder.id);
         const findIt = [...newServing].find((newOrder) => newOrder.id === oldOrder.id);
         //!findIt && console.log("order ready", oldOrder);
         !findIt && upDateOrdersReady(oldOrder);
+        !findIt && setDayOrders(dayOrders + 1);
         i === arr.length - 1 && setOldServing([...newServing]);
       });
     } else {
@@ -137,8 +135,6 @@ function App() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const isMobile = windowDimension <= 640;
 
   function checkTaps(info) {
     setProducts(function (oldProducts) {
@@ -202,7 +198,7 @@ function App() {
           <Route exact path="/" element={<Home isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
           <Route exact path="/Manager" element={<Manager {...data} now={now} products={products} ranking={ranking} allOrders={allOrders}/>} />
           <Route exact path="/Bartender" element={<Barteneder {...data} now={now} upDateOrdersReady={upDateOrdersReady} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} />} />
-          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} isCustomer={isCustomer} setIsCustomer={setIsCustomer} />} />
+          <Route exact path="/Dashboard" element={<Customer {...data} now={now} ordersReady={ordersReady} isHappyHour={isHappyHour} isOpen={isOpen} products={products} isCustomer={isCustomer} setIsCustomer={setIsCustomer} isMobile={isMobile} />} />
           <Route exact path="/Form" element={<Form products={products} cart={cart} isMobile={isMobile} ordersReady={ordersReady} isHappyHour={isHappyHour} />} />
         </Routes>
       </main>

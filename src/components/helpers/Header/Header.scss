@@ -10,7 +10,7 @@
 @use "../../../index.scss";
 
 .logo {
-  width: 220px;
+  width: min(220px, 40vw);
   height: auto;
 }
 

@@ -36,7 +36,7 @@ function Order(props) {
   //   <li key={"item-" + i}>
   //     {item.amount} {item.name}
   //   </li>
-  // ));
+  // ));}
 
   const orderClean = {};
   props.order.forEach((beer) => {

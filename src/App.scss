@@ -1,6 +1,7 @@
 body {
   height: fit-content;
   min-height: 100vh;
+  background: #220f2a;
 }
 
 #root {
@@ -9,7 +10,8 @@ body {
 }
 
 .App {
-  height: 100%;
+  height: fit-content;
+  min-height: 100vh;
   text-align: center;
   background-image: url("/assets/bg_dark.svg");
   // background-color: #cccccc; /* Used if the image is unavailable */
@@ -78,6 +80,13 @@ body {
   }
 
   @media screen and (max-width: 680px) {
+    // body,
+    // #root,
+    // .App,
+    // main {
+    //   all: unset;
+    // }
+
     .mobileHeader {
       position: fixed;
       background-color: white;

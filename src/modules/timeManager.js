@@ -3,7 +3,7 @@ import settingTime from "./settingTime";
 export default function timeManager(now, isHappyHour, setIsHappyHour, setIsOpen) {
   //   console.log("timeManager");
 
-  const happyHourTime = 18;
+  const happyHourTime = 20;
   const closingHour = 22;
   const openHour = 10;
   const happyHourStar = settingTime(happyHourTime);
