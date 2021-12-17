@@ -4,12 +4,16 @@
     flex-direction: column;
     margin-top: 100px;
 
+    .salesHeaders {
+      padding: 4rem 0;
+    }
+
     .figures {
       display: flex;
       justify-content: center;
       flex-direction: row;
       gap: 5rem;
-      margin: 3rem 0;
+      margin: 2rem 0;
     }
   }
 }
