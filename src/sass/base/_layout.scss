@@ -10,12 +10,12 @@
     margin-top: 2em;
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 550px) {
     padding: 0;
     padding-top: 9em;
     aside {
       border: none;
-      margin: auto;
+      margin: 0 auto;
     }
   }
 }

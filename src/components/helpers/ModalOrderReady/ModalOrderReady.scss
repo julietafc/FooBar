@@ -15,15 +15,16 @@
     font-size: 1rem;
   }
 
-  button {
+  button.ok-btn-modal {
     padding: 0.2rem 1rem;
     border-radius: 10px;
     background-color: #54b3ff;
     transform-origin: center;
     transition: transform 0.2s;
-  }
-  button:hover {
-    transform: scale(1.05);
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   svg {
