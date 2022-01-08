@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Nav from "../Nav/Nav";
+import Nav from "./Nav";
 import "./Header.scss";
 export default function Header(props) {
   const [windowDimension, setWindowDimension] = useState(null);
