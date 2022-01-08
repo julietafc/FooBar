@@ -1,4 +1,4 @@
-import TapBoxV2 from "../TapBox/TapBoxV2";
+import TapBoxV2 from "./TapBoxV2";
 import "./Taps.scss";
 
 export default function Taps(props) {

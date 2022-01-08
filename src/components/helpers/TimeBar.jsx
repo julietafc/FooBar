@@ -1,5 +1,5 @@
 import "./TimeBar.scss";
-import timeDiference from "../../../modules/timeDiference";
+import timeDiference from "../../modules/timeDiference";
 
 export default function TimeBar(props) {
   let level;

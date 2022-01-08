@@ -1,9 +1,9 @@
-import Basket from "../helpers/Basket/Basket";
-import ProductList from "../helpers/ProductList/ProductList";
-import ModalOrderReady from "../helpers/ModalOrderReady/ModalOrderReady";
+import Basket from "./helpers/Basket";
+import ProductList from "./helpers/ProductList";
+import ModalOrderReady from "./helpers/ModalOrderReady";
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
-import CartBtn from "../helpers/CartBtn/CartBtn";
+import CartBtn from "./helpers/CartBtn";
 
 import "./Menu.scss";
 export default function Menu(props) {

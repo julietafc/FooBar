@@ -1,7 +1,7 @@
 import "./MyBasket.scss";
 import { useState, useEffect } from "react";
-import Checkout from "../Checkout/Checkout";
-import ModalYourID from "../ModalYourID/ModalYourID";
+import Checkout from "./Checkout";
+import ModalYourID from "./ModalYourID";
 
 export default function MyBasket(props) {
   const [showResults, setShowResults] = useState(false);

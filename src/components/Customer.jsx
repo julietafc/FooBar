@@ -1,8 +1,8 @@
 import "./Customer.scss";
-import "../helpers/BeersMenu/BeersMenu.jsx";
-import TimeToClose from "../helpers/TimeToClose/TimeToClose";
+import "./helpers/BeersMenu.jsx";
+import TimeToClose from "./helpers/TimeToClose";
 import React, { useEffect, useState } from "react";
-import BeersMenu from "../helpers/BeersMenu/BeersMenu.jsx";
+import BeersMenu from "./helpers/BeersMenu.jsx";
 
 function Beers(props) {
   const allOrders = [...props.serving, ...props.queue];

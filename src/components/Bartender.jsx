@@ -1,9 +1,9 @@
 import "./Bartender.scss";
-import Taps from "../helpers/Taps/Taps";
+import Taps from "./helpers/Taps";
 import React from "react";
-import TimeToClose from "../helpers/TimeToClose/TimeToClose";
-import OrderList from "../helpers/OrderList/OrderList";
-import Bulb from "../helpers/Bulb/Bulb";
+import TimeToClose from "./helpers/TimeToClose";
+import OrderList from "./helpers/OrderList";
+import Bulb from "./helpers/Bulb";
 import { useState } from "react";
 
 function Keg(props) {

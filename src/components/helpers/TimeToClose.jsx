@@ -1,8 +1,8 @@
 import "./TimeToClose.scss";
-import TimeBar from "../TimeBar/TimeBar";
+import TimeBar from "./TimeBar";
 import React from "react";
 import Confetti from "react-confetti";
-import timeManager from "../../../modules/timeManager";
+import timeManager from "../../modules/timeManager";
 
 export default function TimeToClose(props) {
   if (!props.now) {

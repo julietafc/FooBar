@@ -3,13 +3,13 @@ import "./index.scss";
 import "antd/dist/antd.css";
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Menu from "./components/Menu/Menu";
-import Manager from "./components/Manager/Manager";
-import Customer from "./components/Customer/Customer";
-import Barteneder from "./components/Bartender/Bartender";
-import Home from "./components/Home/Home";
-import Footer from "./components/helpers/Footer/Footer";
-import Header from "./components/helpers/Header/Header";
+import Menu from "./components/Menu";
+import Manager from "./components/Manager";
+import Customer from "./components/Customer";
+import Barteneder from "./components/Bartender";
+import Home from "./components/Home";
+import Footer from "./components/helpers/Footer";
+import Header from "./components/helpers/Header";
 import timeManager from "./modules/timeManager";
 
 function App() {
