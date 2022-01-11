@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import PropTypes from "prop-types";
+import Button from "./helpers/Button";
 
 async function loginUser(credentials) {
   return fetch("http://localhost:3001/login", {
@@ -38,7 +39,7 @@ export default function Login({ setToken }) {
           <input type="password" onChange={(e) => setPassword(e.target.value)} />
         </label>
         <div>
-          <button type="submit">Submit</button>
+          <Button className="submit" type="submit" label="Submit" />
         </div>
       </form>
     </div>

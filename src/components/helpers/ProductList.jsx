@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Product from "./Product";
+import Button from "./Button";
 import "./ProductList.scss";
 
 export default function ProductList(props) {
@@ -35,24 +36,12 @@ export default function ProductList(props) {
       <div className="sortingOptions">
         <h4>{direction === 1 ? "↓ " : "↑ "}Sort by:</h4>
         <div>
-          <Button data-sort-direction="asc" data-sort="name" onClick={sorting} style={sortBy === "name" ? { color: "#FFE33B" } : { color: "white" }}>
-            Name
-          </Button>
-          |
-          <button data-sort-direction="asc" data-sort="category" onClick={sorting} style={sortBy === "category" ? { color: "#FFE33B" } : { color: "white" }}>
-            Type
-          </button>
-          |
-          <button data-sort-direction="asc" data-sort="alc" onClick={sorting} style={sortBy === "alc" ? { color: "#FFE33B" } : { color: "white" }}>
-            % alcohol
-          </button>
+          <Button label="Name" direction="asc" sort="name" onClick={sorting} style={sortBy === "name" ? { color: "#FFE33B" } : { color: "white" }} />|
+          <Button label="Type" direction="asc" sort="category" onClick={sorting} style={sortBy === "category" ? { color: "#FFE33B" } : { color: "white" }} />|
+          <Button label="% alcohol" direction="asc" sort="alc" onClick={sorting} style={sortBy === "alc" ? { color: "#FFE33B" } : { color: "white" }} />|
         </div>
       </div>
       <section className="menu-beers">{beers}</section>
     </section>
   );
-}
-
-function Button(props) {
-  return <button></button>;
 }

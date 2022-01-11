@@ -1,4 +1,5 @@
 import "./ModalYourID.scss";
+import Button from "./Button";
 export default function ModalYourID(props) {
   return (
     <div className="background-black">
@@ -16,14 +17,13 @@ export default function ModalYourID(props) {
               />
             </g>
             <foreignObject x="90.94" y="132.86" width="122.86" height="48.88">
-              <button
+              <Button
                 className="ok-btn-modal"
                 onClick={() => {
                   props.setIsModalYourID(false);
                 }}
-              >
-                OK
-              </button>
+                label="OK"
+              />
             </foreignObject>
             <rect id="btn-holder" className="cls-3" x="90.94" y="132.86" width="122.86" height="48.88" />
             <foreignObject x="32.15" y="35.1" width="240.44" height="78.25">
