@@ -4,10 +4,10 @@ const app = express();
 
 app.use(cors());
 
-app.use("/login", (req, res) => {
+app.use("/login", (res) => {
   res.send({
     token: "test123",
   });
 });
 
-app.listen(3000, () => console.log("API is running on http://localhost:3000/login"));
+app.listen(8080, () => console.log("API is running on http://localhost:8080/login"));
