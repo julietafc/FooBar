@@ -4,28 +4,40 @@ import PropTypes from "prop-types";
 import Button from "./helpers/Button";
 import Title from "./helpers/Title";
 
-async function loginUser(credentials) {
-  return fetch("http://localhost:8080/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
+// async function loginUser(credentials) {
+//   return fetch("http://localhost:3001/login", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(credentials),
+//   }).then((data) => data.json());
+// }
 
-export default function Login({ setToken }) {
+export default function Login({ setAccess }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
-  const handleSubmit = async (e) => {
+  const usernameOriginal = "manager";
+  const passwordOriginal = "test123";
+
+  function handleSubmit(e) {
     e.preventDefault();
-    const token = await loginUser({
-      username,
-      password,
-    });
-    setToken(token);
-  };
+    const access = username === usernameOriginal && password === passwordOriginal;
+    if (access) {
+      console.log("it's a match");
+      setAccess(access);
+    }
+  }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const token = await loginUser({
+  //     username,
+  //     password,
+  //   });
+  //   setToken(token);
+  // };
 
   return (
     <div className="login-wrapper">

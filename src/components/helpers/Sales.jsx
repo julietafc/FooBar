@@ -1,5 +1,6 @@
 import React from "react";
 import "./Sales.scss";
+import Subheading from "./Subheading";
 
 export default function Sales(props) {
   if (!props.products) {
@@ -21,9 +22,7 @@ export default function Sales(props) {
 
   return (
     <div className="sales">
-      <div className="salesHeader">
-        <Subheading label="Todays sales" />
-      </div>
+      <div className="salesHeader">{/* <Subheading label="Todays sales" /> */}</div>
       <div className="figures">
         <div>
           <Subheading label="Total income" />

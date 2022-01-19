@@ -1,4 +1,5 @@
 import "./Ranking.scss";
+import Subheading from "./Subheading";
 
 export default function TopBeer(props) {
   const ranking = [...props.storage];

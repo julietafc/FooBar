@@ -1,5 +1,6 @@
 import React from "react";
 import "./Inventory.scss";
+import Subheading from "./Subheading";
 
 export default function Inventory(props) {
   function Keg(props) {

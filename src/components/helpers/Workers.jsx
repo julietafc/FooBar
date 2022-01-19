@@ -1,4 +1,5 @@
 import "./Workers.scss";
+import Subheading from "./Subheading";
 
 export default function Workers(props) {
   const employees = props.bartenders;

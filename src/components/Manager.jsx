@@ -4,17 +4,16 @@ import Workers from "./helpers/Workers";
 import TopBeer from "./helpers/Ranking";
 import Sales from "./helpers/Sales";
 import Title from "./helpers/Title";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Login from "../components/Login";
 
 export default function Manager(props) {
-  const [token, setToken] = useState();
+  const [access, setAccess] = useState();
   if (!props.bartenders) {
     return null;
   }
-  if (!token) {
-    return <Login setToken={setToken} />;
-  } else {
+  if (!access) {
+    return <Login setAccess={setAccess} />;
   }
 
   return (
