@@ -3,7 +3,7 @@ import "./Login.scss";
 import PropTypes from "prop-types";
 
 async function loginUser(credentials) {
-  return fetch("http://localhost:3001/login", {
+  return fetch("http://localhost:3000/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,11 +31,11 @@ export default function Login({ setToken }) {
       <form onSubmit={handleSubmit}>
         <label>
           <p>Username</p>
-          <input type="text" onChange={(e) => setUserName(e.target.value)} />
+          <input type="text" autoComplete="username" onChange={(e) => setUserName(e.target.value)} />
         </label>
         <label>
           <p>Password</p>
-          <input type="password" onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" autoComplete="current-password" onChange={(e) => setPassword(e.target.value)} />
         </label>
         <div>
           <button type="submit">Submit</button>
