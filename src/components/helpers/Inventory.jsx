@@ -14,7 +14,7 @@ export default function Inventory(props) {
     const kegs = props.storage.map((keg, i) => <Keg key={(i < 9 ? "keg0" : "keg") + (i + 1)} {...keg} />);
     return (
       <section className="Depot">
-        <h3>Kegs in depot</h3>
+        <Subheading label="Kegs in depot" />
         <ul>{kegs}</ul>
       </section>
     );
@@ -22,7 +22,7 @@ export default function Inventory(props) {
 
   return (
     <div className="inventoryList">
-      <h3>Inventory</h3>
+      <Subheading label="Inventory" />
       <Depot {...props} />
     </div>
   );

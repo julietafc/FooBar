@@ -3,6 +3,7 @@ import "./helpers/BeersMenu.jsx";
 import TimeToClose from "./helpers/TimeToClose";
 import React, { useEffect, useState } from "react";
 import BeersMenu from "./helpers/BeersMenu.jsx";
+import Title from "./helpers/Title";
 
 function Beers(props) {
   const allOrders = [...props.serving, ...props.queue];
@@ -54,13 +55,14 @@ export default function Customer(props) {
       <div className="Customer">
         <TimeToClose now={props.now} isHappyHour={props.isHappyHour} isOpen={props.isOpen} isMobile={props.isMobile} />
         <div className="Beers-wrapper">
-          <h2>Queue</h2> <Beers {...props} isFullScreen={isFullScreen} />
+          <Title label="Queue" />
+          <Beers {...props} isFullScreen={isFullScreen} />
         </div>
 
         {!props.isMobile && <BeersMenu products={props.products} isHappyHour={props.isHappyHour} />}
 
         <aside>
-          <h2>Orders Ready</h2>
+          <Title label="Orders Ready" />
           <ul className="orders-ready">{readyMap}</ul>
         </aside>
         {!props.isMobile && <button id="fullscreen" onClick={() => setIsFullScreen(!isFullScreen)} style={styleBtn}></button>}

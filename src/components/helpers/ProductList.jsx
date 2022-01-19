@@ -2,6 +2,7 @@ import { useState } from "react";
 import Product from "./Product";
 import Button from "./Button";
 import "./ProductList.scss";
+import Title from "./Title";
 
 export default function ProductList(props) {
   const [sortBy, setSortBy] = useState("name");
@@ -32,7 +33,7 @@ export default function ProductList(props) {
 
   return (
     <section className="ProductList">
-      <h2>Our selection</h2>
+      <Title label="Our selection " />
       <div className="sortingOptions">
         <h4>{direction === 1 ? "↓ " : "↑ "}Sort by:</h4>
         <div>

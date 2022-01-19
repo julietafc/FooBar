@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Checkout from "./Checkout";
 import ModalYourID from "./ModalYourID";
 import Button from "./Button";
+import Title from "./Title";
 
 export default function MyBasket(props) {
   const [showResults, setShowResults] = useState(false);
@@ -70,7 +71,7 @@ export default function MyBasket(props) {
 
   return (
     <div className="MyBasket">
-      <h2>Your beers</h2>
+      <Title label="Your beers" />
       <ul>{orders}</ul>
       <div className="totalOrder">
         <p>{total} items</p>
