@@ -1,3 +1,5 @@
+import Title from "./Title";
+
 function Order(props) {
   const color = {
     queue: "white",
@@ -57,7 +59,7 @@ export default function OrderList(props) {
   return (
     <aside className="OrderList">
       <div className="to-do">
-        <h2>Orders to do</h2>
+        <Title label="Orders to do" />
         <OrdersToDo {...props} />
       </div>
     </aside>

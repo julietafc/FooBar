@@ -2,6 +2,7 @@ import "./ModalOrderReady.scss";
 import useSound from "use-sound";
 import sound from "./pressbee.mp3";
 import { useEffect } from "react";
+import Button from "./Button";
 
 export default function ModalOrderReady(props) {
   const [play, { stop }] = useSound(sound, { interrupt: true });
@@ -33,14 +34,13 @@ export default function ModalOrderReady(props) {
             </g>
 
             <foreignObject x="223.29" y="132.86" width="122.86" height="48.88">
-              <button
+              <Button
                 className="ok-btn-modal"
                 onClick={() => {
                   props.setIsYourOrderReady(false);
                 }}
-              >
-                OK
-              </button>
+                label="OK"
+              />
             </foreignObject>
 
             <rect id="btn-holder" className="cls-1" x="223.29" y="132.86" width="122.86" height="48.88" />

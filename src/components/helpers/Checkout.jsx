@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import "./Checkout.scss";
 import { Form, Input, Button } from "antd";
 import MaskedInput from "antd-mask-input";
+import Subheading from "./Subheading";
 
 export default function Checkout(props) {
   const form = useRef(null);
@@ -45,8 +46,7 @@ export default function Checkout(props) {
 
   return (
     <div className="FormWrapper">
-      <h3>Payment details</h3>
-
+      <Subheading label="Payment details" />
       <Form ref={form} className="Form" onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
         <Form.Item
           hasFeedback

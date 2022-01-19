@@ -4,6 +4,7 @@ import ReactCardFlip from "react-card-flip";
 import useSound from "use-sound";
 import sound from "./coin_effect.mp3";
 import sound2 from "./add.mp3";
+import Button from "./Button";
 
 export default function Product(props) {
   const [flipped, setFlipped] = useState(false);
@@ -59,10 +60,7 @@ export default function Product(props) {
   return (
     <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
       <article className="Product">
-        <button className="moreInfo" onClick={handleClick}>
-          Info
-        </button>
-
+        <Button className="moreInfo" onClick={handleClick} label="Info" />
         <div className="mainInfo">
           <img src={"./assets/" + props.label} alt="" />
           <div className="text">
@@ -78,24 +76,21 @@ export default function Product(props) {
         </div>
         <div className="actions">
           <div className="amountWrapper">
-            <button onClick={decreaseAmount}>-</button>
+            <Button onClick={decreaseAmount} label="-" />
             <p className="amount">{amount}</p>
-            <button onClick={increaseAmount} onMouseDown={() => playCoin()}>
-              +
-            </button>
+            <Button onClick={increaseAmount} onMouseDown={() => playCoin()} label="+" />
           </div>
           <div className="button-add-wrapper">
-            <button
+            <Button
               className="buttonAdd"
               onClick={() => {
                 add();
                 playAdd();
                 setAdding(true);
               }}
+              label="Add"
               style={amount < 1 ? { backgroundColor: "grey", pointerEvents: "none" } : { backgroundColor: "blue", pointerEvents: "all" }}
-            >
-              Add
-            </button>
+            />
             <div className={"feedback-beer " + props.id}>
               <p>{amount}</p>
             </div>
@@ -103,9 +98,7 @@ export default function Product(props) {
         </div>
       </article>
       <div className="ProductReverse">
-        <button className="reverseCard" onClick={handleClick}>
-          X
-        </button>
+        <Button className="reverseCard" onClick={handleClick} label="X" />
         <p>
           <strong>Aroma: </strong>
           {props.description.aroma}

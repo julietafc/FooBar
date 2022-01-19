@@ -1,8 +1,16 @@
 .login-wrapper {
   padding: 10em;
-  padding-top: 20em;
+  padding-top: 15em;
+
+  h1 {
+    margin-bottom: 1em !important;
+  }
 
   input {
     color: black;
+  }
+
+  button {
+    margin-top: 2em;
   }
 }

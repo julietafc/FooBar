@@ -2,6 +2,8 @@ import "./MyBasket.scss";
 import { useState, useEffect } from "react";
 import Checkout from "./Checkout";
 import ModalYourID from "./ModalYourID";
+import Button from "./Button";
+import Title from "./Title";
 
 export default function MyBasket(props) {
   const [showResults, setShowResults] = useState(false);
@@ -29,19 +31,13 @@ export default function MyBasket(props) {
   // console.log(payload);
   const orders = basket.map((order, i) => (
     <li className="addedItem" key={i}>
-      <button className="deleteItem" data-name={order.name} onClick={noBeer}>
-        X
-      </button>
+      <Button className="deleteItem" name={order.name} onClick={noBeer} label="X" />
       {order.amount} {order.name} ${order.price()}
       <div className="actions">
         <div className="amountWrapper">
-          <button data-name={order.name} onClick={handleClickMinus}>
-            -
-          </button>
+          <Button name={order.name} onClick={handleClickMinus} label="-" />
           <input type="number" min="1" max="100" onInput={oneMore} data-name={order.name} value={order.amount} />
-          <button data-name={order.name} onClick={handleClickPlus}>
-            +
-          </button>
+          <Button name={order.name} onClick={handleClickPlus} label="+" />
         </div>
       </div>
     </li>
@@ -75,7 +71,7 @@ export default function MyBasket(props) {
 
   return (
     <div className="MyBasket">
-      <h2>Your beers</h2>
+      <Title label="Your beers" />
       <ul>{orders}</ul>
       <div className="totalOrder">
         <p>{total} items</p>
@@ -85,7 +81,7 @@ export default function MyBasket(props) {
       </div>
       {orders.length > 0 && (
         <div>
-          <button onClick={onClick}>Checkout</button>
+          <Button onClick={onClick} label="Checkout" />
           {showResults ? (
             <Checkout resetBasket={props.resetBasket} payload={payload} addID={props.addID} customerName={props.customerName} setCustomerName={props.setCustomerName} setIsModalYourID={setIsModalYourID} setShowResults={setShowResults} />
           ) : null}

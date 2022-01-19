@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import PropTypes from "prop-types";
+import Button from "./helpers/Button";
+import Title from "./helpers/Title";
 
 async function loginUser(credentials) {
   return fetch("http://localhost:3000/login", {
@@ -27,7 +29,7 @@ export default function Login({ setToken }) {
 
   return (
     <div className="login-wrapper">
-      <h1>Please Log In</h1>
+      <Title label="Please Log In" />
       <form onSubmit={handleSubmit}>
         <label>
           <p>Username</p>
@@ -38,7 +40,7 @@ export default function Login({ setToken }) {
           <input type="password" autoComplete="current-password" onChange={(e) => setPassword(e.target.value)} />
         </label>
         <div>
-          <button type="submit">Submit</button>
+          <Button className="submit" type="submit" label="Submit" />
         </div>
       </form>
     </div>
